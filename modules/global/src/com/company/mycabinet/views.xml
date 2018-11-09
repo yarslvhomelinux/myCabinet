@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+    <view class="com.company.mycabinet.entity.ExtUser"
+          extends="_local"
+          name="extUser-view">
+        <property name="group"
+                  view="_minimal"/>
+        <property name="userRoles"
+                  view="_local"/>
+        <property name="substitutions"
+                  view="_local"/>
+    </view>
+</views>

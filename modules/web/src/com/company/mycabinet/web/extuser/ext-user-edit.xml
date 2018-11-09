@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="com.company.mycabinet.web.extuser.ExtUserEditor"
+        extends="com/haulmont/cuba/gui/app/security/user/edit/user-edit.xml"
+        xmlns:ext="http://schemas.haulmont.com/cuba/window-ext.xsd">
+    <dsContext>
+        <datasource id="extUserDs"
+                    class="com.company.mycabinet.entity.ExtUser"
+                    view="extUser-view"/>
+    </dsContext>
+    <layout>
+        <groupBox id="propertiesBox">
+            <grid id="propertiesGrid">
+                <rows>
+                    <row id="propertiesRow">
+                        <fieldGroup id="fieldGroupLeft"
+                                    datasource="extUserDs">
+                            <column>
+                                <field id="birthday"
+                                       ext:index="6"/>
+                                <field id="organizationName"
+                                       ext:index="7"/>
+                                <field id="phoneNumber"
+                                       ext:index="8"/>
+                                <field id="activityType"
+                                       required="true"/>
+                                <field id="legalAddress"
+                                       required="true"/>
+                                <field id="businessCategory"
+                                       required="true"/>
+                            </column>
+                        </fieldGroup>
+                        <fieldGroup id="fieldGroupRight"
+                                    datasource="extUserDs">
+                            <column>
+                                <field id="firmAge"/>
+                                <field id="productionVolume"/>
+                                <field id="goodsCategory"
+                                       required="true"/>
+                                <field id="actualAddress"/>
+                                <field id="userType"
+                                       required="true"/>
+                            </column>
+                        </fieldGroup>
+                    </row>
+                </rows>
+            </grid>
+        </groupBox>
+    </layout>
+</window>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="com.company.mycabinet.web.screens.ExtAppLoginWindow"
+        extends="/com/haulmont/cuba/web/app/loginwindow/loginwindow.xml"
+        messagesPack="com.company.mycabinet.web.screens"
+        xmlns:ext="http://schemas.haulmont.com/cuba/window-ext.xsd">
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <vbox id="loginWrapper">
+            <vbox id="loginMainBox">
+                <grid id="loginFormLayout"
+                      align="MIDDLE_RIGHT">
+                    <rows>
+                        <row ext:index="3">
+                            <hbox id="customerHBox"
+                                  align="MIDDLE_RIGHT"
+                                  spacing="true"
+                                  visible="false">
+                                <label id="customerLabel"
+                                       align="MIDDLE_RIGHT"
+                                       value="msg://customer"/>
+                                <checkBox id="customerCheckBox"
+                                          align="MIDDLE_RIGHT"/>
+                            </hbox>
+                            <hbox id="manufacturerHBox"
+                                  spacing="true"
+                                  visible="false">
+                                <label id="manufacturerLabel"
+                                       align="MIDDLE_LEFT"
+                                       value="msg://manufacturer"/>
+                                <checkBox id="manufacturerCheckBox"
+                                          align="MIDDLE_LEFT"/>
+                            </hbox>
+                        </row>
+                        <row ext:index="4">
+                            <label id="surnameLabel"
+                                   align="MIDDLE_RIGHT"
+                                   value="msg://surname"
+                                   visible="false"/>
+                            <textField id="surNameTextField"
+                                       inputPrompt="msg://surname"
+                                       stylename="c-login-password"
+                                       visible="false"
+                            required="true"/>
+                        </row>
+                        <row ext:index="5">
+                            <label id="firstNameLabel"
+                                   align="MIDDLE_RIGHT"
+                                   value="msg://firstName"
+                                   visible="false"/>
+                            <textField id="firstNameTextField"
+                                       inputPrompt="msg://firstName"
+                                       stylename="c-login-password"
+                                       visible="false"
+                                       required="true"/>
+                        </row>
+                        <row ext:index="6">
+                            <label id="middleNameLabel"
+                                   align="MIDDLE_RIGHT"
+                                   value="msg://middleName"
+                                   visible="false"/>
+                            <textField id="middleNameTextField"
+                                       inputPrompt="msg://middleName"
+                                       stylename="c-login-password"
+                                       visible="false"/>
+                        </row>
+                        <row ext:index="7">
+                            <label id="birthDateLabel"
+                                   align="MIDDLE_RIGHT"
+                                   value="msg://birthDat"
+                                   visible="false"/>
+                            <dateField id="birthDateField"
+                                       dateFormat="dd/MM/yyyy"
+                                       visible="false"/>
+                        </row>
+                        <row ext:index="8">
+                            <label id="phoneNumberLabel"
+                                   align="MIDDLE_RIGHT"
+                                   value="msg://phoneNumber"
+                                   visible="false"/>
+                            <textField id="phoneNumberTextField"
+                                       inputPrompt="msg://phoneNumber"
+                                       stylename="c-login-password"
+                                       visible="false"
+                                       required="true"/>
+                        </row>
+                        <row ext:index="9">
+                            <label id="mailLabel"
+                                   align="MIDDLE_RIGHT"
+                                   value="msg://mail"
+                                   visible="false"/>
+                            <textField id="mailTextField"
+                                       inputPrompt="msg://mail"
+                                       stylename="c-login-password"
+                                       visible="false"
+                                       required="true"/>
+                        </row>
+                        <row ext:index="10">
+                            <label id="orgNameLabel"
+                                   align="MIDDLE_RIGHT"
+                                   value="msg://orgName"
+                                   visible="false"/>
+                            <textField id="organizationNameTextField"
+                                       inputPrompt="msg://orgName"
+                                       stylename="c-login-password"
+                                       visible="false"/>
+                        </row>
+                        <row ext:index="11">
+                            <label id="activityTypeLabel"
+                                   align="MIDDLE_RIGHT"
+                                   value="msg://activityTypeLabel"
+                                   visible="false"/>
+                            <textField id="activityTypeTextField"
+                                       inputPrompt="msg://activityType"
+                                       stylename="c-login-password"
+                                       visible="false"/>
+                        </row>
+                        <row ext:index="12">
+                            <label id="legalAddressLabel"
+                                   align="MIDDLE_RIGHT"
+                                   value="msg://legalAddress"
+                                   visible="false"/>
+                            <textField id="legalAdressTextField"
+                                       inputPrompt="msg://legalAddress"
+                                       stylename="c-login-password"
+                                       visible="false"/>
+                        </row>
+                        <row ext:index="13">
+                            <label id="actualAddressLabel"
+                                   align="MIDDLE_RIGHT"
+                                   value="msg://actualAddress"
+                                   visible="false"/>
+                            <textField id="actualAdressTextField"
+                                       inputPrompt="msg://actualAddress"
+                                       stylename="c-login-password"
+                                       visible="false"/>
+                        </row>
+                        <row ext:index="14">
+                            <label id="businessCategory"
+                                   align="MIDDLE_RIGHT"
+                                   value="msg://businessCategory"
+                                   visible="false"/>
+                            <lookupField id="businessCategoryLookupField"
+                                         inputPrompt="msg://businessCategory"
+                                         optionsEnum="com.company.mycabinet.entity.BusinessCategory"
+                                         stylename="c-login-password"
+                                         visible="false"/>
+                        </row>
+                        <row ext:index="15">
+                            <label id="manufacturerLegalAddressLabel"
+                                   align="MIDDLE_RIGHT"
+                                   value="msg://manufacturerAddress"
+                                   visible="false"/>git
+                            <textField id="manufacturerLegalAddressTextField"
+                                       inputPrompt="msg://manufacturerLegalAddress"
+                                       stylename="c-login-password"
+                                       visible="false"/>
+                        </row>
+                        <row ext:index="16">
+                            <label id="firmAgeLabel"
+                                   align="MIDDLE_RIGHT"
+                                   value="msg://firmAge"
+                                   visible="false"/>
+                            <textField id="firmAgeTextField"
+                                       inputPrompt="msg://firmAge"
+                                       stylename="c-login-password"
+                                       visible="false"/>
+                        </row>
+                        <row ext:index="17">
+                            <label id="productionVolumeLabel"
+                                   align="MIDDLE_RIGHT"
+                                   value="msg://ProductionVolume"
+                                   visible="false"/>
+                            <textField id="productionVolumeTextField"
+                                       inputPrompt="msg://productionVolume"
+                                       stylename="c-login-password"
+                                       visible="false"/>
+                        </row>
+                        <row ext:index="18">
+                            <label id="goodsCategoryLabel"
+                                   align="MIDDLE_RIGHT"
+                                   value="msg://surname"
+                                   visible="false"/>
+                            <textField id="goodsCategory"
+                                       inputPrompt="msg://goodsCategory"
+                                       stylename="c-login-password"
+                                       visible="false"/>
+                        </row>
+                        <row>
+                            <linkButton id="loginLinkButton"
+                                        align="TOP_RIGHT"
+                                        caption="msg://loginLinkButton"
+                                        visible="false"/>
+                            <linkButton id="registerLinkButton"
+                                        align="TOP_RIGHT"
+                                        caption="msg://registerLinkButton"/>
+                        </row>
+                    </rows>
+                </grid>
+            </vbox>
+        </vbox>
+    </layout>
+</window>
