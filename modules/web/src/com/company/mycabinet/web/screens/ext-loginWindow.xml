@@ -40,9 +40,9 @@
                                    visible="false"/>
                             <textField id="surNameTextField"
                                        inputPrompt="msg://surname"
+                                       required="true"
                                        stylename="c-login-password"
-                                       visible="false"
-                            required="true"/>
+                                       visible="false"/>
                         </row>
                         <row ext:index="5">
                             <label id="firstNameLabel"
@@ -51,9 +51,9 @@
                                    visible="false"/>
                             <textField id="firstNameTextField"
                                        inputPrompt="msg://firstName"
+                                       required="true"
                                        stylename="c-login-password"
-                                       visible="false"
-                                       required="true"/>
+                                       visible="false"/>
                         </row>
                         <row ext:index="6">
                             <label id="middleNameLabel"
@@ -81,9 +81,9 @@
                                    visible="false"/>
                             <textField id="phoneNumberTextField"
                                        inputPrompt="msg://phoneNumber"
+                                       required="true"
                                        stylename="c-login-password"
-                                       visible="false"
-                                       required="true"/>
+                                       visible="false"/>
                         </row>
                         <row ext:index="9">
                             <label id="mailLabel"
@@ -92,9 +92,9 @@
                                    visible="false"/>
                             <textField id="mailTextField"
                                        inputPrompt="msg://mail"
+                                       required="true"
                                        stylename="c-login-password"
-                                       visible="false"
-                                       required="true"/>
+                                       visible="false"/>
                         </row>
                         <row ext:index="10">
                             <label id="orgNameLabel"
@@ -151,7 +151,7 @@
                             <label id="manufacturerLegalAddressLabel"
                                    align="MIDDLE_RIGHT"
                                    value="msg://manufacturerAddress"
-                                   visible="false"/>git
+                                   visible="false"/>
                             <textField id="manufacturerLegalAddressTextField"
                                        inputPrompt="msg://manufacturerLegalAddress"
                                        stylename="c-login-password"
@@ -180,7 +180,7 @@
                         <row ext:index="18">
                             <label id="goodsCategoryLabel"
                                    align="MIDDLE_RIGHT"
-                                   value="msg://surname"
+                                   value="msg://goods"
                                    visible="false"/>
                             <textField id="goodsCategory"
                                        inputPrompt="msg://goodsCategory"

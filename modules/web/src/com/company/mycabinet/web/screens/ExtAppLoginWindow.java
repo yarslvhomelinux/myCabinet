@@ -97,7 +97,6 @@ public class ExtAppLoginWindow extends AppLoginWindow {
             @Override
             public void actionPerform(Component component) {
                 performSignInAction();
-
             }
         });
 
@@ -108,7 +107,6 @@ public class ExtAppLoginWindow extends AppLoginWindow {
             public void actionPerform(Component component) {
                 setVisibleCustomerRegistrationFields(true);
                 setVisibleManufacturerRegistrationField(false);
-                setVisibleUserStatusChoise(true);
                 manufacturerHBox.setVisible(true);
                 customerHBox.setVisible(true);
                 firstNameLabel.setVisible(true);
@@ -123,6 +121,7 @@ public class ExtAppLoginWindow extends AppLoginWindow {
                 manufacturerCheckBox.setValue(false);
                 loginLinkButton.setVisible(true);
                 registerLinkButton.setVisible(false);
+                loginButton.setCaption(getMessage("registerLinkButton"));
 
                 loginButton.setAction(new AbstractAction("registerAction") {
                     @Override
@@ -134,6 +133,7 @@ public class ExtAppLoginWindow extends AppLoginWindow {
                                 performSignInAction();
                                 loginField.setValue(null);
                                 passwordField.setValue(null);
+                                loginButton.setCaption(getMessage("loginLinkButton"));
                             } else
                                 showNotification(getMessage("duplicateLoginError"));
                         } else
@@ -147,7 +147,6 @@ public class ExtAppLoginWindow extends AppLoginWindow {
     protected void performSignInAction() {
         setVisibleCustomerRegistrationFields(false);
         setVisibleManufacturerRegistrationField(false);
-        setVisibleUserStatusChoise(false);
         manufacturerHBox.setVisible(false);
         customerHBox.setVisible(false);
         registerLinkButton.setVisible(true);
@@ -161,6 +160,7 @@ public class ExtAppLoginWindow extends AppLoginWindow {
         surNameTextField.setVisible(false);
         surnameLabel.setVisible(false);
         loginButton.setAction(submit);
+        loginButton.setCaption(getMessage("loginLinkButton"));
     }
 
     protected boolean areRequiredFieldsFilled() {
@@ -226,10 +226,6 @@ public class ExtAppLoginWindow extends AppLoginWindow {
         productionVolumeTextField.setVisible(isVisible);
         productionVolumeLabel.setVisible(isVisible);
         goodsCategory.setVisible(isVisible);
-        goodsCategory.setVisible(isVisible);
-    }
-
-    protected void setVisibleUserStatusChoise(boolean isVisible) {
-        //userTypeGroupBox.setVisible(isVisible);
+        goodsCategoryLabel.setVisible(isVisible);
     }
 }
