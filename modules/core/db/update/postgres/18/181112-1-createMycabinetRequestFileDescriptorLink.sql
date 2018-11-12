@@ -1,0 +1,5 @@
+create table MYCABINET_REQUEST_FILE_DESCRIPTOR_LINK (
+    REQUEST_ID uuid,
+    FILE_DESCRIPTOR_ID uuid,
+    primary key (REQUEST_ID, FILE_DESCRIPTOR_ID)
+);

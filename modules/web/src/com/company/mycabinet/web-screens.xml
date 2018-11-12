@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <screen-config xmlns="http://schemas.haulmont.com/cuba/screens.xsd">
-
     <include file="com/company/mycabinet/screens.xml"/>
     <screen id="loginWindow"
             template="com/company/mycabinet/web/screens/ext-loginWindow.xml"/>
     <screen id="sec$User.edit"
             template="com/company/mycabinet/web/extuser/ext-user-edit.xml"/>
+    <screen id="mycabinet$Response.edit"
+            template="com/company/mycabinet/web/response/response-edit.xml"/>
+    <screen id="mycabinet$Request.edit"
+            template="com/company/mycabinet/web/request/request-edit.xml"/>
+    <screen id="mycabinet$ProductCategory.browse"
+            template="com/company/mycabinet/web/productcategory/product-category-browse.xml"/>
+    <screen id="mycabinet$ProductCategory.edit"
+            template="com/company/mycabinet/web/productcategory/product-category-edit.xml"/>
+    <screen id="mycabinet$CustomerRequests.browse"
+            template="com/company/mycabinet/web/request/customer-requests-browse.xml"/>
+    <screen id="mycabinet$MyResponse.browse"
+            template="com/company/mycabinet/web/response/my-response-browse.xml"/>
+    <screen id="mycabinet$AllResponses.browse"
+            template="com/company/mycabinet/web/response/all-responses-browse.xml"/>
+    <screen id="mycabinet$AllRequests.browse"
+            template="com/company/mycabinet/web/request/all-requests-browse.xml"/>
+    <screen id="mycabinet$MyRequest.browse"
+            template="com/company/mycabinet/web/request/my-request-browse.xml"/>
+    <screen id="mycabinet$ManufacturerResponse.browse"
+            template="com/company/mycabinet/web/response/manufacturer-response-browse.xml"/>
+    <screen id="mycabinet$Attachment.edit"
+            template="com/company/mycabinet/web/attachment/attachment-edit.xml"/>
 </screen-config>

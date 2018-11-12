@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
-    <menu id="application-mycabinet" insertBefore="administration">
+    <menu id="customerCab"
+          insertBefore="administration">
+        <item screen="mycabinet$MyRequest.browse"/>
+        <item screen="mycabinet$ManufacturerResponse.browse"/>
+    </menu>
+    <menu id="manufacturerCab"
+          insertBefore="administration">
+        <item screen="mycabinet$CustomerRequests.browse"/>
+        <item screen="mycabinet$MyResponse.browse"/>
+    </menu>
+    <menu id="system"
+          insertBefore="administration">
+        <item screen="mycabinet$AllRequests.browse"/>
+        <item screen="mycabinet$AllResponses.browse"/>
+        <item screen="mycabinet$ProductCategory.browse"/>
     </menu>
 </menu-config>

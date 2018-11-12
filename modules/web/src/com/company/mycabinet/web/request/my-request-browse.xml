@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://myRequestsBrowse"
+        class="com.company.mycabinet.web.request.MyRequestBrowse"
+        focusComponent="requestsTable"
+        lookupComponent="requestsTable"
+        messagesPack="com.company.mycabinet.web.request">
+    <dsContext>
+        <groupDatasource id="requestsDs"
+                         class="com.company.mycabinet.entity.Request"
+                         view="request-view">
+            <query>
+                <![CDATA[select e from mycabinet$Request e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="requestsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="requestsTable"
+                datasource="requestsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="requestsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="productCategory"/>
+                <column id="productType"/>
+                <column id="brand"/>
+                <column id="productDescription"/>
+                <column id="productVolume"/>
+                <column id="deliveryTime"/>
+                <column id="deliveryRegion"/>
+                <column id="contactPerson"/>
+                <column id="contactPersonPhone"/>
+                <column id="status"/>
+            </columns>
+            <rows datasource="requestsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="requestsTable.create"/>
+                <button id="editBtn"
+                        action="requestsTable.edit"/>
+                <button id="removeBtn"
+                        action="requestsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

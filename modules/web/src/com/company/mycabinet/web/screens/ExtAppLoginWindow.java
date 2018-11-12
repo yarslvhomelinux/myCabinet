@@ -118,6 +118,10 @@ public class ExtAppLoginWindow extends AppLoginWindow {
                 customerCheckBox.setValue(true);
                 mailTextField.setVisible(true);
                 mailLabel.setVisible(true);
+                phoneNumberLabel.setVisible(true);
+                phoneNumberTextField.setVisible(true);
+                birthDateLabel.setVisible(true);
+                birthDateField.setVisible(true);
                 manufacturerCheckBox.setValue(false);
                 loginLinkButton.setVisible(true);
                 registerLinkButton.setVisible(false);
@@ -159,6 +163,10 @@ public class ExtAppLoginWindow extends AppLoginWindow {
         middleNameLabel.setVisible(false);
         surNameTextField.setVisible(false);
         surnameLabel.setVisible(false);
+        phoneNumberLabel.setVisible(false);
+        phoneNumberTextField.setVisible(false);
+        birthDateLabel.setVisible(false);
+        birthDateField.setVisible(false);
         loginButton.setAction(submit);
         loginButton.setCaption(getMessage("loginLinkButton"));
     }
@@ -197,11 +205,6 @@ public class ExtAppLoginWindow extends AppLoginWindow {
     }
 
     protected void setVisibleCustomerRegistrationFields(boolean isVisible) {
-        birthDateField.setVisible(isVisible);
-        birthDateLabel.setVisible(isVisible);
-        phoneNumberTextField.setVisible(isVisible);
-        phoneNumberLabel.setVisible(isVisible);
-        //mailTextField.setVisible(isVisible);
         organizationNameTextField.setVisible(isVisible);
         orgNameLabel.setVisible(isVisible);
         activityTypeTextField.setVisible(isVisible);
@@ -215,10 +218,6 @@ public class ExtAppLoginWindow extends AppLoginWindow {
     }
 
     protected void setVisibleManufacturerRegistrationField(boolean isVisible) {
-        //contactNameTextField.setVisible(isVisible);
-        phoneNumberTextField.setVisible(isVisible);
-        phoneNumberLabel.setVisible(isVisible);
-        //mailTextField.setVisible(isVisible);
         manufacturerLegalAddressTextField.setVisible(isVisible);
         manufacturerLegalAddressLabel.setVisible(isVisible);
         firmAgeTextField.setVisible(isVisible);

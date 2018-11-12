@@ -1,0 +1,1 @@
+alter table mycabinet_request_file_descriptor_link rename to mycabinet_request_file_descriptor_link__UNUSED ;

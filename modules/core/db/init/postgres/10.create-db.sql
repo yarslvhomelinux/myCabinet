@@ -14,3 +14,101 @@ alter table SEC_USER add column GOODS_CATEGORY varchar(600) ^
 alter table SEC_USER add column DTYPE varchar(100) ^
 update SEC_USER set DTYPE = 'sec$User' where DTYPE is null ^
 -- end SEC_USER
+-- begin MYCABINET_REQUEST
+create table MYCABINET_REQUEST (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    PRODUCT_CATEGORY_ID uuid,
+    REQUEST_NUMBER varchar(255),
+    PRODUCT_TYPE text,
+    BRAND varchar(1000),
+    PRODUCT_DESCRIPTION text,
+    PRODUCT_VOLUME text,
+    DELIVERY_TIME integer,
+    DELIVERY_REGION text,
+    CONTACT_PERSON varchar(500),
+    CONTACT_PERSON_PHONE varchar(500),
+    STATUS varchar(50),
+    --
+    primary key (ID)
+)^
+-- end MYCABINET_REQUEST
+-- begin MYCABINET_PRODUCT_CATEGORY
+create table MYCABINET_PRODUCT_CATEGORY (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    NAME varchar(500),
+    --
+    primary key (ID)
+)^
+-- end MYCABINET_PRODUCT_CATEGORY
+-- begin MYCABINET_RESPONSE
+create table MYCABINET_RESPONSE (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    PRICE integer,
+    DELIVERY_PRICE integer,
+    MANUFACTURER_COMMENT text,
+    IS_PRICE_SATISFIED text,
+    CONTACT text,
+    CUSTOMER_COMMENT text,
+    CLOSE_COMMENT text,
+    REQUEST_ID uuid,
+    --
+    primary key (ID)
+)^
+-- end MYCABINET_RESPONSE
+-- begin MYCABINET_REQUEST_EXT_USER_LINK
+create table MYCABINET_REQUEST_EXT_USER_LINK (
+    REQUEST_ID uuid,
+    EXT_USER_ID uuid,
+    primary key (REQUEST_ID, EXT_USER_ID)
+)^
+-- end MYCABINET_REQUEST_EXT_USER_LINK
+
+-- begin MYCABINET_RESPONSE_FILE_DESCRIPTOR_LINK
+create table MYCABINET_RESPONSE_FILE_DESCRIPTOR_LINK (
+    RESPONSE_ID uuid,
+    FILE_DESCRIPTOR_ID uuid,
+    primary key (RESPONSE_ID, FILE_DESCRIPTOR_ID)
+)^
+-- end MYCABINET_RESPONSE_FILE_DESCRIPTOR_LINK
+-- begin MYCABINET_ATTACHMENT
+create table MYCABINET_ATTACHMENT (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    ATTACHMENT_ID uuid,
+    STATE varchar(50),
+    REQUEST_ID uuid,
+    --
+    primary key (ID)
+)^
+-- end MYCABINET_ATTACHMENT

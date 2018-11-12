@@ -4,5 +4,9 @@
     <persistence-unit name="myCabinet"
                       transaction-type="RESOURCE_LOCAL">
         <class>com.company.mycabinet.entity.ExtUser</class>
+        <class>com.company.mycabinet.entity.Request</class>
+        <class>com.company.mycabinet.entity.ProductCategory</class>
+        <class>com.company.mycabinet.entity.Response</class>
+        <class>com.company.mycabinet.entity.Attachment</class>
     </persistence-unit>
 </persistence>
