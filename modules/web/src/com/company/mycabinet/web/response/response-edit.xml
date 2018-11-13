@@ -22,126 +22,136 @@
     </dsContext>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="responseOffHBox"
+    <layout expand="scrollBox"
             spacing="true">
-        <groupBox id="groupBox"
-                  caption="msg://requestInfo"
-                  orientation="horizontal"
-                  spacing="true"
-                  width="50%">
-            <vbox spacing="true">
-                <hbox expand="lookupPickerField"
-                      spacing="true"
-                      width="100%">
-                    <label id="requestLabel"
-                           align="MIDDLE_LEFT"
-                           value="msg://request"
-                           width="189px"/>
-                    <lookupPickerField id="lookupPickerField"
-                                       datasource="responseDs"
-                                       optionsDatasource="requestsDs"
-                                       property="request"
-                                       width="334px"/>
-                </hbox>
-                <hbox id="hbox_1"
-                      expand="responseField"
-                      spacing="true"
-                      width="100%">
-                    <label id="stateRequestLabel"
-                           value="msg://requestStateLabel"
-                           width="190px"/>
-                    <textField id="responseField"
-                               datasource="responseDs"
-                               editable="false"
-                               property="request.status"/>
-                </hbox>
-            </vbox>
-        </groupBox>
-        <hbox id="hbox"
-              spacing="true"
-              width="100%">
-            <groupBox id="responseInfoGroupBox"
-                      caption="msg://responseInfo"
-                      spacing="true">
-                <fieldGroup id="fieldGroup"
-                            datasource="responseDs"
-                            height="100%"
-                            width="100%">
-                    <column width="100%">
-                        <field property="price"/>
-                        <field property="deliveryPrice"/>
-                        <field property="manufacturerComment"
-                               rows="5"/>
-                    </column>
-                </fieldGroup>
-            </groupBox>
-            <groupBox id="attachmentGroupBox"
-                      caption="msg://attachments"
-                      height="210px"
-                      spacing="true">
-                <table id="attachmentTable"
-                       height="100%"
-                       width="100%">
-                    <actions>
-                        <action id="create"/>
-                        <action id="edit"/>
-                        <action id="remove"/>
-                    </actions>
-                    <columns>
-                        <column id="name"/>
-                        <column id="extension"/>
-                        <column id="size"/>
-                        <column id="createDate"/>
-                    </columns>
-                    <rows datasource="attachmentDs"/>
-                    <buttonsPanel>
-                        <button id="createButton"
-                                action="attachmentTable.create"/>
-                        <button id="editButton"
-                                action="attachmentTable.edit"/>
-                        <button id="removeButton"
-                                action="attachmentTable.remove"/>
-                    </buttonsPanel>
-                </table>
-            </groupBox>
-        </hbox>
-        <hbox id="feedbackHBox"
-              spacing="true"
-              width="100%">
-            <groupBox id="feedbackGroupBox"
-                      caption="msg://clientFeedback"
-                      spacing="true"
-                      width="50%">
-                <fieldGroup id="feedbackFieldGroup"
-                            datasource="responseDs"
-                            width="100%">
-                    <column width="100%">
-                        <field property="isPriceSatisfied"
-                               rows="2"/>
-                        <field property="contact"/>
-                        <field property="customerComment"
-                               rows="4"/>
-                    </column>
-                </fieldGroup>
-            </groupBox>
-        </hbox>
-        <hbox id="responseOffHBox"
-              spacing="true"
-              width="100%">
-            <groupBox id="groupBox_1"
-                      caption="msg://responseOffInfo"
-                      spacing="true"
-                      width="50%">
-                <fieldGroup id="responseFieldGroup"
-                            datasource="responseDs"
-                            width="100%">
-                    <column width="100%">
-                        <field property="closeComment"
-                               rows="4"/>
-                    </column>
-                </fieldGroup>
-            </groupBox>
-        </hbox>
+        <scrollBox id="scrollBox"
+                   height="100px">
+            <tabSheet height="100%">
+                <tab id="infoTab"
+                     caption="msg://responseInfo"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <groupBox id="groupBox"
+                              caption="msg://requestInfo"
+                              orientation="horizontal"
+                              spacing="true"
+                              width="100%">
+                        <vbox spacing="true">
+                            <hbox expand="lookupPickerField"
+                                  spacing="true"
+                                  width="100%">
+                                <label id="requestLabel"
+                                       align="MIDDLE_LEFT"
+                                       value="msg://request"
+                                       width="189px"/>
+                                <lookupPickerField id="lookupPickerField"
+                                                   datasource="responseDs"
+                                                   optionsDatasource="requestsDs"
+                                                   property="request"
+                                                   width="334px"/>
+                            </hbox>
+                            <hbox id="hbox_1"
+                                  expand="responseField"
+                                  spacing="true"
+                                  width="100%">
+                                <label id="stateRequestLabel"
+                                       value="msg://requestStateLabel"
+                                       width="190px"/>
+                                <textField id="responseField"
+                                           datasource="responseDs"
+                                           editable="false"
+                                           property="request.status"/>
+                            </hbox>
+                        </vbox>
+                    </groupBox>
+                    <groupBox id="responseInfoGroupBox"
+                              caption="msg://responseInfo"
+                              spacing="true">
+                        <fieldGroup id="fieldGroup"
+                                    datasource="responseDs"
+                                    height="100%"
+                                    width="100%">
+                            <column width="100%">
+                                <field property="price"/>
+                                <field property="deliveryPrice"/>
+                                <field property="manufacturerComment"
+                                       rows="5"/>
+                            </column>
+                        </fieldGroup>
+                    </groupBox>
+                    <hbox id="feedbackHBox"
+                          spacing="true"
+                          width="100%">
+                        <groupBox id="feedbackGroupBox"
+                                  caption="msg://clientFeedback"
+                                  spacing="true">
+                            <fieldGroup id="feedbackFieldGroup"
+                                        datasource="responseDs"
+                                        width="100%">
+                                <column width="100%">
+                                    <field property="isPriceSatisfied"
+                                           rows="2"/>
+                                    <field property="contact"/>
+                                    <field property="customerComment"
+                                           rows="4"/>
+                                </column>
+                            </fieldGroup>
+                        </groupBox>
+                    </hbox>
+                    <hbox id="responseOffHBox"
+                          height="100%"
+                          spacing="true"
+                          width="100%">
+                        <groupBox id="groupBox_1"
+                                  caption="msg://responseOffInfo"
+                                  spacing="true">
+                            <fieldGroup id="responseFieldGroup"
+                                        datasource="responseDs"
+                                        width="100%">
+                                <column width="100%">
+                                    <field property="closeComment"
+                                           rows="4"/>
+                                </column>
+                            </fieldGroup>
+                        </groupBox>
+                    </hbox>
+                </tab>
+                <tab id="attachmentsTab"
+                     caption="msg://attachment"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <groupBox id="attachmentGroupBox"
+                              caption="msg://attachments"
+                              height="210px"
+                              spacing="true">
+                        <table id="attachmentTable"
+                               height="100%"
+                               width="100%">
+                            <actions>
+                                <action id="create"/>
+                                <action id="edit"/>
+                                <action id="remove"/>
+                            </actions>
+                            <columns>
+                                <column id="name"/>
+                                <column id="extension"/>
+                                <column id="size"/>
+                                <column id="createDate"/>
+                            </columns>
+                            <rows datasource="attachmentDs"/>
+                            <buttonsPanel>
+                                <button id="createButton"
+                                        action="attachmentTable.create"/>
+                                <button id="editButton"
+                                        action="attachmentTable.edit"/>
+                                <button id="removeButton"
+                                        action="attachmentTable.remove"/>
+                            </buttonsPanel>
+                        </table>
+                    </groupBox>
+                </tab>
+            </tabSheet>
+        </scrollBox>
         <frame id="windowActions"
                screen="editWindowActions"/>
     </layout>
