@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://assignmentManufacturer"
+        class="com.company.mycabinet.web.request.Assignmentmanufacturerframe"
+        messagesPack="com.company.mycabinet.web.request">
+    <dsContext>
+        <collectionDatasource id="extUsersDs"
+                              class="com.company.mycabinet.entity.ExtUser"
+                              view="extUser-view">
+            <query>
+                <![CDATA[select e from mycabinet$ExtUser e]]>
+            </query>
+        </collectionDatasource>
+        <datasource id="requestDs"
+                    class="com.company.mycabinet.entity.Request"
+                    view="request-view">
+            <collectionDatasource id="manufacturerDs"
+                                  property="manufacturer"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout/>
+</window>

@@ -24,6 +24,7 @@ public class Attachment extends StandardEntity {
     @Column(name = "STATE")
     protected String state;
 
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "REQUEST_ID")
     protected Request request;

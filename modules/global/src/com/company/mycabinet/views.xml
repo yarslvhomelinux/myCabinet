@@ -43,7 +43,5 @@
           name="attachment-view">
         <property name="attachment"
                   view="_minimal"/>
-        <property name="request"
-                  view="_minimal"/>
     </view>
 </views>

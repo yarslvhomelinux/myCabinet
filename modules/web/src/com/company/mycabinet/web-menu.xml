@@ -13,6 +13,7 @@
     <menu id="system"
           insertBefore="administration">
         <item screen="mycabinet$AllRequests.browse"/>
+        <item screen="mycabinet$AgreeRequest.browse"/>
         <item screen="mycabinet$AllResponses.browse"/>
         <item screen="mycabinet$ProductCategory.browse"/>
     </menu>

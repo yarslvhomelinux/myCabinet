@@ -1,0 +1,1 @@
+alter table mycabinet_request_attachment_link rename to mycabinet_request_attachment_link__UNUSED ;

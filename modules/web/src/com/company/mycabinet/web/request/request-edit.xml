@@ -23,6 +23,12 @@
                 <![CDATA[select e from mycabinet$ProductCategory e]]>
             </query>
         </collectionDatasource>
+        <collectionDatasource id="attachmentsDs"
+                              class="com.company.mycabinet.entity.Attachment">
+            <query>
+                <![CDATA[select e from mycabinet$Attachment e where e.request.id = :ds$requestDs]]>
+            </query>
+        </collectionDatasource>
     </dsContext>
     <dialogMode height="600"
                 width="800"/>
@@ -66,12 +72,15 @@
                                     width="100%">
                             <column width="100%">
                                 <field optionsDatasource="productCategoriesDs"
-                                       property="productCategory"/>
+                                       property="productCategory"
+                                       required="true"/>
                                 <field property="productType"
+                                       required="true"
                                        rows="4"/>
                                 <field property="brand"
                                        rows="2"/>
                                 <field property="productDescription"
+                                       required="true"
                                        rows="4"/>
                             </column>
                         </fieldGroup>
@@ -79,13 +88,16 @@
                                     width="100%">
                             <column width="100%">
                                 <field property="productVolume"
+                                       required="true"
                                        rows="2"/>
                                 <field property="deliveryTime"/>
                                 <field property="deliveryRegion"
                                        rows="2"/>
                                 <field property="contactPerson"
+                                       required="true"
                                        rows="2"/>
                                 <field property="contactPersonPhone"
+                                       required="true"
                                        rows="3"/>
                             </column>
                         </fieldGroup>
@@ -145,7 +157,23 @@
                 </hbox>
             </vbox>
         </scrollBox>
-        <frame id="windowActions"
-               screen="editWindowActions"/>
+        <buttonsPanel>
+            <button id="improveButton"
+                    caption="msg://improve"
+                    icon="icons/ok.png"
+                    invoke="onImproveButtonClick"
+                    stylename="friendly"/>
+            <button id="nextStageButton"
+                    caption="msg://nextStage"
+                    icon="icons/rows-count-last.png"
+                    invoke="onNextStageButtonClick"
+                    stylename="friendly"/>
+            <button id="windowClose"
+                    action="windowClose"
+                    icon="EDITOR_CANCEL"/>
+            <button id="windowCommit"
+                    action="windowCommit"
+                    icon="EDITOR_OK"/>
+        </buttonsPanel>
     </layout>
 </window>

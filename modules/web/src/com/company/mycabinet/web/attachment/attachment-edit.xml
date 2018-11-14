@@ -11,15 +11,17 @@
                     class="com.company.mycabinet.entity.Attachment"
                     view="attachment-view"/>
     </dsContext>
-    <dialogMode height="600"
-                width="800"/>
+    <dialogMode height="200"
+                width="400"/>
     <layout expand="windowActions"
             spacing="true">
         <fieldGroup id="fieldGroup"
-                    datasource="attachmentDs">
-            <column width="250px">
+                    datasource="attachmentDs"
+                    width="100%">
+            <column width="100%">
                 <field property="attachment"/>
-                <field property="state"/>
+                <field editable="false"
+                       property="state"/>
             </column>
         </fieldGroup>
         <frame id="windowActions"

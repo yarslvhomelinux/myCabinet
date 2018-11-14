@@ -27,4 +27,8 @@
             template="com/company/mycabinet/web/response/manufacturer-response-browse.xml"/>
     <screen id="mycabinet$Attachment.edit"
             template="com/company/mycabinet/web/attachment/attachment-edit.xml"/>
+    <screen id="mycabinet$AgreeRequest.browse"
+            template="com/company/mycabinet/web/request/agree-request-browse.xml"/>
+    <screen id="AssignmentManufacturerFrame"
+            template="com/company/mycabinet/web/request/AssignmentManufacturerFrame.xml"/>
 </screen-config>
