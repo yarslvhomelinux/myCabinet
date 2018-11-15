@@ -162,12 +162,14 @@
                     caption="msg://improve"
                     icon="icons/ok.png"
                     invoke="onImproveButtonClick"
-                    stylename="friendly"/>
+                    stylename="friendly"
+                    visible="false"/>
             <button id="nextStageButton"
                     caption="msg://nextStage"
                     icon="icons/rows-count-last.png"
                     invoke="onNextStageButtonClick"
-                    stylename="friendly"/>
+                    stylename="friendly"
+                    visible="false"/>
             <button id="windowClose"
                     action="windowClose"
                     icon="EDITOR_CANCEL"/>

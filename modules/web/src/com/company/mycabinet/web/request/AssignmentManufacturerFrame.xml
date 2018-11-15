@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
         caption="msg://assignmentManufacturer"
-        class="com.company.mycabinet.web.request.Assignmentmanufacturerframe"
+        class="com.company.mycabinet.web.request.AssignmentManufacturerFrame"
         messagesPack="com.company.mycabinet.web.request">
     <dsContext>
         <collectionDatasource id="extUsersDs"
@@ -20,5 +20,20 @@
     </dsContext>
     <dialogMode height="600"
                 width="800"/>
-    <layout/>
+    <layout expand="twinColumn"
+            spacing="true">
+        <twinColumn id="twinColumn"
+                    optionsDatasource="extUsersDs"
+                    width="100%"/>
+        <buttonsPanel id="buttonsPanel">
+            <button id="okButton"
+                    caption="msg://Ok"
+                    icon="icons/ok.png"
+                    invoke="onOkButtonClick"/>
+            <button id="cancelButton"
+                    caption="msg://cancel"
+                    icon="icons/cancel.png"
+                    invoke="onCancelButtonClick"/>
+        </buttonsPanel>
+    </layout>
 </window>

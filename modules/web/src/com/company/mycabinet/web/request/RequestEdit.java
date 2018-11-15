@@ -7,14 +7,23 @@ import com.haulmont.cuba.gui.WindowManager;
 import com.haulmont.cuba.gui.components.AbstractEditor;
 import com.company.mycabinet.entity.Request;
 import com.haulmont.cuba.gui.components.Action;
+import com.haulmont.cuba.gui.components.Button;
 import com.haulmont.cuba.gui.components.actions.CreateAction;
 
+import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RequestEdit extends AbstractEditor<Request> {
 
     @Named("attachmentsTable.create")
     protected CreateAction attachmentCreateAction;
+
+    @Inject
+    protected Button nextStageButton;
+    @Inject
+    protected Button improveButton;
 
     @Override
     protected void initNewItem(Request item) {
@@ -30,12 +39,20 @@ public class RequestEdit extends AbstractEditor<Request> {
             public boolean beforeActionPerformed() {
                 if (PersistenceHelper.isNew(getItem()))
                     commit();
-                
+
                 return true;
             }
         });
 
         attachmentCreateAction.setWindowParams(ParamsMap.of("status", getItem().getStatus()));
+
+        if (State.CREATED.equals(getItem().getStatus())) {
+            nextStageButton.setVisible(true);
+        }
+
+        if (State.ADMIN_PROCESSING.equals(getItem().getStatus())) {
+            improveButton.setVisible(true);
+        }
     }
 
     protected void initNecessaryFields(Request item) {
@@ -50,6 +67,10 @@ public class RequestEdit extends AbstractEditor<Request> {
 
     public void onImproveButtonClick() {
         getItem().setStatus(State.MANUFACTURER_PROCESSING);
-        openWindow("AssignmentManufacturerFrame", WindowManager.OpenType.DIALOG);
+        Map<String, Object> paramsMap = new HashMap<>();
+        paramsMap.put("request", getItem());
+        paramsMap.put("userList", getItem().getManufacturer());
+        openWindow("AssignmentManufacturerFrame", WindowManager.OpenType.DIALOG, paramsMap)
+                .addCloseListener(s -> commitAndClose());
     }
 }
