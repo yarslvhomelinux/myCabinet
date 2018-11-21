@@ -25,6 +25,7 @@
         </filter>
         <groupTable id="requestsTable"
                     presentations="true"
+                    responsive="true"
                     width="100%">
             <actions>
                 <action id="create"/>
@@ -34,6 +35,7 @@
             <columns>
                 <column id="productCategory"/>
                 <column id="requestNumber"/>
+                <column id="createdBy"/>
                 <column id="productType"/>
                 <column id="status"/>
                 <column id="brand"/>

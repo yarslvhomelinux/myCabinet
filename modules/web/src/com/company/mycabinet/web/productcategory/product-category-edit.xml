@@ -10,14 +10,16 @@
                     class="com.company.mycabinet.entity.ProductCategory"
                     view="_local"/>
     </dsContext>
-    <dialogMode height="600"
-                width="800"/>
+    <dialogMode height="200"
+                width="600"/>
     <layout expand="windowActions"
             spacing="true">
         <fieldGroup id="fieldGroup"
-                    datasource="productCategoryDs">
-            <column width="250px">
-                <field property="name"/>
+                    datasource="productCategoryDs"
+                    width="100%">
+            <column width="100%">
+                <field property="name"
+                       rows="3"/>
             </column>
         </fieldGroup>
         <frame id="windowActions"

@@ -17,7 +17,7 @@
         <property name="productCategory"
                   view="_minimal"/>
         <property name="manufacturer"
-                  view="_minimal"/>
+                  view="extUser-view"/>
         <property name="response"
                   view="_local"/>
         <property name="attachment"
@@ -29,7 +29,11 @@
           name="response-view"
           systemProperties="true">
         <property name="request"
-                  view="_minimal"/>
+                  view="_minimal">
+            <property name="manufacturer"
+                      view="_local"/>
+            <property name="status"/>
+        </property>
         <property name="attachment"
                   view="_minimal">
             <property name="size"/>

@@ -10,7 +10,7 @@
                          class="com.company.mycabinet.entity.Response"
                          view="response-view">
             <query>
-                <![CDATA[select e from mycabinet$Response e]]>
+                <![CDATA[select e from mycabinet$Response e where e.request.createdBy = :session$userLogin]]>
             </query>
         </groupDatasource>
     </dsContext>
@@ -43,10 +43,9 @@
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn"
-                        action="responsesTable.create"/>
                 <button id="editBtn"
-                        action="responsesTable.edit"/>
+                        action="responsesTable.edit"
+                        caption="msg://viewButton"/>
             </buttonsPanel>
         </groupTable>
     </layout>

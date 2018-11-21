@@ -49,7 +49,8 @@
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
                 <button id="createResponse"
-                        caption="msg://createResponse"/>
+                        caption="msg://createResponse"
+                        invoke="onCreateResponseClick"/>
                 <button id="editBtn"
                         action="requestsTable.edit"
                         caption="msg://Просмотр"/>
