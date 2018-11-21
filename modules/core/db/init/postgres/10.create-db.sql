@@ -12,7 +12,7 @@ alter table SEC_USER add column PRODUCTION_VOLUME varchar(600) ^
 alter table SEC_USER add column USER_TYPE varchar(50) ^
 alter table SEC_USER add column GOODS_CATEGORY varchar(600) ^
 alter table SEC_USER add column DTYPE varchar(100) ^
-update SEC_USER set DTYPE = 'sec$User' where DTYPE is null ^
+update SEC_USER set DTYPE = 'mycabinet$ExtUser' where DTYPE is null ^
 -- end SEC_USER
 -- begin MYCABINET_REQUEST
 create table MYCABINET_REQUEST (
@@ -79,13 +79,6 @@ create table MYCABINET_RESPONSE (
     primary key (ID)
 )^
 -- end MYCABINET_RESPONSE
--- begin MYCABINET_REQUEST_EXT_USER_LINK
-create table MYCABINET_REQUEST_EXT_USER_LINK (
-    REQUEST_ID uuid,
-    EXT_USER_ID uuid,
-    primary key (REQUEST_ID, EXT_USER_ID)
-)^
--- end MYCABINET_REQUEST_EXT_USER_LINK
 
 -- begin MYCABINET_RESPONSE_FILE_DESCRIPTOR_LINK
 create table MYCABINET_RESPONSE_FILE_DESCRIPTOR_LINK (
@@ -112,3 +105,11 @@ create table MYCABINET_ATTACHMENT (
     primary key (ID)
 )^
 -- end MYCABINET_ATTACHMENT
+
+-- begin MYCABINET_REQUEST_EXT_USER_LINK
+create table MYCABINET_REQUEST_EXT_USER_LINK (
+    REQUEST_ID uuid,
+    EXT_USER_ID uuid,
+    primary key (REQUEST_ID, EXT_USER_ID)
+)^
+-- end MYCABINET_REQUEST_EXT_USER_LINK

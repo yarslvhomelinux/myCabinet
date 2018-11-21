@@ -7,7 +7,7 @@
               name="jdbc/CubaDS"
               password="root"
               type="javax.sql.DataSource"
-              url="jdbc:postgresql://localhost/mycabinet"
+              url="jdbc:postgresql://localhost/mycabinet2"
               username="postgres"/>
     <!-- Switch off session serialization -->
     <Manager pathname=""/>

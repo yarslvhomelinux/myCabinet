@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
         class="com.company.mycabinet.web.extuser.ExtUserEditor"
+        datasource="userDs"
         extends="com/haulmont/cuba/gui/app/security/user/edit/user-edit.xml"
         xmlns:ext="http://schemas.haulmont.com/cuba/window-ext.xsd">
     <dsContext>
-        <datasource id="extUserDs"
+        <datasource id="userDs"
                     class="com.company.mycabinet.entity.ExtUser"
                     view="extUser-view"/>
     </dsContext>
@@ -14,31 +15,42 @@
                 <rows>
                     <row id="propertiesRow">
                         <fieldGroup id="fieldGroupLeft"
-                                    datasource="extUserDs">
+                                    datasource="userDs">
                             <column>
                                 <field id="birthday"
-                                       ext:index="6"/>
+                                       ext:index="6"
+                                       property="birthday"/>
                                 <field id="organizationName"
-                                       ext:index="7"/>
+                                       ext:index="7"
+                                       property="organizationName"/>
                                 <field id="phoneNumber"
-                                       ext:index="8"/>
+                                       ext:index="8"
+                                       property="phoneNumber"/>
                                 <field id="activityType"
+                                       property="activityType"
                                        required="true"/>
                                 <field id="legalAddress"
+                                       property="legalAddress"
                                        required="true"/>
                                 <field id="businessCategory"
+                                       property="businessCategory"
                                        required="true"/>
                             </column>
                         </fieldGroup>
                         <fieldGroup id="fieldGroupRight"
-                                    datasource="extUserDs">
+                                    datasource="userDs">
                             <column>
-                                <field id="firmAge"/>
-                                <field id="productionVolume"/>
+                                <field id="firmAge"
+                                       property="firmAge"/>
+                                <field id="productionVolume"
+                                       property="productionVolume"/>
                                 <field id="goodsCategory"
+                                       property="goodsCategory"
                                        required="true"/>
-                                <field id="actualAddress"/>
+                                <field id="actualAddress"
+                                       property="actualAddress"/>
                                 <field id="userType"
+                                       property="userType"
                                        required="true"/>
                             </column>
                         </fieldGroup>

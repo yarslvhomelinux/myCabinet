@@ -31,4 +31,6 @@
             template="com/company/mycabinet/web/request/agree-request-browse.xml"/>
     <screen id="AssignmentManufacturerFrame"
             template="com/company/mycabinet/web/request/AssignmentManufacturerFrame.xml"/>
+    <screen id="mycabinet$ExtUser.browse"
+            template="com/company/mycabinet/web/extuser/ext-user-browse.xml"/>
 </screen-config>

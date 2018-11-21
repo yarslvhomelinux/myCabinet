@@ -10,9 +10,12 @@
                          class="com.company.mycabinet.entity.Request"
                          view="request-view">
             <query>
-                <![CDATA[select e from mycabinet$Request e]]>
+                <![CDATA[select e from mycabinet$Request e join sec$User u where :session$userId = u.id and u member of e.manufacturer]]>
             </query>
         </groupDatasource>
+        <datasource id="extUserDs"
+                    class="com.company.mycabinet.entity.ExtUser"
+                    view="extUser-view"/>
     </dsContext>
     <dialogMode height="600"
                 width="800"/>

@@ -71,6 +71,11 @@ public class RequestEdit extends AbstractEditor<Request> {
         paramsMap.put("request", getItem());
         paramsMap.put("userList", getItem().getManufacturer());
         openWindow("AssignmentManufacturerFrame", WindowManager.OpenType.DIALOG, paramsMap)
-                .addCloseListener(s -> commitAndClose());
+        .addCloseListener(new CloseListener() {
+            @Override
+            public void windowClosed(String s) {
+                commitAndClose();
+            }
+        });
     }
 }

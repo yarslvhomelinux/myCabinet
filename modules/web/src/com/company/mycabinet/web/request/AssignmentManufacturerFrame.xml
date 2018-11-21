@@ -22,6 +22,8 @@
                 width="800"/>
     <layout expand="twinColumn"
             spacing="true">
+        <label id="descriptionLabel"
+               value="msg://assignmentFrameDescription"/>
         <twinColumn id="twinColumn"
                     optionsDatasource="extUsersDs"
                     width="100%"/>

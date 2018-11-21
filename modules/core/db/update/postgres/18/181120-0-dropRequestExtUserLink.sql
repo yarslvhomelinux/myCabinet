@@ -1,0 +1,1 @@
+alter table mycabinet_request_ext_user_link rename to mycabinet_request_ext_user_link__UNUSED ;

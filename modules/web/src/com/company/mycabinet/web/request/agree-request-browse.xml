@@ -48,8 +48,6 @@
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn"
-                        action="requestsTable.create"/>
                 <button id="editBtn"
                         action="requestsTable.edit"/>
                 <button id="removeBtn"

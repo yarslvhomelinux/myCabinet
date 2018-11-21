@@ -6,9 +6,9 @@
         <property name="group"
                   view="_minimal"/>
         <property name="userRoles"
-                  view="_local"/>
+                  view="user.edit"/>
         <property name="substitutions"
-                  view="_local"/>
+                  view="user.edit"/>
     </view>
     <view class="com.company.mycabinet.entity.Request"
           extends="_local"

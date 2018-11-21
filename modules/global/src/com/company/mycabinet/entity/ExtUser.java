@@ -5,13 +5,14 @@ import javax.persistence.Column;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.haulmont.cuba.core.entity.annotation.Extends;
 import com.haulmont.cuba.security.entity.User;
 
 import java.util.Date;
 
 @Entity(name = "mycabinet$ExtUser")
+@Extends(User.class)
 public class ExtUser extends User {
-    private static final long serialVersionUID = -990509969722784125L;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "BIRTHDAY")
@@ -145,6 +146,4 @@ public class ExtUser extends User {
     public String getGoodsCategory() {
         return goodsCategory;
     }
-
-
 }

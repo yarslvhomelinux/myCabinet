@@ -73,6 +73,14 @@ public class Request extends StandardEntity {
     @OneToMany(mappedBy = "request")
     protected List<Attachment> attachment;
 
+    public List<ExtUser> getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(List<ExtUser> manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
     public List<Attachment> getAttachment() {
         return attachment;
     }
@@ -80,8 +88,6 @@ public class Request extends StandardEntity {
     public void setAttachment(List<Attachment> attachment) {
         this.attachment = attachment;
     }
-
-
 
     public void setResponse(List<Response> response) {
         this.response = response;
@@ -91,22 +97,12 @@ public class Request extends StandardEntity {
         return response;
     }
 
-
     public void setRequestNumber(String requestNumber) {
         this.requestNumber = requestNumber;
     }
 
     public String getRequestNumber() {
         return requestNumber;
-    }
-
-
-    public List<ExtUser> getManufacturer() {
-        return manufacturer;
-    }
-
-    public void setManufacturer(List<ExtUser> manufacturer) {
-        this.manufacturer = manufacturer;
     }
 
     public void setStatus(State status) {

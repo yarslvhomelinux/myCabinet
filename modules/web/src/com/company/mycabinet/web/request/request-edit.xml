@@ -36,126 +36,169 @@
             spacing="true">
         <scrollBox id="scrollBox"
                    spacing="true">
-            <vbox id="vbox"
-                  expand="hbox"
-                  height="100%"
-                  spacing="true">
-                <groupBox id="requestMainInfo"
-                          caption="msg://requestInfo"
-                          orientation="horizontal"
+            <tabSheet id="tabSheet"
+                      height="100%">
+                <tab id="mainRequestTab"
+                     caption="msg://mainTab"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <vbox id="vbox_1"
+                          height="100%"
                           spacing="true">
-                    <fieldGroup datasource="requestDs">
-                        <column width="250px">
-                            <field editable="false"
-                                   property="status"/>
-                        </column>
-                        <column width="250px">
-                            <field editable="false"
-                                   property="requestNumber"/>
-                        </column>
-                        <column width="250px">
-                            <field dateFormat="dd/MM/yyyy"
-                                   editable="false"
-                                   property="createTs"/>
-                        </column>
-                    </fieldGroup>
-                </groupBox>
-                <groupBox id="requestInfoGroupBox"
-                          caption="msg://initialRequestData"
-                          orientation="horizontal"
-                          spacing="true">
-                    <hbox height="100%"
-                          spacing="true"
-                          width="100%">
-                        <fieldGroup id="fieldGroup"
-                                    datasource="requestDs"
-                                    width="100%">
-                            <column width="100%">
-                                <field optionsDatasource="productCategoriesDs"
-                                       property="productCategory"
-                                       required="true"/>
-                                <field property="productType"
-                                       required="true"
-                                       rows="4"/>
-                                <field property="brand"
-                                       rows="2"/>
-                                <field property="productDescription"
-                                       required="true"
-                                       rows="4"/>
-                            </column>
-                        </fieldGroup>
-                        <fieldGroup datasource="requestDs"
-                                    width="100%">
-                            <column width="100%">
-                                <field property="productVolume"
-                                       required="true"
-                                       rows="2"/>
-                                <field property="deliveryTime"/>
-                                <field property="deliveryRegion"
-                                       rows="2"/>
-                                <field property="contactPerson"
-                                       required="true"
-                                       rows="2"/>
-                                <field property="contactPersonPhone"
-                                       required="true"
-                                       rows="3"/>
-                            </column>
-                        </fieldGroup>
-                    </hbox>
-                </groupBox>
-                <hbox id="hbox"
-                      spacing="true"
-                      width="100%">
-                    <groupBox id="responsesGroupBox"
-                              caption="msg://responseInfo"
-                              height="250px"
-                              spacing="true">
-                        <table id="responseTable"
-                               height="100%"
-                               width="100%">
-                            <actions>
-                                <action id="edit"/>
-                            </actions>
-                            <columns>
-                                <column id="manufacturerComment"/>
-                                <column id="price"/>
-                                <column id="deliveryPrice"/>
-                            </columns>
-                            <rows datasource="responseDs"/>
-                            <buttonsPanel id="buttonsPanel">
-                                <button action="responseTable.edit"/>
-                            </buttonsPanel>
-                        </table>
-                    </groupBox>
-                    <groupBox id="attachmentsGroupBox"
-                              caption="msg://attachment"
-                              height="250px"
-                              spacing="true">
-                        <table id="attachmentsTable"
-                               height="100%"
-                               width="100%">
-                            <actions>
-                                <action id="create"
-                                        openType="DIALOG"/>
-                                <action id="edit"/>
-                                <action id="remove"/>
-                            </actions>
-                            <columns>
-                                <column id="attachment"/>
-                            </columns>
-                            <rows datasource="attachmentDs"/>
-                            <buttonsPanel>
-                                <button id="createAttachmentButton"
-                                        action="attachmentsTable.create"/>
-                                <button id="editAttachmentButton"
-                                        action="attachmentsTable.edit"/>
-                                <button id="removeAttachmentButton"
-                                        action="attachmentsTable.remove"/>
-                            </buttonsPanel>
-                        </table>
-                    </groupBox>
-                </hbox>
-            </vbox>
+                        <groupBox id="requestMainInfo"
+                                  caption="msg://requestInfo"
+                                  orientation="horizontal"
+                                  spacing="true">
+                            <fieldGroup datasource="requestDs">
+                                <column width="250px">
+                                    <field editable="false"
+                                           property="status"/>
+                                </column>
+                                <column width="250px">
+                                    <field editable="false"
+                                           property="requestNumber"/>
+                                </column>
+                                <column width="250px">
+                                    <field dateFormat="dd/MM/yyyy"
+                                           editable="false"
+                                           property="createTs"/>
+                                </column>
+                            </fieldGroup>
+                        </groupBox>
+                        <groupBox id="requestInfoGroupBox"
+                                  caption="msg://initialRequestData"
+                                  orientation="horizontal"
+                                  spacing="true">
+                            <hbox height="100%"
+                                  spacing="true"
+                                  width="100%">
+                                <fieldGroup id="fieldGroup"
+                                            datasource="requestDs"
+                                            width="100%">
+                                    <column width="100%">
+                                        <field optionsDatasource="productCategoriesDs"
+                                               property="productCategory"
+                                               required="true"/>
+                                        <field property="productType"
+                                               required="true"
+                                               rows="4"/>
+                                        <field property="brand"
+                                               rows="2"/>
+                                        <field property="productDescription"
+                                               required="true"
+                                               rows="4"/>
+                                    </column>
+                                </fieldGroup>
+                                <fieldGroup datasource="requestDs"
+                                            width="100%">
+                                    <column width="100%">
+                                        <field property="productVolume"
+                                               required="true"
+                                               rows="2"/>
+                                        <field property="deliveryTime"/>
+                                        <field property="deliveryRegion"
+                                               rows="2"/>
+                                        <field property="contactPerson"
+                                               required="true"
+                                               rows="2"/>
+                                        <field property="contactPersonPhone"
+                                               required="true"
+                                               rows="3"/>
+                                    </column>
+                                </fieldGroup>
+                            </hbox>
+                        </groupBox>
+                        <hbox id="hbox"
+                              height="100%"
+                              spacing="true"
+                              width="100%">
+                            <groupBox id="responsesGroupBox"
+                                      caption="msg://responseInfo"
+                                      height="250px"
+                                      spacing="true">
+                                <table id="responseTable"
+                                       height="100%"
+                                       width="100%">
+                                    <actions>
+                                        <action id="edit"/>
+                                    </actions>
+                                    <columns>
+                                        <column id="manufacturerComment"/>
+                                        <column id="price"/>
+                                        <column id="deliveryPrice"/>
+                                    </columns>
+                                    <rows datasource="responseDs"/>
+                                    <buttonsPanel id="buttonsPanel">
+                                        <button action="responseTable.edit"/>
+                                    </buttonsPanel>
+                                </table>
+                            </groupBox>
+                            <groupBox id="attachmentsGroupBox"
+                                      caption="msg://attachment"
+                                      height="250px"
+                                      spacing="true">
+                                <table id="attachmentsTable"
+                                       height="100%"
+                                       width="100%">
+                                    <actions>
+                                        <action id="create"
+                                                openType="DIALOG"/>
+                                        <action id="edit"/>
+                                        <action id="remove"/>
+                                    </actions>
+                                    <columns>
+                                        <column id="attachment"/>
+                                    </columns>
+                                    <rows datasource="attachmentDs"/>
+                                    <buttonsPanel>
+                                        <button id="createAttachmentButton"
+                                                action="attachmentsTable.create"/>
+                                        <button id="editAttachmentButton"
+                                                action="attachmentsTable.edit"/>
+                                        <button id="removeAttachmentButton"
+                                                action="attachmentsTable.remove"/>
+                                    </buttonsPanel>
+                                </table>
+                            </groupBox>
+                        </hbox>
+                    </vbox>
+                </tab>
+                <tab id="manufacturersTab"
+                     caption="msg://manufacturers"
+                     margin="true,false,false,false"
+                     spacing="true">
+                    <table id="manufacturerTable"
+                           height="600px"
+                           multiLineCells="true"
+                           width="100%">
+                        <actions>
+                            <action id="add"/>
+                            <action id="exclude"/>
+                        </actions>
+                        <columns>
+                            <column id="login"/>
+                            <column id="name"/>
+                            <column id="firstName"/>
+                            <column id="lastName"/>
+                            <column id="middleName"/>
+                            <column id="organizationName"/>
+                            <column id="activityType"/>
+                            <column id="legalAddress"/>
+                            <column id="actualAddress"/>
+                            <column id="businessCategory"/>
+                            <column id="manufacturerLegalAdress"/>
+                            <column id="firmAge"/>
+                            <column id="productionVolume"/>
+                            <column id="goodsCategory"/>
+                        </columns>
+                        <rows datasource="manufacturerDs"/>
+                        <buttonsPanel>
+                            <button action="manufacturerTable.add"/>
+                            <button action="manufacturerTable.exclude"/>
+                        </buttonsPanel>
+                    </table>
+                </tab>
+            </tabSheet>
         </scrollBox>
         <buttonsPanel>
             <button id="improveButton"
@@ -170,12 +213,12 @@
                     invoke="onNextStageButtonClick"
                     stylename="friendly"
                     visible="false"/>
-            <button id="windowClose"
-                    action="windowClose"
-                    icon="EDITOR_CANCEL"/>
             <button id="windowCommit"
                     action="windowCommit"
                     icon="EDITOR_OK"/>
+            <button id="windowClose"
+                    action="windowClose"
+                    icon="EDITOR_CANCEL"/>
         </buttonsPanel>
     </layout>
 </window>
