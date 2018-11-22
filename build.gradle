@@ -109,16 +109,16 @@ configure(coreModule) {
         dbms = 'postgres'
         host = 'localhost'
         dbName = 'mycabinet2'
-        dbUser = 'postgres'
-        dbPassword = 'root'
+        dbUser = 'cuba'
+        dbPassword = 'cuba'
     }
 
     task updateDb(dependsOn: assembleDbScripts, description: 'Updates local database', type: CubaDbUpdate) {
         dbms = 'postgres'
         host = 'localhost'
         dbName = 'mycabinet2'
-        dbUser = 'postgres'
-        dbPassword = 'root'
+        dbUser = 'cuba'
+        dbPassword = 'cuba'
     }
 }
 

@@ -1,16 +1,24 @@
 <Context>
     <!-- Database connection -->
+    <!--maxIdle="2"-->
+    <!--maxTotal="20"-->
+    <!--maxWaitMillis="5000"-->
+    <!--name="jdbc/CubaDS"-->
+    <!--password="root"-->
+    <!--type="javax.sql.DataSource"-->
+    <!--url="jdbc:postgresql://localhost/mycabinet2"-->
+    <!--username="postgres"/>-->
+    <!-- Switch off session serialization -->
+    <Manager pathname=""/>
     <Resource driverClassName="org.postgresql.Driver"
               maxIdle="2"
               maxTotal="20"
               maxWaitMillis="5000"
               name="jdbc/CubaDS"
-              password="root"
+              password="cuba"
               type="javax.sql.DataSource"
               url="jdbc:postgresql://localhost/mycabinet2"
-              username="postgres"/>
-    <!-- Switch off session serialization -->
-    <Manager pathname=""/>
+              username="cuba"/>
     <!--<Resource driverClassName="org.hsqldb.jdbc.JDBCDriver"
           maxIdle="2"
           maxTotal="20"

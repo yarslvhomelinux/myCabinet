@@ -33,4 +33,8 @@
             template="com/company/mycabinet/web/request/AssignmentManufacturerFrame.xml"/>
     <screen id="mycabinet$ExtUser.browse"
             template="com/company/mycabinet/web/extuser/ext-user-browse.xml"/>
+    <screen id="mycabinet$ExtUserSelf.edit"
+            template="com/company/mycabinet/web/extuser/ext-user-selfedit.xml"/>
+    <screen id="mainWindow"
+            template="com/company/mycabinet/web/extuser/ext-mainwindow.xml"/>
 </screen-config>

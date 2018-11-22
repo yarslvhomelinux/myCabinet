@@ -183,8 +183,6 @@
                             <column id="middleName"/>
                             <column id="organizationName"/>
                             <column id="activityType"/>
-                            <column id="legalAddress"/>
-                            <column id="actualAddress"/>
                             <column id="businessCategory"/>
                             <column id="manufacturerLegalAdress"/>
                             <column id="firmAge"/>
@@ -215,10 +213,12 @@
                     visible="false"/>
             <button id="windowCommit"
                     action="windowCommit"
-                    icon="EDITOR_OK"/>
+                    caption="msg://okAndClose"
+                    icon="icons/ok.png"/>
             <button id="windowClose"
                     action="windowClose"
-                    icon="EDITOR_CANCEL"/>
+                    caption="msg://close"
+                    icon="icons/cancel.png"/>
         </buttonsPanel>
     </layout>
 </window>

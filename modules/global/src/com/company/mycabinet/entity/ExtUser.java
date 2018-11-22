@@ -13,7 +13,6 @@ import java.util.Date;
 @Entity(name = "mycabinet$ExtUser")
 @Extends(User.class)
 public class ExtUser extends User {
-
     @Temporal(TemporalType.DATE)
     @Column(name = "BIRTHDAY")
     protected Date birthday;

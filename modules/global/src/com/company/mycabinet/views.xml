@@ -33,6 +33,7 @@
             <property name="manufacturer"
                       view="_local"/>
             <property name="status"/>
+            <property name="requestNumber"/>
         </property>
         <property name="attachment"
                   view="_minimal">

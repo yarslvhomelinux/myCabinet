@@ -27,6 +27,7 @@
             <properties include=".*"/>
         </filter>
         <groupTable id="requestsTable"
+                    presentations="true"
                     width="100%">
             <actions>
                 <action id="create"/>
@@ -34,9 +35,12 @@
                 <action id="remove"/>
             </actions>
             <columns>
+                <group>
+                    <column id="status"
+                            width="220"/>
+                </group>
                 <column id="requestNumber"/>
                 <column id="productCategory"/>
-                <column id="status"/>
                 <column id="productType"/>
                 <column id="brand"/>
                 <column id="productDescription"/>
@@ -50,6 +54,7 @@
                           alwaysVisible="true">
                 <button id="createResponse"
                         caption="msg://createResponse"
+                        icon="icons/plus-btn.png"
                         invoke="onCreateResponseClick"/>
                 <button id="editBtn"
                         action="requestsTable.edit"

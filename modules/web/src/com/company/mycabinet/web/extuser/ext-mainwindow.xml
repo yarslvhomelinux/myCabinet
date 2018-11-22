@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="com.company.mycabinet.web.extuser.ExtAppMainWindow"
+        extends="/com/haulmont/cuba/web/app/mainwindow/mainwindow.xml"
+        messagesPack="com.company.mycabinet.web.extuser"
+        xmlns:ext="http://schemas.haulmont.com/cuba/window-ext.xsd">
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <hbox id="titleBar">
+            <linkButton id="editCurrentUserButton"
+                        align="MIDDLE_LEFT"
+                        caption="msg://editCurrentUserButton"
+                        ext:index="5"
+                        icon="icons/gear.png"
+                        invoke="onEditCurrentUserButtonClick"/>
+        </hbox>
+    </layout>
+</window>

@@ -32,9 +32,12 @@
                 <action id="remove"/>
             </actions>
             <columns>
+                <group>
+                    <column id="status"
+                            width="230"/>
+                </group>
                 <column id="productCategory"/>
                 <column id="productType"/>
-                <column id="status"/>
                 <column id="brand"/>
                 <column id="productDescription"/>
                 <column id="productVolume"/>

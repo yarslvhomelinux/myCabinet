@@ -3,7 +3,7 @@
         caption="msg://editorCaption"
         class="com.company.mycabinet.web.response.ResponseEdit"
         datasource="responseDs"
-        focusComponent="fieldGroup"
+        focusComponent="responseMainInfoFieldGroup"
         messagesPack="com.company.mycabinet.web.response">
     <dsContext>
         <datasource id="responseDs"
@@ -74,7 +74,7 @@
                     <groupBox id="responseInfoGroupBox"
                               caption="msg://responseInfo"
                               spacing="true">
-                        <fieldGroup id="fieldGroup"
+                        <fieldGroup id="responseMainInfoFieldGroup"
                                     datasource="responseDs"
                                     height="100%"
                                     width="100%">
@@ -111,10 +111,10 @@
                           width="100%">
                         <groupBox id="closeCommentGroupBox"
                                   caption="msg://responseOffInfo"
-                                  enable="false"
                                   spacing="true">
-                            <fieldGroup id="responseFieldGroup"
+                            <fieldGroup id="closeCommentFieldGroup"
                                         datasource="responseDs"
+                                        editable="false"
                                         width="100%">
                                 <column width="100%">
                                     <field property="closeComment"
@@ -160,7 +160,27 @@
                 </tab>
             </tabSheet>
         </scrollBox>
-        <frame id="windowActions"
-               screen="editWindowActions"/>
+        <buttonsPanel>
+            <button id="sentFeedbackButton"
+                    caption="msg://sendFeedback"
+                    icon="font-icon:SEND_O"
+                    invoke="onSentFeedbackButtonClick"
+                    stylename="friendly"
+                    visible="false"/>
+            <button id="sendToCustomerButton"
+                    caption="msg://sendButton"
+                    icon="font-icon:SEND"
+                    invoke="onSendToCustomerButtonClick"
+                    stylename="friendly"
+                    visible="false"/>
+            <button id="saveAndCloseButton"
+                    action="windowCommit"
+                    caption="msg://saveAndCloseButton"
+                    icon="icons/save.png"/>
+            <button id="closeButton"
+                    action="windowClose"
+                    caption="msg://closeButton"
+                    icon="icons/close.png"/>
+        </buttonsPanel>
     </layout>
 </window>

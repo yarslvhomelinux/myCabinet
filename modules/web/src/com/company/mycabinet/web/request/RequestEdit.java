@@ -66,16 +66,10 @@ public class RequestEdit extends AbstractEditor<Request> {
     }
 
     public void onImproveButtonClick() {
-        getItem().setStatus(State.MANUFACTURER_PROCESSING);
         Map<String, Object> paramsMap = new HashMap<>();
         paramsMap.put("request", getItem());
         paramsMap.put("userList", getItem().getManufacturer());
         openWindow("AssignmentManufacturerFrame", WindowManager.OpenType.DIALOG, paramsMap)
-        .addCloseListener(new CloseListener() {
-            @Override
-            public void windowClosed(String s) {
-                commitAndClose();
-            }
-        });
+        .addCloseListener(e -> commitAndClose());
     }
 }
