@@ -20,6 +20,8 @@
             <column width="100%">
                 <field property="name"
                        rows="3"/>
+                <field property="code"
+                       required="true"/>
             </column>
         </fieldGroup>
         <frame id="windowActions"

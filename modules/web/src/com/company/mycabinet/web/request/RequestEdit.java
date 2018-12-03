@@ -1,7 +1,10 @@
 package com.company.mycabinet.web.request;
 
 import com.company.mycabinet.entity.State;
+import com.company.mycabinet.utils.UserRoleUtils;
 import com.haulmont.bali.util.ParamsMap;
+import com.haulmont.cuba.core.global.DataManager;
+import com.haulmont.cuba.core.global.LoadContext;
 import com.haulmont.cuba.core.global.PersistenceHelper;
 import com.haulmont.cuba.gui.WindowManager;
 import com.haulmont.cuba.gui.components.AbstractEditor;
@@ -19,6 +22,9 @@ public class RequestEdit extends AbstractEditor<Request> {
 
     @Named("attachmentsTable.create")
     protected CreateAction attachmentCreateAction;
+
+    @Inject
+    protected DataManager dataManager;
 
     @Inject
     protected Button nextStageButton;
@@ -50,13 +56,13 @@ public class RequestEdit extends AbstractEditor<Request> {
             nextStageButton.setVisible(true);
         }
 
-        if (State.ADMIN_PROCESSING.equals(getItem().getStatus())) {
+        if (State.ADMIN_PROCESSING.equals(getItem().getStatus()) && UserRoleUtils.isCurrentUserAdmin()) {
             improveButton.setVisible(true);
         }
     }
 
     protected void initNecessaryFields(Request item) {
-        item.setRequestNumber(item.getId().toString().substring(0, 8));
+
         item.setStatus(State.CREATED);
     }
 
@@ -70,6 +76,24 @@ public class RequestEdit extends AbstractEditor<Request> {
         paramsMap.put("request", getItem());
         paramsMap.put("userList", getItem().getManufacturer());
         openWindow("AssignmentManufacturerFrame", WindowManager.OpenType.DIALOG, paramsMap)
-        .addCloseListener(e -> commitAndClose());
+                .addCloseListener(e -> commitAndClose());
+    }
+
+    @Override
+    protected boolean preCommit() {
+        if (super.preCommit()) {
+            if (getItem().getRequestNumber() == null && getItem().getProductCategory() != null) {
+                LoadContext<Request> loadContext = new LoadContext<>(Request.class);
+                loadContext.setQuery(new LoadContext.Query("select e from mycabinet$Request e"));
+
+                getItem().setRequestNumber(Integer.toOctalString(dataManager.loadList(loadContext).size() + 1));
+
+                getItem().setRequestNumber(getItem().getRequestNumber() + getItem().getProductCategory().getCode());
+                return true;
+            }
+            return true;
+        }
+
+        return false;
     }
 }

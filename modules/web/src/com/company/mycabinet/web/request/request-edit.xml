@@ -29,6 +29,13 @@
                 <![CDATA[select e from mycabinet$Attachment e where e.request.id = :ds$requestDs]]>
             </query>
         </collectionDatasource>
+        <collectionDatasource id="requestsDs"
+                              class="com.company.mycabinet.entity.Request"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from mycabinet$Request e]]>
+            </query>
+        </collectionDatasource>
     </dsContext>
     <dialogMode height="600"
                 width="800"/>

@@ -52,6 +52,7 @@ create table MYCABINET_PRODUCT_CATEGORY (
     DELETED_BY varchar(50),
     --
     NAME varchar(500),
+    CODE varchar(255),
     --
     primary key (ID)
 )^

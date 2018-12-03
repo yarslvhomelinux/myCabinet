@@ -15,10 +15,10 @@
               maxTotal="20"
               maxWaitMillis="5000"
               name="jdbc/CubaDS"
-              password="cuba"
+              password="root"
               type="javax.sql.DataSource"
               url="jdbc:postgresql://localhost/mycabinet2"
-              username="cuba"/>
+              username="postgres"/>
     <!--<Resource driverClassName="org.hsqldb.jdbc.JDBCDriver"
           maxIdle="2"
           maxTotal="20"

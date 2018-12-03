@@ -15,7 +15,9 @@
           name="request-view"
           systemProperties="true">
         <property name="productCategory"
-                  view="_minimal"/>
+                  view="_minimal">
+            <property name="code"/>
+        </property>
         <property name="manufacturer"
                   view="extUser-view"/>
         <property name="response"

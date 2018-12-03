@@ -36,6 +36,7 @@
                     <column id="status"
                             width="230"/>
                 </group>
+                <column id="requestNumber"/>
                 <column id="productCategory"/>
                 <column id="productType"/>
                 <column id="brand"/>

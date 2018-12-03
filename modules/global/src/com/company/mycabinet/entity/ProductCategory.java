@@ -15,6 +15,18 @@ public class ProductCategory extends StandardEntity {
     @Column(name = "NAME", length = 500)
     protected String name;
 
+    @Column(name = "CODE", unique = true)
+    protected String code;
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+
     public void setName(String name) {
         this.name = name;
     }

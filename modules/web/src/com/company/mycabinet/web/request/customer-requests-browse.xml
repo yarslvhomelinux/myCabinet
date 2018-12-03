@@ -31,8 +31,10 @@
                     width="100%">
             <actions>
                 <action id="create"/>
-                <action id="edit"/>
+                <action id="edit"
+                        enable="false"/>
                 <action id="remove"/>
+                <action id="refresh"/>
             </actions>
             <columns>
                 <group>
@@ -56,9 +58,12 @@
                         caption="msg://createResponse"
                         icon="icons/plus-btn.png"
                         invoke="onCreateResponseClick"/>
+                <button id="refreshButton"
+                        action="requestsTable.refresh"/>
                 <button id="editBtn"
                         action="requestsTable.edit"
-                        caption="msg://Просмотр"/>
+                        caption="msg://Просмотр"
+                        visible="false"/>
             </buttonsPanel>
         </groupTable>
     </layout>
