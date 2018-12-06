@@ -12,6 +12,8 @@
             <map>
                 <entry key="mycabinet_RegistrationService"
                        value="com.company.mycabinet.service.RegistrationService"/>
+                <entry key="mycabinet_UserUtilsService"
+                       value="com.company.mycabinet.service.UserUtilsService"/>
             </map>
         </property>
     </bean>

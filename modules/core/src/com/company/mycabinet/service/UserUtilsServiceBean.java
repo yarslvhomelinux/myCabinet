@@ -1,13 +1,15 @@
-package com.company.mycabinet.utils;
+package com.company.mycabinet.service;
 
 import com.company.mycabinet.config.RolesConfig;
 import com.haulmont.cuba.core.global.UserSessionSource;
 import com.haulmont.cuba.security.entity.User;
 import com.haulmont.cuba.security.entity.UserRole;
+import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
 
-public class UserRoleUtils {
+@Service(UserUtilsService.NAME)
+public class UserUtilsServiceBean implements UserUtilsService {
 
     @Inject
     protected RolesConfig rolesConfig;
@@ -52,4 +54,5 @@ public class UserRoleUtils {
 
         return false;
     }
+
 }

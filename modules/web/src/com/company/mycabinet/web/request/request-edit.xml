@@ -96,7 +96,8 @@
                                                rows="4"/>
                                     </column>
                                 </fieldGroup>
-                                <fieldGroup datasource="requestDs"
+                                <fieldGroup id="fieldGroupRight"
+                                            datasource="requestDs"
                                             width="100%">
                                     <column width="100%">
                                         <field property="productVolume"
@@ -150,7 +151,8 @@
                                     <actions>
                                         <action id="create"
                                                 openType="DIALOG"/>
-                                        <action id="edit"/>
+                                        <action id="edit"
+                                                openType="DIALOG"/>
                                         <action id="remove"/>
                                     </actions>
                                     <columns>

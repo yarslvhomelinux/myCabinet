@@ -35,6 +35,7 @@
                 <column id="productCategory"/>
                 <column id="requestNumber"/>
                 <column id="status"/>
+                <column id="createdBy"/>
                 <column id="productType"/>
                 <column id="brand"/>
                 <column id="productDescription"/>

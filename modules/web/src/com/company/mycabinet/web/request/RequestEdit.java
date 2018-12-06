@@ -1,17 +1,17 @@
 package com.company.mycabinet.web.request;
 
 import com.company.mycabinet.entity.State;
-import com.company.mycabinet.utils.UserRoleUtils;
+import com.company.mycabinet.service.UserUtilsService;
 import com.haulmont.bali.util.ParamsMap;
 import com.haulmont.cuba.core.global.DataManager;
 import com.haulmont.cuba.core.global.LoadContext;
 import com.haulmont.cuba.core.global.PersistenceHelper;
 import com.haulmont.cuba.gui.WindowManager;
-import com.haulmont.cuba.gui.components.AbstractEditor;
+import com.haulmont.cuba.gui.components.*;
 import com.company.mycabinet.entity.Request;
-import com.haulmont.cuba.gui.components.Action;
-import com.haulmont.cuba.gui.components.Button;
 import com.haulmont.cuba.gui.components.actions.CreateAction;
+import com.haulmont.cuba.gui.components.actions.EditAction;
+import com.haulmont.cuba.gui.components.actions.RemoveAction;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -22,14 +22,35 @@ public class RequestEdit extends AbstractEditor<Request> {
 
     @Named("attachmentsTable.create")
     protected CreateAction attachmentCreateAction;
+    @Named("attachmentsTable.edit")
+    protected EditAction attachmentEditAction;
+    @Named("attachmentsTable.remove")
+    protected RemoveAction attachmentRemoveAction;
 
     @Inject
     protected DataManager dataManager;
+    @Inject
+    protected UserUtilsService userUtilsService;
+
+    @Named("fieldGroupRight.contactPerson")
+    protected Field contactPerson;
+    @Named("fieldGroupRight.contactPersonPhone")
+    protected Field contactPersonPhone;
+
+    @Inject
+    protected FieldGroup fieldGroup;
+    @Inject
+    protected FieldGroup fieldGroupRight;
+
+    @Inject
+    protected GroupBoxLayout responsesGroupBox;
 
     @Inject
     protected Button nextStageButton;
     @Inject
     protected Button improveButton;
+    @Inject
+    protected Button windowCommit;
 
     @Override
     protected void initNewItem(Request item) {
@@ -56,8 +77,20 @@ public class RequestEdit extends AbstractEditor<Request> {
             nextStageButton.setVisible(true);
         }
 
-        if (State.ADMIN_PROCESSING.equals(getItem().getStatus()) && UserRoleUtils.isCurrentUserAdmin()) {
+        if (State.ADMIN_PROCESSING.equals(getItem().getStatus()) && userUtilsService.isCurrentUserAdmin()) {
             improveButton.setVisible(true);
+        }
+
+        if (userUtilsService.isCurrentUserManufacturer()) {
+            contactPerson.setVisible(false);
+            contactPersonPhone.setVisible(false);
+            fieldGroupRight.setEditable(false);
+            fieldGroup.setEditable(false);
+            responsesGroupBox.setVisible(false);
+            attachmentCreateAction.setEnabled(false);
+            attachmentEditAction.setEnabled(true);
+            attachmentRemoveAction.setEnabled(false);
+            windowCommit.setEnabled(false);
         }
     }
 

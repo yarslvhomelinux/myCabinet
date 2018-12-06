@@ -11,7 +11,10 @@ public enum State implements EnumClass<String> {
     ADMIN_PROCESSING("adminProcessing"),
     MANUFACTURER_PROCESSING("manufacturerProcessing"),
     RESPONSE_RECEIVED("responseReceived"),
-    CUSTOMER_FEEDBACK_RECEIVED("customerFeedbackReveiced");
+    CUSTOMER_FEEDBACK_RECEIVED("customerFeedbackReveiced"),
+    RESPONSE_CLOSED("responseClosed"),
+    REQUEST_CLOSED("requestClosed"),
+    RESPONSE_CREATED("responseCreated");
 
     private String id;
 

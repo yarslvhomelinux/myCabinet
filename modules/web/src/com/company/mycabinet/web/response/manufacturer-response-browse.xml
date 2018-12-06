@@ -24,6 +24,7 @@
             <properties include=".*"/>
         </filter>
         <groupTable id="responsesTable"
+                    presentations="true"
                     width="100%">
             <actions>
                 <action id="create"/>
@@ -31,6 +32,13 @@
                 <action id="remove"/>
             </actions>
             <columns>
+                <group>
+                    <column id="state"/>
+                </group>
+                <column id="request.requestNumber"/>
+                <column id="request.status"
+                        caption="msg://requestStatus"
+                        width="250"/>
                 <column id="price"/>
                 <column id="deliveryPrice"/>
                 <column id="manufacturerComment"/>

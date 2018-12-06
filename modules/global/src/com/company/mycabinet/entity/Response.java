@@ -58,6 +58,19 @@ public class Response extends StandardEntity {
     @ManyToMany
     protected List<FileDescriptor> attachment;
 
+    @Column(name = "STATE")
+    protected String state;
+
+    public State getState() {
+        return state == null ? null : State.fromId(state);
+    }
+
+    public void setState(State state) {
+        this.state = state == null ? null : state.getId();
+    }
+
+
+
     public void setAttachment(List<FileDescriptor> attachment) {
         this.attachment = attachment;
     }

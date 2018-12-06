@@ -24,18 +24,24 @@
             <properties include=".*"/>
         </filter>
         <groupTable id="responsesTable"
+                    presentations="true"
                     width="100%">
             <actions>
                 <action id="create"/>
                 <action id="edit"/>
                 <action id="remove"/>
+                <action id="refresh"/>
             </actions>
             <columns>
-                <column id="request.productType"/>
+                <group>
+                    <column id="state"/>
+                </group>
                 <column id="request.requestNumber"/>
-                <column id="request.status"/>
+                <column id="request.status"
+                        width="250"/>
                 <column id="price"/>
                 <column id="deliveryPrice"/>
+                <column id="request.productType"/>
                 <column id="manufacturerComment"/>
                 <column id="isPriceSatisfied"/>
                 <column id="contact"/>
@@ -50,6 +56,7 @@
                         action="responsesTable.create"/>
                 <button id="editBtn"
                         action="responsesTable.edit"/>
+                <button action="responsesTable.refresh"/>
                 <button id="removeBtn"
                         action="responsesTable.remove"/>
             </buttonsPanel>

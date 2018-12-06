@@ -76,6 +76,7 @@ create table MYCABINET_RESPONSE (
     CUSTOMER_COMMENT text,
     CLOSE_COMMENT text,
     REQUEST_ID uuid,
+    STATE varchar(255),
     --
     primary key (ID)
 )^

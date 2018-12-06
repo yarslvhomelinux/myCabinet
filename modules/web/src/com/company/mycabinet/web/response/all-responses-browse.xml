@@ -34,6 +34,7 @@
                 <column id="price"/>
                 <column id="deliveryPrice"/>
                 <column id="manufacturerComment"/>
+                <column id="createdBy"/>
                 <column id="isPriceSatisfied"/>
                 <column id="contact"/>
                 <column id="customerComment"/>

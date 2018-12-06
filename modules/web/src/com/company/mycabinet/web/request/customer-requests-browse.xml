@@ -31,8 +31,7 @@
                     width="100%">
             <actions>
                 <action id="create"/>
-                <action id="edit"
-                        enable="false"/>
+                <action id="edit"/>
                 <action id="remove"/>
                 <action id="refresh"/>
             </actions>
@@ -62,8 +61,7 @@
                         action="requestsTable.refresh"/>
                 <button id="editBtn"
                         action="requestsTable.edit"
-                        caption="msg://Просмотр"
-                        visible="false"/>
+                        caption="msg://Просмотр"/>
             </buttonsPanel>
         </groupTable>
     </layout>

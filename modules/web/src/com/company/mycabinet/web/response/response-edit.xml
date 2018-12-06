@@ -58,16 +58,29 @@
                                         invoke="onOpenRequestBrowserButtonClick"/>
                             </hbox>
                             <hbox id="hbox_1"
-                                  expand="responseField"
-                                  spacing="true"
-                                  width="100%">
-                                <label id="stateRequestLabel"
-                                       value="msg://requestStateLabel"
-                                       width="190px"/>
-                                <textField id="responseField"
-                                           datasource="responseDs"
-                                           editable="false"
-                                           property="request.status"/>
+                                  spacing="true">
+                                <hbox spacing="true">
+                                    <label id="stateRequestLabel"
+                                           align="MIDDLE_LEFT"
+                                           value="msg://requestStateLabel"
+                                           width="190px"/>
+                                    <textField id="responseField"
+                                               datasource="responseDs"
+                                               editable="false"
+                                               property="request.status"
+                                               width="339px"/>
+                                </hbox>
+                                <hbox spacing="true">
+                                    <label id="stateResponseLabel"
+                                           align="MIDDLE_LEFT"
+                                           value="msg://responseStateLabel"
+                                           width="120px"/>
+                                    <textField id="responseStateField"
+                                               datasource="responseDs"
+                                               editable="false"
+                                               property="state"
+                                               width="425px"/>
+                                </hbox>
                             </hbox>
                         </vbox>
                     </groupBox>
@@ -172,6 +185,18 @@
                     icon="font-icon:SEND"
                     invoke="onSendToCustomerButtonClick"
                     stylename="friendly"
+                    visible="false"/>
+            <button id="closeResponseButton"
+                    caption="msg://closeResponseButton"
+                    icon="font-icon:BAN"
+                    invoke="onCloseResponseButtonClick"
+                    stylename="danger"
+                    visible="false"/>
+            <button id="closeRequestButton"
+                    caption="msg://closeRequestButton"
+                    icon="icons/delete-from-set.png"
+                    invoke="onCloseRequestButtonClick"
+                    stylename="danger"
                     visible="false"/>
             <button id="saveAndCloseButton"
                     action="windowCommit"

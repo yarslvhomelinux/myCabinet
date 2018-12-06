@@ -36,6 +36,8 @@
                       view="_local"/>
             <property name="status"/>
             <property name="requestNumber"/>
+            <property name="response"
+                      view="_minimal"/>
         </property>
         <property name="attachment"
                   view="_minimal">
