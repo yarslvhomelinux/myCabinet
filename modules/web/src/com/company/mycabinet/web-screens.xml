@@ -37,4 +37,10 @@
             template="com/company/mycabinet/web/extuser/ext-user-selfedit.xml"/>
     <screen id="mainWindow"
             template="com/company/mycabinet/web/extuser/ext-mainwindow.xml"/>
+    <screen id="mycabinet$UserComment.browse"
+            template="com/company/mycabinet/web/usercomment/user-comment-browse.xml"/>
+    <screen id="mycabinet$UserComment.edit"
+            template="com/company/mycabinet/web/usercomment/user-comment-edit.xml"/>
+    <screen id="mycabinet$UserAllComments.browse"
+            template="com/company/mycabinet/web/usercomment/user-all-comments-browse.xml"/>
 </screen-config>

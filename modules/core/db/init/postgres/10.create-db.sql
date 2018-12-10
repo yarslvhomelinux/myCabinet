@@ -26,6 +26,7 @@ create table MYCABINET_REQUEST (
     DELETED_BY varchar(50),
     --
     PRODUCT_CATEGORY_ID uuid,
+    CREATOR_ID uuid,
     REQUEST_NUMBER varchar(255),
     PRODUCT_TYPE text,
     BRAND varchar(1000),
@@ -69,6 +70,7 @@ create table MYCABINET_RESPONSE (
     DELETED_BY varchar(50),
     --
     PRICE integer,
+    CREATOR_ID uuid,
     DELIVERY_PRICE integer,
     MANUFACTURER_COMMENT text,
     IS_PRICE_SATISFIED text,
@@ -76,7 +78,8 @@ create table MYCABINET_RESPONSE (
     CUSTOMER_COMMENT text,
     CLOSE_COMMENT text,
     REQUEST_ID uuid,
-    STATE varchar(255),
+    STATE varchar(50),
+    MANUFACTURER_INFO text,
     --
     primary key (ID)
 )^
@@ -115,3 +118,19 @@ create table MYCABINET_REQUEST_EXT_USER_LINK (
     primary key (REQUEST_ID, EXT_USER_ID)
 )^
 -- end MYCABINET_REQUEST_EXT_USER_LINK
+-- begin MYCABINET_USER_COMMENT
+create table MYCABINET_USER_COMMENT (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    COMMENT_ text,
+    --
+    primary key (ID)
+)^
+-- end MYCABINET_USER_COMMENT

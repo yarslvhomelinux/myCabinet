@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.mycabinet.web.usercomment.UserAllCommentsBrowse"
+        focusComponent="userCommentsTable"
+        lookupComponent="userCommentsTable"
+        messagesPack="com.company.mycabinet.web.usercomment">
+    <dsContext>
+        <groupDatasource id="userCommentsDs"
+                         class="com.company.mycabinet.entity.UserComment"
+                         view="_local">
+            <query>
+                <![CDATA[select e from mycabinet$UserComment e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="userCommentsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="userCommentsTable"
+                datasource="userCommentsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="userCommentsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="comment"/>
+            </columns>
+            <rows datasource="userCommentsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="userCommentsTable.create"/>
+                <button id="editBtn"
+                        action="userCommentsTable.edit"/>
+                <button id="removeBtn"
+                        action="userCommentsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

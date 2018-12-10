@@ -1,0 +1,9 @@
+Ваша заявка успешно обработана администратором системы и ожидает отклика производителя!
+
+Номер: <#if request.requestNumber??>${request.requestNumber}<#else> </#if>
+Тип: <#if request.productType??>${request.productType}<#else> </#if>
+Бренд: <#if request.brand??>${request.brand}<#else> </#if>
+Описание: <#if request.productDescription??>${request.productDescription}<#else> </#if>
+
+------------
+Это письмо отправлено автоматически с помощью системы "ОптоКит".

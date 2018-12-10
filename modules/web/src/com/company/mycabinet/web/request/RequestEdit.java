@@ -1,11 +1,12 @@
 package com.company.mycabinet.web.request;
 
+import com.company.mycabinet.entity.ExtUser;
 import com.company.mycabinet.entity.State;
 import com.company.mycabinet.service.UserUtilsService;
+import com.company.mycabinet.service.WorkflowEmailerService;
 import com.haulmont.bali.util.ParamsMap;
-import com.haulmont.cuba.core.global.DataManager;
-import com.haulmont.cuba.core.global.LoadContext;
-import com.haulmont.cuba.core.global.PersistenceHelper;
+import com.haulmont.cuba.core.app.EmailService;
+import com.haulmont.cuba.core.global.*;
 import com.haulmont.cuba.gui.WindowManager;
 import com.haulmont.cuba.gui.components.*;
 import com.company.mycabinet.entity.Request;
@@ -15,6 +16,7 @@ import com.haulmont.cuba.gui.components.actions.RemoveAction;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,6 +33,8 @@ public class RequestEdit extends AbstractEditor<Request> {
     protected DataManager dataManager;
     @Inject
     protected UserUtilsService userUtilsService;
+    @Inject
+    protected WorkflowEmailerService workflowEmailerService;
 
     @Named("fieldGroupRight.contactPerson")
     protected Field contactPerson;
@@ -52,9 +56,15 @@ public class RequestEdit extends AbstractEditor<Request> {
     @Inject
     protected Button windowCommit;
 
+    @Inject
+    protected UserSessionSource userSessionSource;
+
+    protected boolean itemCreated = false;
+
     @Override
     protected void initNewItem(Request item) {
         super.initNewItem(item);
+        itemCreated = true;
         initNecessaryFields(item);
     }
 
@@ -95,13 +105,15 @@ public class RequestEdit extends AbstractEditor<Request> {
     }
 
     protected void initNecessaryFields(Request item) {
-
         item.setStatus(State.CREATED);
+        item.setCreator((ExtUser) userSessionSource.getUserSession().getCurrentOrSubstitutedUser());
     }
 
     public void onNextStageButtonClick() {
         getItem().setStatus(State.ADMIN_PROCESSING);
         commitAndClose();
+        if (itemCreated)
+            workflowEmailerService.sendMessageAboutCreateRequestToAdmin(getItem());
     }
 
     public void onImproveButtonClick() {
@@ -109,7 +121,11 @@ public class RequestEdit extends AbstractEditor<Request> {
         paramsMap.put("request", getItem());
         paramsMap.put("userList", getItem().getManufacturer());
         openWindow("AssignmentManufacturerFrame", WindowManager.OpenType.DIALOG, paramsMap)
-                .addCloseListener(e -> commitAndClose());
+                .addCloseListener(e -> {
+                    commitAndClose();
+                    workflowEmailerService.sendMessageAboutApproveRequestToManufacturer(getItem(), getItem().getManufacturer());
+                    workflowEmailerService.sendMessageAboutApproveRequestToCustomer(getItem());
+                });
     }
 
     @Override
@@ -124,6 +140,16 @@ public class RequestEdit extends AbstractEditor<Request> {
                 getItem().setRequestNumber(getItem().getRequestNumber() + getItem().getProductCategory().getCode());
                 return true;
             }
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    protected boolean postCommit(boolean committed, boolean close) {
+        if (super.postCommit(committed, close)) {
+
             return true;
         }
 

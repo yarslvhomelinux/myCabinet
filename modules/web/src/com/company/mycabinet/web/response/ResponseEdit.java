@@ -1,8 +1,11 @@
 package com.company.mycabinet.web.response;
 
+import com.company.mycabinet.entity.ExtUser;
 import com.company.mycabinet.entity.State;
 import com.company.mycabinet.service.UserUtilsService;
+import com.company.mycabinet.service.WorkflowEmailerService;
 import com.haulmont.cuba.core.global.DataManager;
+import com.haulmont.cuba.core.global.UserSessionSource;
 import com.haulmont.cuba.gui.WindowManager;
 import com.haulmont.cuba.gui.components.*;
 import com.company.mycabinet.entity.Response;
@@ -32,12 +35,18 @@ public class ResponseEdit extends AbstractEditor<Response> {
     protected Field customerCommentField;
 
     @Inject
+    protected UserSessionSource userSessionSource;
+
+    @Inject
     protected UserUtilsService userUtilsService;
+    @Inject
+    protected WorkflowEmailerService workflowEmailerService;
 
     @Override
     protected void initNewItem(Response item) {
         super.initNewItem(item);
         item.setState(State.RESPONSE_CREATED);
+        item.setCreator((ExtUser) userSessionSource.getUserSession().getUser());
     }
 
     @Override
@@ -97,6 +106,7 @@ public class ResponseEdit extends AbstractEditor<Response> {
             getItem().getRequest().setResponse(responseList);
             //dataManager.commit(getItem().getRequest());
             commitAndClose();
+            workflowEmailerService.sendMessageAboutCreateResponseToCustomer(getItem().getRequest(), getItem());
         }
     }
 
@@ -104,6 +114,7 @@ public class ResponseEdit extends AbstractEditor<Response> {
         if (getItem().getRequest() != null) {
             getItem().setState(State.CUSTOMER_FEEDBACK_RECEIVED);
             commitAndClose();
+            workflowEmailerService.sendMessageAboutCreateResponseFeedback(getItem().getRequest(), getItem());
         }
     }
 

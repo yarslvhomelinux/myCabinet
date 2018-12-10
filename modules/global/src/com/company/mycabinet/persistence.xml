@@ -8,5 +8,6 @@
         <class>com.company.mycabinet.entity.ProductCategory</class>
         <class>com.company.mycabinet.entity.Response</class>
         <class>com.company.mycabinet.entity.Attachment</class>
+        <class>com.company.mycabinet.entity.UserComment</class>
     </persistence-unit>
 </persistence>

@@ -96,6 +96,8 @@
                                 <field property="deliveryPrice"/>
                                 <field property="manufacturerComment"
                                        rows="5"/>
+                                <field property="manufacturerInfo"
+                                       rows="5"/>
                             </column>
                         </fieldGroup>
                     </groupBox>

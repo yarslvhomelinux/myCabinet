@@ -16,5 +16,8 @@
         <item screen="mycabinet$AgreeRequest.browse"/>
         <item screen="mycabinet$AllResponses.browse"/>
         <item screen="mycabinet$ProductCategory.browse"/>
+        <item screen="mycabinet$UserAllComments.browse"/>
     </menu>
+    <item insertBefore="help"
+          screen="mycabinet$UserComment.browse"/>
 </menu-config>

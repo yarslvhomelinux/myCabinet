@@ -1,0 +1,10 @@
+На вас назначена новая заявка!
+Номер: <#if request.requestNumber??>${request.requestNumber}<#else> </#if>
+Тип: <#if request.productType??>${request.productType}<#else> </#if>
+Бренд: <#if request.brand??>${request.brand}<#else> </#if>
+Описание: <#if request.productDescription??>${request.productDescription}<#else> </#if>
+
+Заявка стоит в очереди. Зайдите в раздел "Заявки клиентов" и обработайте её.
+
+------------
+Это письмо отправлено автоматически с помощью системы "ОптоКит".

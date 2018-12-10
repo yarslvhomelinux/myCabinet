@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.mycabinet.web.usercomment.UserCommentEdit"
+        datasource="userCommentDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.mycabinet.web.usercomment">
+    <dsContext>
+        <datasource id="userCommentDs"
+                    class="com.company.mycabinet.entity.UserComment"
+                    view="_local"/>
+    </dsContext>
+    <dialogMode height="300"
+                width="600"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="userCommentDs"
+                    width="100%">
+            <column width="100%">
+                <field property="comment"
+                       rows="9"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

@@ -24,6 +24,10 @@ public class Response extends StandardEntity {
     @Column(name = "PRICE")
     protected Integer price;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CREATOR_ID")
+    protected ExtUser creator;
+
     @Column(name = "DELIVERY_PRICE")
     protected Integer deliveryPrice;
 
@@ -60,6 +64,28 @@ public class Response extends StandardEntity {
 
     @Column(name = "STATE")
     protected String state;
+
+    @Lob
+    @Column(name = "MANUFACTURER_INFO")
+    protected String manufacturerInfo;
+
+    public void setManufacturerInfo(String manufacturerInfo) {
+        this.manufacturerInfo = manufacturerInfo;
+    }
+
+    public String getManufacturerInfo() {
+        return manufacturerInfo;
+    }
+
+
+    public void setCreator(ExtUser creator) {
+        this.creator = creator;
+    }
+
+    public ExtUser getCreator() {
+        return creator;
+    }
+
 
     public State getState() {
         return state == null ? null : State.fromId(state);

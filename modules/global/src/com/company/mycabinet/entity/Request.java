@@ -27,6 +27,10 @@ public class Request extends StandardEntity {
     @JoinColumn(name = "PRODUCT_CATEGORY_ID")
     protected ProductCategory productCategory;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CREATOR_ID")
+    protected ExtUser creator;
+
     @Column(name = "REQUEST_NUMBER")
     protected String requestNumber;
 
@@ -72,6 +76,15 @@ public class Request extends StandardEntity {
 
     @OneToMany(mappedBy = "request")
     protected List<Attachment> attachment;
+
+    public void setCreator(ExtUser creator) {
+        this.creator = creator;
+    }
+
+    public ExtUser getCreator() {
+        return creator;
+    }
+
 
     public List<ExtUser> getManufacturer() {
         return manufacturer;

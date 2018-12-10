@@ -19,7 +19,6 @@ import java.util.Map;
 @Service(RegistrationService.NAME)
 public class RegistrationServiceBean implements RegistrationService {
 
-
     @Inject
     protected DataManager dataManager;
     @Inject
