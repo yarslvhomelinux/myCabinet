@@ -134,3 +134,19 @@ create table MYCABINET_USER_COMMENT (
     primary key (ID)
 )^
 -- end MYCABINET_USER_COMMENT
+-- begin MYCABINET_IMAGE
+create table MYCABINET_IMAGE (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    FILE_ID uuid,
+    --
+    primary key (ID)
+)^
+-- end MYCABINET_IMAGE

@@ -3,7 +3,8 @@
         class="com.company.mycabinet.web.extuser.ExtAppMainWindow"
         extends="/com/haulmont/cuba/web/app/mainwindow/mainwindow.xml"
         messagesPack="com.company.mycabinet.web.extuser"
-        xmlns:ext="http://schemas.haulmont.com/cuba/window-ext.xsd">
+        xmlns:ext="http://schemas.haulmont.com/cuba/window-ext.xsd"
+        xmlns:main="http://schemas.haulmont.com/cuba/mainwindow.xsd">
     <dialogMode height="600"
                 width="800"/>
     <layout>
@@ -15,5 +16,40 @@
                         icon="icons/gear.png"
                         invoke="onEditCurrentUserButtonClick"/>
         </hbox>
+        <split id="foldersSplit">
+            <main:workArea id="workArea">
+                <main:initialLayout>
+                    <hbox spacing="true"
+                          width="100%">
+                        <image align="MIDDLE_CENTER"
+                               height="508px"
+                               width="100%">
+                            <classpath path="com/company/mycabinet/logo.png"/>
+                        </image>
+                        <vbox align="MIDDLE_CENTER"
+                              spacing="true">
+                            <label id="welcomeLabel"
+                                   align="MIDDLE_CENTER"
+                                   stylename="h1 bold"
+                                   value="msg://welcomeLabel"/>
+                            <label id="mainLabel"
+                                   align="MIDDLE_CENTER"
+                                   stylename="h1"
+                                   value="msg://mainText"
+                                   width="100%"/>
+                            <label id="endLabel"
+                                   align="MIDDLE_CENTER"
+                                   stylename="h1 bold"
+                                   value="msg://label"/>
+                            <button id="viewRequestButton"
+                                    align="MIDDLE_CENTER"
+                                    caption="msg://createRequest"
+                                    icon="icons/edit.png"
+                                    invoke="onViewRequestButtonClick"/>
+                        </vbox>
+                    </hbox>
+                </main:initialLayout>
+            </main:workArea>
+        </split>
     </layout>
 </window>

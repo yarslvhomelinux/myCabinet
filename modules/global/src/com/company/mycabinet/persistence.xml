@@ -9,5 +9,6 @@
         <class>com.company.mycabinet.entity.Response</class>
         <class>com.company.mycabinet.entity.Attachment</class>
         <class>com.company.mycabinet.entity.UserComment</class>
+        <class>com.company.mycabinet.entity.Image</class>
     </persistence-unit>
 </persistence>

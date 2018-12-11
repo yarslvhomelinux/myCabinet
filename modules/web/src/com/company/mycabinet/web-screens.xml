@@ -3,8 +3,6 @@
     <include file="com/company/mycabinet/screens.xml"/>
     <screen id="loginWindow"
             template="com/company/mycabinet/web/screens/ext-loginWindow.xml"/>
-    <screen id="sec$User.edit"
-            template="com/company/mycabinet/web/extuser/ext-user-edit.xml"/>
     <screen id="mycabinet$Response.edit"
             template="com/company/mycabinet/web/response/response-edit.xml"/>
     <screen id="mycabinet$Request.edit"
@@ -31,8 +29,6 @@
             template="com/company/mycabinet/web/request/agree-request-browse.xml"/>
     <screen id="AssignmentManufacturerFrame"
             template="com/company/mycabinet/web/request/AssignmentManufacturerFrame.xml"/>
-    <screen id="mycabinet$ExtUser.browse"
-            template="com/company/mycabinet/web/extuser/ext-user-browse.xml"/>
     <screen id="mycabinet$ExtUserSelf.edit"
             template="com/company/mycabinet/web/extuser/ext-user-selfedit.xml"/>
     <screen id="mainWindow"
@@ -43,4 +39,8 @@
             template="com/company/mycabinet/web/usercomment/user-comment-edit.xml"/>
     <screen id="mycabinet$UserAllComments.browse"
             template="com/company/mycabinet/web/usercomment/user-all-comments-browse.xml"/>
+    <screen id="mycabinet$CustomExtUser.edit"
+            template="com/company/mycabinet/web/extuser/custom-ext-user-edit.xml"/>
+    <screen id="sec$User.browse"
+            template="com/company/mycabinet/web/extuser/ext-user-browse.xml"/>
 </screen-config>

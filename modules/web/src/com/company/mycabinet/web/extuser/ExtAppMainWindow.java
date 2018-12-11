@@ -15,4 +15,8 @@ public class ExtAppMainWindow extends AppMainWindow {
     public void onEditCurrentUserButtonClick() {
         openEditor("mycabinet$ExtUserSelf.edit", (ExtUser) userSessionSource.getUserSession().getUser(), WindowManager.OpenType.NEW_TAB);
     }
+
+    public void onViewRequestButtonClick() {
+        openWindow("mycabinet$MyRequest.browse", WindowManager.OpenType.NEW_TAB);
+    }
 }

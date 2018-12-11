@@ -1,58 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
-        caption="msg://browseCaption"
-        class="com.company.mycabinet.web.extuser.ExtUserBrowse"
-        focusComponent="extUsersTable"
-        lookupComponent="extUsersTable"
-        messagesPack="com.company.mycabinet.web.extuser">
-    <dsContext>
-        <groupDatasource id="extUsersDs"
-                         class="com.company.mycabinet.entity.ExtUser"
-                         view="extUser-view">
-            <query>
-                <![CDATA[select e from mycabinet$ExtUser e]]>
-            </query>
-        </groupDatasource>
-    </dsContext>
-    <dialogMode height="600"
-                width="800"/>
-    <layout expand="extUsersTable"
-            spacing="true">
-        <filter id="filter"
-                applyTo="extUsersTable"
-                datasource="extUsersDs">
-            <properties include=".*"/>
-        </filter>
-        <groupTable id="extUsersTable"
-                    width="100%">
-            <actions>
-                <action id="create"/>
-                <action id="edit"/>
-                <action id="remove"/>
-            </actions>
-            <columns>
-                <column id="login"/>
-                <column id="name"/>
-                <column id="firstName"/>
-                <column id="lastName"/>
-                <column id="middleName"/>
-                <column id="email"/>
-                <column id="phoneNumber"/>
-                <column id="organizationName"/>
-                <column id="activityType"/>
-                <column id="legalAddress"/>
-                <column id="actualAddress"/>
-                <column id="businessCategory"/>
-                <column id="manufacturerLegalAdress"/>
-                <column id="firmAge"/>
-                <column id="productionVolume"/>
-                <column id="userType"/>
-                <column id="goodsCategory"/>
-            </columns>
-            <rows datasource="extUsersDs"/>
-            <rowsCount/>
-            <buttonsPanel id="buttonsPanel"
-                          alwaysVisible="true"/>
+        caption="msg://window"
+        class="com.company.mycabinet.web.extuser.ExtUserBrowser"
+        extends="/com/haulmont/cuba/gui/app/security/user/browse/user-browse.xml"
+        messagesPack="com.company.mycabinet.web.extuser"
+        xmlns:ext="http://schemas.haulmont.com/cuba/window-ext.xsd">
+    <layout>
+        <groupTable id="usersTable">
+            <buttonsPanel>
+                <button id="fullEditButton"
+                        caption="msg://fullEdit"
+                        ext:index="2"
+                        icon="icons/wf-design-deploy.png"
+                        invoke="onFullEditButtonClick"/>
+            </buttonsPanel>
         </groupTable>
     </layout>
 </window>

@@ -31,9 +31,14 @@ public class ExtAppLoginWindow extends AppLoginWindow {
 
     @Inject
     protected Action submit;
+
+    @Inject
+    protected Label rememberMeSpacer;
+    @Inject
+    protected CheckBox rememberMeCheckBox;
     @Inject
     protected TextField firstNameTextField,
-            middleNameTextField,
+            //middleNameTextField,
             surNameTextField,
             phoneNumberTextField,
             mailTextField,
@@ -49,7 +54,7 @@ public class ExtAppLoginWindow extends AppLoginWindow {
     @Inject
     protected Label surnameLabel,
             firstNameLabel,
-            middleNameLabel,
+            //middleNameLabel,
             birthDateLabel,
             phoneNumberLabel,
             mailLabel,
@@ -111,8 +116,8 @@ public class ExtAppLoginWindow extends AppLoginWindow {
                 customerHBox.setVisible(true);
                 firstNameLabel.setVisible(true);
                 firstNameTextField.setVisible(true);
-                middleNameLabel.setVisible(true);
-                middleNameTextField.setVisible(true);
+               // middleNameLabel.setVisible(true);
+               // middleNameTextField.setVisible(true);
                 surnameLabel.setVisible(true);
                 surNameTextField.setVisible(true);
                 customerCheckBox.setValue(true);
@@ -120,12 +125,14 @@ public class ExtAppLoginWindow extends AppLoginWindow {
                 mailLabel.setVisible(true);
                 phoneNumberLabel.setVisible(true);
                 phoneNumberTextField.setVisible(true);
-                birthDateLabel.setVisible(true);
-                birthDateField.setVisible(true);
+                //birthDateLabel.setVisible(true);
+                //birthDateField.setVisible(true);
                 manufacturerCheckBox.setValue(false);
                 loginLinkButton.setVisible(true);
                 registerLinkButton.setVisible(false);
                 loginButton.setCaption(getMessage("registerLinkButton"));
+                rememberMeSpacer.setVisible(false);
+                rememberMeCheckBox.setVisible(false);
 
                 loginButton.setAction(new AbstractAction("registerAction") {
                     @Override
@@ -159,14 +166,14 @@ public class ExtAppLoginWindow extends AppLoginWindow {
         mailLabel.setVisible(false);
         firstNameTextField.setVisible(false);
         firstNameLabel.setVisible(false);
-        middleNameTextField.setVisible(false);
-        middleNameLabel.setVisible(false);
+        //middleNameTextField.setVisible(false);
+        //middleNameLabel.setVisible(false);
         surNameTextField.setVisible(false);
         surnameLabel.setVisible(false);
         phoneNumberLabel.setVisible(false);
         phoneNumberTextField.setVisible(false);
-        birthDateLabel.setVisible(false);
-        birthDateField.setVisible(false);
+        //birthDateLabel.setVisible(false);
+        //birthDateField.setVisible(false);
         loginButton.setAction(submit);
         loginButton.setCaption(getMessage("loginLinkButton"));
     }
@@ -183,9 +190,9 @@ public class ExtAppLoginWindow extends AppLoginWindow {
         paramsMap.put("login", loginField.getValue());
         paramsMap.put("password", passwordField.getValue());
         paramsMap.put("firstName", firstNameTextField.getValue());
-        paramsMap.put("middleName", middleNameTextField.getValue());
+       // paramsMap.put("middleName", middleNameTextField.getValue());
         paramsMap.put("surName", surNameTextField.getValue());
-        paramsMap.put("birthday", birthDateField.getValue());
+        //paramsMap.put("birthday", birthDateField.getValue());
         paramsMap.put("orgName", organizationNameTextField.getValue());
         paramsMap.put("activityName", activityTypeTextField.getValue());
         paramsMap.put("legalAddress", legalAdressTextField.getValue());

@@ -1,5 +1,6 @@
 package com.company.mycabinet.service;
 
+import com.company.mycabinet.config.RolesConfig;
 import com.company.mycabinet.entity.BusinessCategory;
 import com.company.mycabinet.entity.ExtUser;
 import com.company.mycabinet.entity.UserType;
@@ -15,6 +16,7 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Service(RegistrationService.NAME)
 public class RegistrationServiceBean implements RegistrationService {
@@ -25,10 +27,10 @@ public class RegistrationServiceBean implements RegistrationService {
     protected Metadata metadata;
     @Inject
     protected PasswordEncryption passwordEncryption;
+
     @Inject
-    protected Configuration configuration;
-    @Inject
-    protected UuidSource uuidSource;
+    protected RolesConfig rolesConfig;
+
 
     @Override
     public void registerStandartUser(Map<String, Object> paramsMap) {
@@ -46,7 +48,8 @@ public class RegistrationServiceBean implements RegistrationService {
         user.setActualAddress((String) paramsMap.get("actualAddress"));
         user.setBusinessCategory((BusinessCategory) paramsMap.get("businessCategory"));
         //for manufacturer
-        user.setFirmAge((Integer) paramsMap.get("firmAge"));
+        if (paramsMap.get("firmAge") != null)
+            user.setFirmAge(Integer.valueOf((String) paramsMap.get("firmAge")));
         user.setProductionVolume((String) paramsMap.get("productVolume"));
         user.setGoodsCategory((String) paramsMap.get("goodsCategory"));
 
@@ -55,8 +58,8 @@ public class RegistrationServiceBean implements RegistrationService {
             user.setPassword(passwordHash);
         }
         initUserGroup(user);
-        addDefaultRoles(user);
         dataManager.commit(user, "extUser-view");
+        addDefaultRoles(user);
     }
 
     @Override
@@ -77,9 +80,19 @@ public class RegistrationServiceBean implements RegistrationService {
         return user == null && extUser == null ? true : false;
     }
 
-    protected void addDefaultRoles(User user) {
+    protected void addDefaultRoles(ExtUser user) {
+        String roleId = "";
+        if (user.getUserType().equals(UserType.CUSTOMER)) {
+            roleId = rolesConfig.getCustomerRole();
+        }
+
+        if (user.getUserType().equals(UserType.MANUFACTURER)) {
+            roleId = rolesConfig.getManufacturerRole();
+        }
+
         LoadContext<Role> ctx = new LoadContext<>(Role.class);
-        ctx.setQueryString("select r from sec$Role r where r.defaultRole = true");
+        ctx.setQueryString("select r from sec$Role r where r.id = :id")
+                .setParameter("id", UUID.fromString(roleId));
         List<Role> defaultRoles = dataManager.loadList(ctx);
 
         List<UserRole> newRoles = new ArrayList<>();

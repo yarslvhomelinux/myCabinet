@@ -56,25 +56,6 @@
                                        visible="false"/>
                         </row>
                         <row ext:index="6">
-                            <label id="middleNameLabel"
-                                   align="MIDDLE_RIGHT"
-                                   value="msg://middleName"
-                                   visible="false"/>
-                            <textField id="middleNameTextField"
-                                       inputPrompt="msg://middleName"
-                                       stylename="c-login-password"
-                                       visible="false"/>
-                        </row>
-                        <row ext:index="7">
-                            <label id="birthDateLabel"
-                                   align="MIDDLE_RIGHT"
-                                   value="msg://birthDat"
-                                   visible="false"/>
-                            <dateField id="birthDateField"
-                                       dateFormat="dd/MM/yyyy"
-                                       visible="false"/>
-                        </row>
-                        <row ext:index="8">
                             <label id="phoneNumberLabel"
                                    align="MIDDLE_RIGHT"
                                    value="msg://phoneNumber"
@@ -85,7 +66,7 @@
                                        stylename="c-login-password"
                                        visible="false"/>
                         </row>
-                        <row ext:index="9">
+                        <row ext:index="7">
                             <label id="mailLabel"
                                    align="MIDDLE_RIGHT"
                                    value="msg://mail"
@@ -96,7 +77,7 @@
                                        stylename="c-login-password"
                                        visible="false"/>
                         </row>
-                        <row ext:index="10">
+                        <row ext:index="8">
                             <label id="orgNameLabel"
                                    align="MIDDLE_RIGHT"
                                    value="msg://orgName"
@@ -106,18 +87,18 @@
                                        stylename="c-login-password"
                                        visible="false"/>
                         </row>
-                        <row ext:index="11">
+                        <row ext:index="9">
                             <label id="activityTypeLabel"
                                    align="MIDDLE_RIGHT"
                                    value="msg://activityTypeLabel"
                                    visible="false"/>
                             <textField id="activityTypeTextField"
                                        inputPrompt="msg://activityType"
+                                       required="true"
                                        stylename="c-login-password"
-                                       visible="false"
-                                        required="true"/>
+                                       visible="false"/>
                         </row>
-                        <row ext:index="12">
+                        <row ext:index="10">
                             <label id="legalAddressLabel"
                                    align="MIDDLE_RIGHT"
                                    value="msg://legalAddress"
@@ -127,18 +108,18 @@
                                        stylename="c-login-password"
                                        visible="false"/>
                         </row>
-                        <row ext:index="13">
+                        <row ext:index="11">
                             <label id="actualAddressLabel"
                                    align="MIDDLE_RIGHT"
                                    value="msg://actualAddress"
                                    visible="false"/>
                             <textField id="actualAdressTextField"
                                        inputPrompt="msg://actualAddress"
+                                       required="true"
                                        stylename="c-login-password"
-                                       visible="false"
-                                        required="true"/>
+                                       visible="false"/>
                         </row>
-                        <row ext:index="14">
+                        <row ext:index="12">
                             <label id="businessCategory"
                                    align="MIDDLE_RIGHT"
                                    value="msg://businessCategory"
@@ -149,7 +130,7 @@
                                          stylename="c-login-password"
                                          visible="false"/>
                         </row>
-                        <row ext:index="15">
+                        <row ext:index="13">
                             <label id="manufacturerLegalAddressLabel"
                                    align="MIDDLE_RIGHT"
                                    value="msg://manufacturerAddress"
@@ -159,7 +140,7 @@
                                        stylename="c-login-password"
                                        visible="false"/>
                         </row>
-                        <row ext:index="16">
+                        <row ext:index="14">
                             <label id="firmAgeLabel"
                                    align="MIDDLE_RIGHT"
                                    value="msg://firmAge"
@@ -169,7 +150,7 @@
                                        stylename="c-login-password"
                                        visible="false"/>
                         </row>
-                        <row ext:index="17">
+                        <row ext:index="15">
                             <label id="productionVolumeLabel"
                                    align="MIDDLE_RIGHT"
                                    value="msg://ProductionVolume"
@@ -179,7 +160,7 @@
                                        stylename="c-login-password"
                                        visible="false"/>
                         </row>
-                        <row ext:index="18">
+                        <row ext:index="16">
                             <label id="goodsCategoryLabel"
                                    align="MIDDLE_RIGHT"
                                    value="msg://goods"
@@ -189,14 +170,14 @@
                                        stylename="c-login-password"
                                        visible="false"/>
                         </row>
-                        <row>
-                            <linkButton id="loginLinkButton"
-                                        align="TOP_RIGHT"
-                                        caption="msg://loginLinkButton"
-                                        visible="false"/>
-                            <linkButton id="registerLinkButton"
-                                        align="TOP_RIGHT"
-                                        caption="msg://registerLinkButton"/>
+                        <row ext:index="17">
+                                <linkButton id="loginLinkButton"
+                                            align="TOP_RIGHT"
+                                            caption="msg://loginLinkButton"
+                                            visible="false"/>
+                                <linkButton id="registerLinkButton"
+                                            align="TOP_RIGHT"
+                                            caption="msg://registerLinkButton"/>
                         </row>
                     </rows>
                 </grid>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.mycabinet.web.extuser.CustomExtUserEdit"
+        datasource="extUserDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.mycabinet.web.extuser">
+    <dsContext>
+        <datasource id="extUserDs"
+                    class="com.company.mycabinet.entity.ExtUser"
+                    view="extUser-view">
+            <collectionDatasource id="userRolesDs"
+                                  property="userRoles"/>
+            <collectionDatasource id="substitutionsDs"
+                                  property="substitutions"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="scrollBox"
+            spacing="true">
+        <scrollBox id="scrollBox"
+                   spacing="true">
+            <fieldGroup id="fieldGroup"
+                        datasource="extUserDs">
+                <column width="250px">
+                    <field property="login"
+                           required="true"/>
+                    <field property="name"
+                           required="true"/>
+                    <field property="firstName"/>
+                    <field property="lastName"/>
+                    <field property="middleName"/>
+                    <field property="email"
+                           required="true"/>
+                    <field property="phoneNumber"/>
+                    <field property="group"
+                           required="true"/>
+                    <field property="userType"
+                           required="true"/>
+                </column>
+                <column>
+                    <field property="activityType"
+                           required="true"/>
+                    <field property="legalAddress"/>
+                    <field property="actualAddress"
+                           required="true"/>
+                    <field property="businessCategory"
+                           required="true"/>
+                    <field property="manufacturerLegalAdress"/>
+                    <field property="firmAge"
+                           required="true"/>
+                    <field property="productionVolume"/>
+                    <field property="goodsCategory"/>
+                    <field property="organizationName"
+                           required="true"/>
+                </column>
+                <column>
+                    <field property="birthday"/>
+                    <field property="position"/>
+                    <field property="language"/>
+                    <field property="timeZone"/>
+                    <field property="ipMask"/>
+                    <field property="timeZoneAuto"/>
+                    <field property="active"/>
+                    <field property="changePasswordAtNextLogon"/>
+                </column>
+            </fieldGroup>
+            <split height="100%"
+                   orientation="horizontal"
+                   width="100%">
+                <groupBox id="userRolesBox"
+                          caption="msg://UserRoles">
+                    <table id="userRolesTable"
+                           height="200px"
+                           width="100%">
+                        <actions>
+                            <action id="create"/>
+                            <action id="edit"/>
+                            <action id="remove"/>
+                        </actions>
+                        <columns>
+                            <column id="role"/>
+                        </columns>
+                        <rows datasource="userRolesDs"/>
+                        <buttonsPanel>
+                            <button action="userRolesTable.create"/>
+                            <button action="userRolesTable.edit"/>
+                            <button action="userRolesTable.remove"/>
+                        </buttonsPanel>
+                    </table>
+                </groupBox>
+                <groupBox id="substitutionsBox"
+                          caption="msg://SubstitutedUsers">
+                    <table id="substitutionsTable"
+                           height="200px"
+                           width="100%">
+                        <actions>
+                            <action id="create"/>
+                            <action id="edit"/>
+                            <action id="remove"/>
+                        </actions>
+                        <columns>
+                            <column id="substitutedUser"/>
+                            <column id="startDate"/>
+                            <column id="endDate"/>
+                        </columns>
+                        <rows datasource="substitutionsDs"/>
+                        <buttonsPanel>
+                            <button action="substitutionsTable.create"/>
+                            <button action="substitutionsTable.edit"/>
+                            <button action="substitutionsTable.remove"/>
+                        </buttonsPanel>
+                    </table>
+                </groupBox>
+            </split>
+        </scrollBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>
