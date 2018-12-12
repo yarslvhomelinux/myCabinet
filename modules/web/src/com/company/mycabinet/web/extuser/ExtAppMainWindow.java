@@ -19,4 +19,8 @@ public class ExtAppMainWindow extends AppMainWindow {
     public void onViewRequestButtonClick() {
         openWindow("mycabinet$MyRequest.browse", WindowManager.OpenType.NEW_TAB);
     }
+
+    public void onViewRulesButtonClick() {
+        openWindow("systemRulesWindow", WindowManager.OpenType.NEW_TAB);
+    }
 }

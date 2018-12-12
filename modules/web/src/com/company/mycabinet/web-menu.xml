@@ -19,5 +19,8 @@
         <item screen="mycabinet$UserAllComments.browse"/>
     </menu>
     <item insertBefore="help"
+          openType="NEW_TAB"
           screen="mycabinet$UserComment.browse"/>
+    <item insertBefore="help"
+          screen="systemRulesWindow"/>
 </menu-config>

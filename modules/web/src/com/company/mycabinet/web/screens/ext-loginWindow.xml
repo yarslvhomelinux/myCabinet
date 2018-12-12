@@ -85,6 +85,7 @@
                             <textField id="organizationNameTextField"
                                        inputPrompt="msg://orgName"
                                        stylename="c-login-password"
+                                       required="true"
                                        visible="false"/>
                         </row>
                         <row ext:index="9">
@@ -138,6 +139,7 @@
                             <textField id="manufacturerLegalAddressTextField"
                                        inputPrompt="msg://manufacturerLegalAddress"
                                        stylename="c-login-password"
+                                       required="true"
                                        visible="false"/>
                         </row>
                         <row ext:index="14">
@@ -167,6 +169,7 @@
                                    visible="false"/>
                             <textField id="goodsCategory"
                                        inputPrompt="msg://goodsCategory"
+                                       required="true"
                                        stylename="c-login-password"
                                        visible="false"/>
                         </row>

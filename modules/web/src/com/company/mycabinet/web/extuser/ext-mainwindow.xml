@@ -41,11 +41,18 @@
                                    align="MIDDLE_CENTER"
                                    stylename="h1 bold"
                                    value="msg://label"/>
-                            <button id="viewRequestButton"
-                                    align="MIDDLE_CENTER"
-                                    caption="msg://createRequest"
-                                    icon="icons/edit.png"
-                                    invoke="onViewRequestButtonClick"/>
+                            <hbox align="MIDDLE_CENTER"
+                                  spacing="true">
+                                <button id="viewRequestButton"
+                                        align="MIDDLE_CENTER"
+                                        caption="msg://createRequest"
+                                        icon="icons/edit.png"
+                                        invoke="onViewRequestButtonClick"/>
+                                <button id="viewRulesButton"
+                                        caption="msg://viewRulesButton"
+                                        icon="icons/join-to-set.png"
+                                        invoke="onViewRulesButtonClick"/>
+                            </hbox>
                         </vbox>
                     </hbox>
                 </main:initialLayout>

@@ -103,7 +103,8 @@
                                         <field property="productVolume"
                                                required="true"
                                                rows="2"/>
-                                        <field property="deliveryTime"/>
+                                        <field description="msg://deliveryTImeDescr"
+                                               property="deliveryTime"/>
                                         <field property="deliveryRegion"
                                                rows="2"/>
                                         <field property="contactPerson"

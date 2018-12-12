@@ -43,4 +43,6 @@
             template="com/company/mycabinet/web/extuser/custom-ext-user-edit.xml"/>
     <screen id="sec$User.browse"
             template="com/company/mycabinet/web/extuser/ext-user-browse.xml"/>
+    <screen id="systemRulesWindow"
+            template="com/company/mycabinet/web/extuser/systemRules.xml"/>
 </screen-config>

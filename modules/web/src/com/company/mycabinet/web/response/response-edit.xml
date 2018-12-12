@@ -138,11 +138,6 @@
                             </fieldGroup>
                         </groupBox>
                     </hbox>
-                </tab>
-                <tab id="attachmentsTab"
-                     caption="msg://attachment"
-                     margin="true,false,false,false"
-                     spacing="true">
                     <groupBox id="attachmentGroupBox"
                               caption="msg://attachments"
                               height="210px"
