@@ -5,5 +5,23 @@
         messagesPack="com.company.mycabinet.web.extuser">
     <dialogMode height="600"
                 width="800"/>
-    <layout/>
+    <layout>
+        <vbox align="MIDDLE_CENTER"
+              spacing="true">
+            <label id="topLabel"
+                   align="MIDDLE_CENTER"
+                   stylename="h1 bold"
+                   value="msg://welocmeLabel"/>
+            <label id="manufacturerRulesMain"
+                   align="MIDDLE_CENTER"
+                   stylename="h1"
+                   value="msg://rulesManufacturer"
+                   width="50%"/>
+            <label align="MIDDLE_CENTER"
+                   id="customerRulesMain"
+                   stylename="h1"
+                   value="msg://customerRulesMain"
+                   width="50%"/>
+        </vbox>
+    </layout>
 </window>

@@ -26,18 +26,22 @@
                                width="100%">
                             <classpath path="com/company/mycabinet/logo.png"/>
                         </image>
-                        <vbox align="MIDDLE_CENTER"
+                        <vbox id="allInfo"
+                              align="MIDDLE_CENTER"
                               spacing="true">
                             <label id="welcomeLabel"
                                    align="MIDDLE_CENTER"
                                    stylename="h1 bold"
                                    value="msg://welcomeLabel"/>
-                            <label id="mainLabel"
+                            <label id="mainLabelCustomer"
                                    align="MIDDLE_CENTER"
                                    stylename="h1"
                                    value="msg://mainText"
                                    width="100%"/>
-                            <label id="endLabel"
+                            <label id="mainLabelManufacturer"
+                                   align="MIDDLE_CENTER"
+                                   value="msg://mainLabelManufacturer"/>
+                            <label id="endLabelCustomer"
                                    align="MIDDLE_CENTER"
                                    stylename="h1 bold"
                                    value="msg://label"/>

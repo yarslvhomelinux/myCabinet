@@ -85,6 +85,7 @@ public class RequestEdit extends AbstractEditor<Request> {
 
         if (State.CREATED.equals(getItem().getStatus())) {
             nextStageButton.setVisible(true);
+            responsesGroupBox.setVisible(false);
         }
 
         if (State.ADMIN_PROCESSING.equals(getItem().getStatus()) && userUtilsService.isCurrentUserAdmin()) {
