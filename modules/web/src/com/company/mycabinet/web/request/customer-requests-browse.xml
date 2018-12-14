@@ -42,6 +42,9 @@
                 </group>
                 <column id="requestNumber"/>
                 <column id="productCategory"/>
+                <column id="daysCount"
+                        caption="msg://daysCount"
+                        generator="generateDaysCountCell"/>
                 <column id="productType"/>
                 <column id="brand"/>
                 <column id="productDescription"/>

@@ -16,6 +16,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import com.haulmont.cuba.core.entity.FileDescriptor;
+import java.util.Date;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @NamePattern("%s %s|productCategory,productType")
 @Table(name = "MYCABINET_REQUEST")
@@ -26,6 +29,10 @@ public class Request extends StandardEntity {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PRODUCT_CATEGORY_ID")
     protected ProductCategory productCategory;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "ASSIGN_DATE")
+    protected Date assignDate;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CREATOR_ID")
@@ -76,6 +83,15 @@ public class Request extends StandardEntity {
 
     @OneToMany(mappedBy = "request")
     protected List<Attachment> attachment;
+
+    public void setAssignDate(Date assignDate) {
+        this.assignDate = assignDate;
+    }
+
+    public Date getAssignDate() {
+        return assignDate;
+    }
+
 
     public void setCreator(ExtUser creator) {
         this.creator = creator;

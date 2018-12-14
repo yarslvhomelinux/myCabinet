@@ -1,0 +1,15 @@
+@import "halo-defaults";
+@import "com.company.mycabinet/halo-ext-defaults";
+@import "app-components";
+@import "com.company.mycabinet/halo-ext";
+
+.halo {
+  // include auto-generated app components SCSS
+  @include app_components;
+  
+  @include com_company_mycabinet-halo-ext;
+}
+
+.back-red {
+    background-color: red;
+}

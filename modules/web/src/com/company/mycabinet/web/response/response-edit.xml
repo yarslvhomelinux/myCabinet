@@ -92,11 +92,14 @@
                                     height="100%"
                                     width="100%">
                             <column width="100%">
-                                <field property="price"/>
-                                <field property="deliveryPrice"/>
+                                <field property="price"
+                                       required="true"/>
+                                <field property="deliveryPrice"
+                                       required="true"/>
                                 <field property="manufacturerComment"
                                        rows="5"/>
                                 <field property="manufacturerInfo"
+                                       required="true"
                                        rows="5"/>
                             </column>
                         </fieldGroup>
@@ -113,7 +116,8 @@
                                 <column width="100%">
                                     <field property="isPriceSatisfied"
                                            rows="2"/>
-                                    <field property="contact"/>
+                                    <field property="contact"
+                                           required="true"/>
                                     <field property="customerComment"
                                            rows="4"/>
                                 </column>

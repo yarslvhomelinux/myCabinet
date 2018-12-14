@@ -59,6 +59,9 @@ public class RequestEdit extends AbstractEditor<Request> {
     @Inject
     protected UserSessionSource userSessionSource;
 
+    @Inject
+    protected TimeSource timeSource;
+
     protected boolean itemCreated = false;
 
     @Override
@@ -123,6 +126,7 @@ public class RequestEdit extends AbstractEditor<Request> {
         paramsMap.put("userList", getItem().getManufacturer());
         openWindow("AssignmentManufacturerFrame", WindowManager.OpenType.DIALOG, paramsMap)
                 .addCloseListener(e -> {
+                    getItem().setAssignDate(timeSource.currentTimestamp());
                     commitAndClose();
                     workflowEmailerService.sendMessageAboutApproveRequestToManufacturer(getItem(), getItem().getManufacturer());
                     workflowEmailerService.sendMessageAboutApproveRequestToCustomer(getItem());

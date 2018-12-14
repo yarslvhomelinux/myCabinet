@@ -21,7 +21,10 @@
         <property name="manufacturer"
                   view="extUser-view"/>
         <property name="response"
-                  view="_local"/>
+                  view="_local">
+            <property name="creator"
+                      view="_minimal"/>
+        </property>
         <property name="attachment"
                   view="_minimal">
         </property>

@@ -26,6 +26,7 @@ create table MYCABINET_REQUEST (
     DELETED_BY varchar(50),
     --
     PRODUCT_CATEGORY_ID uuid,
+    ASSIGN_DATE date,
     CREATOR_ID uuid,
     REQUEST_NUMBER varchar(255),
     PRODUCT_TYPE text,
