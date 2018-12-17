@@ -4,6 +4,7 @@ import com.company.mycabinet.entity.ExtUser;
 import com.company.mycabinet.entity.Request;
 import com.company.mycabinet.entity.Status;
 import com.haulmont.cuba.core.global.DataManager;
+import com.haulmont.cuba.gui.WindowManager;
 import com.haulmont.cuba.gui.components.AbstractWindow;
 import com.haulmont.cuba.gui.components.TwinColumn;
 import org.apache.commons.collections4.CollectionUtils;
@@ -44,5 +45,9 @@ public class AssignmentManufacturerFrame extends AbstractWindow {
                 showNotification(getMessage("selectUserError"));
             }
         }
+    }
+
+    public void onShowUsersListClick() {
+        openWindow("mycabinet$ExtUserSharing.browse", WindowManager.OpenType.NEW_TAB);
     }
 }

@@ -18,8 +18,59 @@
         </hbox>
         <split id="foldersSplit">
             <main:workArea id="workArea">
-                <main:initialLayout>
-                    <hbox spacing="true"
+                <main:initialLayout expand="mainInfo">
+                    <vbox id="adminTasksInfo"
+                          align="TOP_CENTER"
+                          spacing="true"
+                          visible="false">
+                        <hbox align="TOP_CENTER"
+                              spacing="true">
+                            <label id="counfOfRequestForAgreeLabel"
+                                   stylename="bold"
+                                   value="msg://counfOfRequestForAgreeLabel"/>
+                            <label id="counfOfRequestForAgree"/>
+                        </hbox>
+                        <hbox align="TOP_CENTER"
+                              spacing="true">
+                            <label id="countOfResponsForAgreeLabel"
+                                   stylename="bold"
+                                   value="msg://countOfResponsForAgree"/>
+                            <label id="countOfResponsesForAgree"/>
+                        </hbox>
+                        <hbox align="TOP_CENTER"
+                              spacing="true">
+                            <label id="countOfResponsForSpecifyAgreeLabel"
+                                   stylename="bold"
+                                   value="msg://countOfResponsForSpecifyAgreeLabel"/>
+                            <label id="countOfResponsForSpecifyAgree"/>
+                        </hbox>
+                    </vbox>
+                    <vbox id="customerTasksInfo"
+                          align="TOP_CENTER"
+                          spacing="true"
+                          visible="false">
+                        <hbox align="TOP_CENTER"
+                              spacing="true">
+                            <label id="countOfNewResponsesLabel"
+                                   stylename="bold"
+                                   value="msg://countOfNewResponsesLabel"/>
+                            <label id="countOfNewResponses"/>
+                        </hbox>
+                    </vbox>
+                    <vbox id="manufacturerTasksInfo"
+                          align="TOP_CENTER"
+                          spacing="true"
+                          visible="false">
+                        <hbox align="TOP_CENTER"
+                              spacing="true">
+                            <label id="countOfActiveResponsesLabel"
+                                   stylename="bold"
+                                   value="msg://countOfActiveResponsesLabel"/>
+                            <label id="countOfActiveResponses"/>
+                        </hbox>
+                    </vbox>
+                    <hbox id="mainInfo"
+                          spacing="true"
                           width="100%">
                         <image align="MIDDLE_CENTER"
                                height="508px"

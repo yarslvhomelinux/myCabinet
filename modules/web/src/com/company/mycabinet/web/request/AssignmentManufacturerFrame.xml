@@ -27,6 +27,9 @@
         <twinColumn id="twinColumn"
                     optionsDatasource="extUsersDs"
                     width="100%"/>
+        <linkButton id="showUsersList"
+                    caption="msg://showUsersList"
+                    invoke="onShowUsersListClick"/>
         <buttonsPanel id="buttonsPanel">
             <button id="okButton"
                     caption="msg://Ok"

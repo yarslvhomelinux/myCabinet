@@ -49,4 +49,6 @@
             template="com/company/mycabinet/web/response/response-agree-browse.xml"/>
     <screen id="mycabinet$ResponseSpecifyAgree.browse"
             template="com/company/mycabinet/web/response/response-agree-specify-browse.xml"/>
+    <screen id="mycabinet$ExtUserSharing.browse"
+            template="com/company/mycabinet/web/extuser/ext-user-browse-sharing.xml"/>
 </screen-config>

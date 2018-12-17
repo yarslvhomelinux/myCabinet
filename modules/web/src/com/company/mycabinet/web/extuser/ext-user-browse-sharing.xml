@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.mycabinet.web.extuser.ExtUserBrowseSharing"
+        focusComponent="extUsersTable"
+        lookupComponent="extUsersTable"
+        messagesPack="com.company.mycabinet.web.extuser">
+    <dsContext>
+        <groupDatasource id="extUsersDs"
+                         class="com.company.mycabinet.entity.ExtUser"
+                         view="extUser-view">
+            <query>
+                <![CDATA[select e from mycabinet$ExtUser e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="extUsersTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="extUsersTable"
+                datasource="extUsersDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="extUsersTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="login"/>
+                <column id="name"/>
+                <column id="firstName"/>
+                <column id="lastName"/>
+                <column id="email"/>
+                <column id="birthday"/>
+                <column id="phoneNumber"/>
+                <column id="organizationName"/>
+                <column id="activityType"/>
+                <column id="legalAddress"/>
+                <column id="actualAddress"/>
+                <column id="businessCategory"/>
+                <column id="manufacturerLegalAdress"/>
+                <column id="firmAge"/>
+                <column id="productionVolume"/>
+                <column id="userType"/>
+                <column id="goodsCategory"/>
+            </columns>
+            <rows datasource="extUsersDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="extUsersTable.create"/>
+                <button id="editBtn"
+                        action="extUsersTable.edit"/>
+                <button id="removeBtn"
+                        action="extUsersTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>
