@@ -18,5 +18,9 @@ public interface WorkflowEmailerService {
 
     void sendMessageAboutCreateResponseToCustomer(Request request, Response response);
 
+    void sendMessageAboutCreateResponseToAdmin(Request request, Response response);
+
+    void sendMessageAboutCreateSpecifyToCustomer(Request request, Response response);
+
     void sendMessageAboutCreateResponseFeedback(Request request, Response response);
 }

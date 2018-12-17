@@ -115,6 +115,7 @@
                                         width="100%">
                                 <column width="100%">
                                     <field property="isPriceSatisfied"
+                                           required="true"
                                            rows="2"/>
                                     <field property="contact"
                                            required="true"/>
@@ -175,16 +176,41 @@
             </tabSheet>
         </scrollBox>
         <buttonsPanel>
-            <button id="sentFeedbackButton"
-                    caption="msg://sendFeedback"
+            <button id="sendPositiveFeedbackButton"
+                    caption="msg://sendPositiveFeedback"
                     icon="font-icon:SEND_O"
                     invoke="onSentFeedbackButtonClick"
                     stylename="friendly"
                     visible="false"/>
+            <button id="sendNegativeFeedbackButton"
+                    caption="msg://negativeFeedback"
+                    icon="icons/close.png"
+                    invoke="onSendNegativeFeedbackButtonClick"
+                    stylename="danger"
+                    visible="false"/>
             <button id="sendToCustomerButton"
                     caption="msg://sendButton"
                     icon="font-icon:SEND"
-                    invoke="onSendToCustomerButtonClick"
+                    invoke="onSendToAdminAgree"
+                    stylename="friendly"
+                    visible="false"/>
+            <button id="specifyButton"
+                    caption="msg://getSpecifyButton"
+                    description="msg://getSpecifyDescriptionButton"
+                    icon="icons/question-white.png"
+                    invoke="onSpecifyButtonClick"
+                    stylename="primary"
+                    visible="false"/>
+            <button id="sendSpecifyToManufacturerButton"
+                    caption="msg://sendSpecifyToManufacturer"
+                    icon="font-icon:SEND"
+                    invoke="onSendSpecifyToManufacturerButtonClick"
+                    stylename="primary"
+                    visible="false"/>
+            <button id="agreeResponseButton"
+                    caption="msg://agreeResponseButton"
+                    icon="icons/ok.png"
+                    invoke="onAgreeResponseButtonClick"
                     stylename="friendly"
                     visible="false"/>
             <button id="closeResponseButton"

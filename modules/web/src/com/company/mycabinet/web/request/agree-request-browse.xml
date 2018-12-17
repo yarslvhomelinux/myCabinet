@@ -10,7 +10,7 @@
                          class="com.company.mycabinet.entity.Request"
                          view="request-view">
             <query>
-                <![CDATA[select e from mycabinet$Request e where e.status = 'adminProcessing']]>
+                <![CDATA[select e from mycabinet$Request e where e.status = 'requestAdminProcessing']]>
             </query>
         </groupDatasource>
     </dsContext>

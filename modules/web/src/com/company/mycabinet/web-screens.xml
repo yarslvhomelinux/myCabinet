@@ -45,4 +45,8 @@
             template="com/company/mycabinet/web/extuser/ext-user-browse.xml"/>
     <screen id="systemRulesWindow"
             template="com/company/mycabinet/web/extuser/systemRules.xml"/>
+    <screen id="mycabinet$ResponseAgree.browse"
+            template="com/company/mycabinet/web/response/response-agree-browse.xml"/>
+    <screen id="mycabinet$ResponseSpecifyAgree.browse"
+            template="com/company/mycabinet/web/response/response-agree-specify-browse.xml"/>
 </screen-config>

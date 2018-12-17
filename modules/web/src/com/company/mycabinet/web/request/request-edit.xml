@@ -221,6 +221,12 @@
                     invoke="onNextStageButtonClick"
                     stylename="friendly"
                     visible="false"/>
+            <button id="closeRequest"
+                    caption="msg://closeRequest"
+                    icon="font-icon:CLOSE"
+                    invoke="onCloseRequestClick"
+                    stylename="danger"
+                    visible="false"/>
             <button id="windowCommit"
                     action="windowCommit"
                     caption="msg://okAndClose"

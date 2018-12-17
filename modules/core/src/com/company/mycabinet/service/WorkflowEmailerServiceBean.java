@@ -70,10 +70,38 @@ public class WorkflowEmailerServiceBean implements WorkflowEmailerService {
     public void sendMessageAboutCreateResponseToCustomer(Request request, Response response) {
         if (request != null && request.getCreator() != null && !Strings.isNullOrEmpty(request.getCreator().getEmail())) {
             EmailInfo emailInfo = new EmailInfo(
-                    request.getCreator().getEmail() + ", " + emailerConfig.getAdminAddress(), // recipients
+                    request.getCreator().getEmail(), // recipients
                     "На заявку назначен новый ответ", // subject
                     emailerConfig.getAdminAddress(), // the "from" address will be taken from the "cuba.email.fromAddress" app property
                     "com/company/mycabinet/email/messageToAdminAndCustomerAboutCreateResponse.txt", // body template
+                    Collections.singletonMap("request", request) // template parameters
+            );
+            emailService.sendEmailAsync(emailInfo);
+        }
+    }
+
+    @Override
+    public void sendMessageAboutCreateResponseToAdmin(Request request, Response response) {
+        if (request != null && request.getCreator() != null && !Strings.isNullOrEmpty(request.getCreator().getEmail())) {
+            EmailInfo emailInfo = new EmailInfo(
+                    emailerConfig.getAdminAddress(), // recipients
+                    "Создан новый отклик производителя. Пожалуйста согласуйте его", // subject
+                    emailerConfig.getAdminAddress(), // the "from" address will be taken from the "cuba.email.fromAddress" app property
+                    "com/company/mycabinet/email/messageToAdminAboutNewResponse.txt", // body template
+                    Collections.singletonMap("request", request) // template parameters
+            );
+            emailService.sendEmailAsync(emailInfo);
+        }
+    }
+
+    @Override
+    public void sendMessageAboutCreateSpecifyToCustomer(Request request, Response response) {
+        if (request != null && request.getCreator() != null && !Strings.isNullOrEmpty(request.getCreator().getEmail())) {
+            EmailInfo emailInfo = new EmailInfo(
+                    request.getCreator().getEmail(), // recipients
+                    "На вашу заявку создан запрос на уточнение деталей", // subject
+                    emailerConfig.getAdminAddress(), // the "from" address will be taken from the "cuba.email.fromAddress" app property
+                    "com/company/mycabinet/email/messageToCustomerAboutNewSpecify.txt", // body template
                     Collections.singletonMap("request", request) // template parameters
             );
             emailService.sendEmailAsync(emailInfo);

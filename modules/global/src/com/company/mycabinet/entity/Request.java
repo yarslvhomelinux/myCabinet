@@ -9,8 +9,6 @@ import com.haulmont.chile.core.annotations.NamePattern;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import com.haulmont.cuba.security.entity.User;
-import javax.persistence.ManyToOne;
 import java.util.List;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -134,12 +132,12 @@ public class Request extends StandardEntity {
         return requestNumber;
     }
 
-    public void setStatus(State status) {
+    public void setStatus(Status status) {
         this.status = status == null ? null : status.getId();
     }
 
-    public State getStatus() {
-        return status == null ? null : State.fromId(status);
+    public Status getStatus() {
+        return status == null ? null : Status.fromId(status);
     }
 
     public ProductCategory getProductCategory() {

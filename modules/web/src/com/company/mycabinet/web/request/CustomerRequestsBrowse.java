@@ -2,7 +2,7 @@ package com.company.mycabinet.web.request;
 
 import com.company.mycabinet.entity.Request;
 import com.company.mycabinet.entity.Response;
-import com.company.mycabinet.entity.State;
+import com.company.mycabinet.entity.Status;
 import com.haulmont.cuba.core.global.Metadata;
 import com.haulmont.cuba.core.global.TimeSource;
 import com.haulmont.cuba.core.global.UserSessionSource;
@@ -67,7 +67,7 @@ public class CustomerRequestsBrowse extends AbstractLookup {
 
     public Component generateDaysCountCell(Request entity) {
         String daysCount = "";
-        if (State.MANUFACTURER_PROCESSING.equals(entity.getStatus())) {
+        if (Status.MANUFACTURER_PROCESSING.equals(entity.getStatus())) {
             if (entity.getAssignDate() != null)
                 daysCount = Integer.toString(new Period(timeSource.currentTimeMillis(), entity.getAssignDate().getTime(), PeriodType.days()).getDays());
         }

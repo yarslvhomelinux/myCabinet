@@ -1,0 +1,10 @@
+Создано уточнение дополнительной информации на вашу заявку:
+Номер: <#if request.requestNumber??>${request.requestNumber}<#else> </#if>
+Тип: <#if request.productType??>${request.productType}<#else> </#if>
+Бренд: <#if request.brand??>${request.brand}<#else> </#if>
+Описание: <#if request.productDescription??>${request.productDescription}<#else> </#if>
+
+Уточнение стоит в очереди. Зайдите в раздел "Отклики производителей" и обработайте его.
+
+------------
+Это письмо отправлено автоматически с помощью системы "ОптоКит".

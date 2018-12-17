@@ -2,7 +2,7 @@ package com.company.mycabinet.web.request;
 
 import com.company.mycabinet.entity.ExtUser;
 import com.company.mycabinet.entity.Request;
-import com.company.mycabinet.entity.State;
+import com.company.mycabinet.entity.Status;
 import com.haulmont.cuba.core.global.DataManager;
 import com.haulmont.cuba.gui.components.AbstractWindow;
 import com.haulmont.cuba.gui.components.TwinColumn;
@@ -38,7 +38,7 @@ public class AssignmentManufacturerFrame extends AbstractWindow {
             List<ExtUser> users = new ArrayList<>(twinColumn.getValue());
             if (CollectionUtils.isNotEmpty(users)) {
                 request.setManufacturer(users);
-                request.setStatus(State.MANUFACTURER_PROCESSING);
+                request.setStatus(Status.MANUFACTURER_PROCESSING);
                 close(CLOSE_ACTION_ID);
             } else {
                 showNotification(getMessage("selectUserError"));

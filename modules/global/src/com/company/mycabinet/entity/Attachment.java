@@ -46,12 +46,12 @@ public class Attachment extends StandardEntity {
         return attachment;
     }
 
-    public void setState(State state) {
+    public void setState(Status state) {
         this.state = state == null ? null : state.getId();
     }
 
-    public State getState() {
-        return state == null ? null : State.fromId(state);
+    public Status getState() {
+        return state == null ? null : Status.fromId(state);
     }
 
 

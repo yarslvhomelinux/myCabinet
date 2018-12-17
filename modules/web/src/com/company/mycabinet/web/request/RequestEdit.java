@@ -1,11 +1,10 @@
 package com.company.mycabinet.web.request;
 
 import com.company.mycabinet.entity.ExtUser;
-import com.company.mycabinet.entity.State;
+import com.company.mycabinet.entity.Status;
 import com.company.mycabinet.service.UserUtilsService;
 import com.company.mycabinet.service.WorkflowEmailerService;
 import com.haulmont.bali.util.ParamsMap;
-import com.haulmont.cuba.core.app.EmailService;
 import com.haulmont.cuba.core.global.*;
 import com.haulmont.cuba.gui.WindowManager;
 import com.haulmont.cuba.gui.components.*;
@@ -16,7 +15,6 @@ import com.haulmont.cuba.gui.components.actions.RemoveAction;
 
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,11 +48,10 @@ public class RequestEdit extends AbstractEditor<Request> {
     protected GroupBoxLayout responsesGroupBox;
 
     @Inject
-    protected Button nextStageButton;
-    @Inject
-    protected Button improveButton;
-    @Inject
-    protected Button windowCommit;
+    protected Button nextStageButton,
+            closeRequest,
+            improveButton,
+            windowCommit;
 
     @Inject
     protected UserSessionSource userSessionSource;
@@ -86,13 +83,18 @@ public class RequestEdit extends AbstractEditor<Request> {
 
         attachmentCreateAction.setWindowParams(ParamsMap.of("status", getItem().getStatus()));
 
-        if (State.CREATED.equals(getItem().getStatus())) {
+        if (Status.REQUEST_CREATED.equals(getItem().getStatus())) {
             nextStageButton.setVisible(true);
             responsesGroupBox.setVisible(false);
         }
 
-        if (State.ADMIN_PROCESSING.equals(getItem().getStatus()) && userUtilsService.isCurrentUserAdmin()) {
+        if (Status.REQUEST_ADMIN_PROCESSING.equals(getItem().getStatus()) && userUtilsService.isCurrentUserAdmin()) {
             improveButton.setVisible(true);
+        }
+
+        if (Status.MANUFACTURER_PROCESSING.equals(getItem().getStatus()) && (userUtilsService.isCurrentUserAdmin()
+                || userUtilsService.isCurrentUserCustomer())) {
+            closeRequest.setVisible(true);
         }
 
         if (userUtilsService.isCurrentUserManufacturer()) {
@@ -109,12 +111,12 @@ public class RequestEdit extends AbstractEditor<Request> {
     }
 
     protected void initNecessaryFields(Request item) {
-        item.setStatus(State.CREATED);
+        item.setStatus(Status.REQUEST_CREATED);
         item.setCreator((ExtUser) userSessionSource.getUserSession().getCurrentOrSubstitutedUser());
     }
 
     public void onNextStageButtonClick() {
-        getItem().setStatus(State.ADMIN_PROCESSING);
+        getItem().setStatus(Status.REQUEST_ADMIN_PROCESSING);
         commitAndClose();
         if (itemCreated)
             workflowEmailerService.sendMessageAboutCreateRequestToAdmin(getItem());
@@ -151,13 +153,10 @@ public class RequestEdit extends AbstractEditor<Request> {
         return false;
     }
 
-    @Override
-    protected boolean postCommit(boolean committed, boolean close) {
-        if (super.postCommit(committed, close)) {
-
-            return true;
+    public void onCloseRequestClick() {
+        if (getItem().getStatus() != null) {
+            getItem().setStatus(Status.REQUEST_CLOSED);
+            commitAndClose();
         }
-
-        return false;
     }
 }

@@ -1,7 +1,7 @@
 package com.company.mycabinet.web.response;
 
 import com.company.mycabinet.entity.ExtUser;
-import com.company.mycabinet.entity.State;
+import com.company.mycabinet.entity.Status;
 import com.company.mycabinet.service.UserUtilsService;
 import com.company.mycabinet.service.WorkflowEmailerService;
 import com.haulmont.cuba.core.global.DataManager;
@@ -19,20 +19,24 @@ public class ResponseEdit extends AbstractEditor<Response> {
     @Inject
     protected DataManager dataManager;
     @Inject
-    protected FieldGroup closeCommentFieldGroup;
+    protected FieldGroup closeCommentFieldGroup,
+            feedbackFieldGroup;
     @Inject
-    protected Button sendToCustomerButton;
-    @Inject
-    protected Button sentFeedbackButton;
-    @Inject
-    protected Button closeResponseButton;
-    @Inject
-    protected Button closeRequestButton;
+    protected Button sendToCustomerButton,
+            agreeResponseButton,
+            sendPositiveFeedbackButton,
+            sendNegativeFeedbackButton,
+            closeResponseButton,
+            closeRequestButton,
+            specifyButton,
+            sendSpecifyToManufacturerButton;
 
     @Named("feedbackFieldGroup.contact")
     protected Field contactField;
     @Named("feedbackFieldGroup.customerComment")
     protected Field customerCommentField;
+    @Named("feedbackFieldGroup.isPriceSatisfied")
+    protected Field priceCommentField;
 
     @Inject
     protected UserSessionSource userSessionSource;
@@ -45,7 +49,7 @@ public class ResponseEdit extends AbstractEditor<Response> {
     @Override
     protected void initNewItem(Response item) {
         super.initNewItem(item);
-        item.setState(State.RESPONSE_CREATED);
+        item.setState(Status.RESPONSE_CREATED);
         item.setCreator((ExtUser) userSessionSource.getUserSession().getUser());
     }
 
@@ -53,30 +57,47 @@ public class ResponseEdit extends AbstractEditor<Response> {
     public void ready() {
         super.ready();
 
-        if (getItem().getRequest() != null && State.MANUFACTURER_PROCESSING.equals(getItem().getRequest().getStatus())
-                && getItem().getState() != null && getItem().getState().equals(State.RESPONSE_CREATED)
-                && userUtilsService.isCurrentUserManufacturer()) {
-            sendToCustomerButton.setVisible(true);
+        if (getItem().getRequest() != null && Status.MANUFACTURER_PROCESSING.equals(getItem().getRequest().getStatus())
+                && getItem().getState() != null && (getItem().getState().equals(Status.RESPONSE_ADMIN_PROCESSING) ||
+                getItem().getState().equals(Status.RESPONSE_SPECIFY_ADM_PROCESSING))
+                && userUtilsService.isCurrentUserAdmin()) {
+            priceCommentField.setRequired(false);
+            contactField.setRequired(false);
+            agreeResponseButton.setVisible(true);
         }
 
-        if (getItem().getState() != null && State.CUSTOMER_FEEDBACK_RECEIVED.equals(getItem().getState())
+        if (getItem().getState() != null && Status.CUSTOMER_FEEDBACK_RECEIVED.equals(getItem().getState())
                 && userUtilsService.isCurrentUserManufacturer()) {
             closeCommentFieldGroup.setEditable(true);
         }
 
-        if (getItem().getRequest() != null && State.RESPONSE_RECEIVED.equals(getItem().getState())
+        if (Status.RESPONSE_RECEIVED.equals(getItem().getState())
                 && userUtilsService.isCurrentUserCustomer()) {
-            sentFeedbackButton.setVisible(true);
+            sendPositiveFeedbackButton.setVisible(true);
+            sendNegativeFeedbackButton.setVisible(true);
         }
 
-        if (getItem().getRequest() != null && State.CUSTOMER_FEEDBACK_RECEIVED.equals(getItem().getState())
+        if (Status.CUSTOMER_FEEDBACK_RECEIVED.equals(getItem().getState())
                 && userUtilsService.isCurrentUserManufacturer()) {
             closeResponseButton.setVisible(true);
         }
 
-        if (getItem().getRequest() != null && State.MANUFACTURER_PROCESSING.equals(getItem().getRequest().getStatus())
-                &&  State.RESPONSE_CLOSED.equals(getItem().getState())
+        if (getItem().getRequest() != null &&
+                Status.RESPONSE_SPECIFY.equals(getItem().getState())
                 && userUtilsService.isCurrentUserCustomer()) {
+            sendSpecifyToManufacturerButton.setVisible(true);
+        }
+
+        if (getItem().getRequest() != null && (Status.RESPONSE_CREATED.equals(getItem().getState())
+                || Status.RESPONSE_SPECIFY_GOT.equals(getItem().getState()))
+                && userUtilsService.isCurrentUserManufacturer()) {
+            specifyButton.setVisible(true);
+            sendToCustomerButton.setVisible(true);
+        }
+
+        if (getItem().getRequest() != null && Status.MANUFACTURER_PROCESSING.equals(getItem().getRequest().getStatus())
+                && Status.RESPONSE_CLOSED.equals(getItem().getState())
+                && userUtilsService.isCurrentUserAdmin()) {
             closeRequestButton.setVisible(true);
         }
 
@@ -98,37 +119,74 @@ public class ResponseEdit extends AbstractEditor<Response> {
         openWindow("mycabinet$CustomerRequests.browse", WindowManager.OpenType.NEW_TAB);
     }
 
-    public void onSendToCustomerButtonClick() {
+
+    public void onAgreeResponseButtonClick() {
+        if (Status.RESPONSE_ADMIN_PROCESSING.equals(getItem().getState())) {
+            getItem().setState(Status.RESPONSE_RECEIVED);
+            workflowEmailerService.sendMessageAboutCreateResponseToCustomer(getItem().getRequest(), getItem());
+        } else if (Status.RESPONSE_SPECIFY_ADM_PROCESSING.equals(getItem().getState())) {
+            getItem().setState(Status.RESPONSE_SPECIFY);
+            workflowEmailerService.sendMessageAboutCreateSpecifyToCustomer(getItem().getRequest(), getItem());
+        }
+
+        commitAndClose();
+    }
+
+    public void onSendToAdminAgree() {
         if (getItem().getRequest() != null) {
-            getItem().setState(State.RESPONSE_RECEIVED);
+            getItem().setState(Status.RESPONSE_ADMIN_PROCESSING);
             List<Response> responseList = getItem().getRequest().getResponse();
             responseList.add(getItem());
             getItem().getRequest().setResponse(responseList);
-            //dataManager.commit(getItem().getRequest());
             commitAndClose();
-            workflowEmailerService.sendMessageAboutCreateResponseToCustomer(getItem().getRequest(), getItem());
+            workflowEmailerService.sendMessageAboutCreateResponseToAdmin(getItem().getRequest(), getItem());
         }
     }
 
+    //todo иземнить оповещение о принятой заявке
     public void onSentFeedbackButtonClick() {
         if (getItem().getRequest() != null) {
-            getItem().setState(State.CUSTOMER_FEEDBACK_RECEIVED);
+            getItem().setState(Status.RESPONSE_AGREE);
             commitAndClose();
-            workflowEmailerService.sendMessageAboutCreateResponseFeedback(getItem().getRequest(), getItem());
+            //workflowEmailerService.sendMessageAboutCreateResponseFeedback(getItem().getRequest(), getItem());
+        }
+    }
+
+    //todo иземнить оповещение об отвергнутой заявке
+    public void onSendNegativeFeedbackButtonClick() {
+        if (getItem().getRequest() != null) {
+            getItem().setState(Status.RESPONSE_DISAGREE);
+            commitAndClose();
+            //workflowEmailerService.sendMessageAboutCreateResponseFeedback(getItem().getRequest(), getItem());
         }
     }
 
     public void onCloseResponseButtonClick() {
         if (getItem().getState() != null) {
-            getItem().setState(State.RESPONSE_CLOSED);
+            getItem().setState(Status.RESPONSE_CLOSED);
             commitAndClose();
         }
     }
 
     public void onCloseRequestButtonClick() {
         if (getItem().getRequest() != null) {
-            getItem().getRequest().setStatus(State.REQUEST_CLOSED);
+            getItem().getRequest().setStatus(Status.REQUEST_CLOSED);
             dataManager.commit(getItem().getRequest());
+            commitAndClose();
+        }
+    }
+
+    //todo необходимо оповещение для админа
+    public void onSpecifyButtonClick() {
+        if (getItem().getState() != null) {
+            getItem().setState(Status.RESPONSE_SPECIFY_ADM_PROCESSING);
+            commitAndClose();
+        }
+    }
+
+    public void onSendSpecifyToManufacturerButtonClick() {
+        if (getItem().getState() != null) {
+            getItem().setState(Status.RESPONSE_SPECIFY_GOT);
             commitAndClose();
         }
     }

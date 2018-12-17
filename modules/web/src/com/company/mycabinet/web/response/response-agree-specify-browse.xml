@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://responseSpecifyAgree"
+        class="com.company.mycabinet.web.response.ResponseAgreeSpecifyBrowse"
+        focusComponent="responsesTable"
+        lookupComponent="responsesTable"
+        messagesPack="com.company.mycabinet.web.response">
+    <dsContext>
+        <groupDatasource id="responsesDs"
+                         class="com.company.mycabinet.entity.Response"
+                         view="response-view">
+            <query>
+                <![CDATA[select e from mycabinet$Response e where e.state = 'responseSpecifyAdminProcessing']]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="responsesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="responsesTable"
+                datasource="responsesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="responsesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="price"/>
+                <column id="creator"/>
+                <column id="deliveryPrice"/>
+                <column id="manufacturerComment"/>
+                <column id="isPriceSatisfied"/>
+                <column id="contact"/>
+                <column id="customerComment"/>
+                <column id="closeComment"/>
+                <column id="request"/>
+                <column id="state"/>
+                <column id="manufacturerInfo"/>
+            </columns>
+            <rows datasource="responsesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="editBtn"
+                        action="responsesTable.edit"
+                        caption="msg://view"
+                        icon="icons/edit.png"/>
+                <button id="removeBtn"
+                        action="responsesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>
