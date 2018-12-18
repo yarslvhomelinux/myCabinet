@@ -36,13 +36,7 @@
           name="response-view"
           systemProperties="true">
         <property name="request"
-                  view="_minimal">
-            <property name="manufacturer"
-                      view="_local"/>
-            <property name="status"/>
-            <property name="requestNumber"/>
-            <property name="response"
-                      view="_minimal"/>
+                  view="request-view">
         </property>
         <property name="attachment"
                   view="_minimal">
