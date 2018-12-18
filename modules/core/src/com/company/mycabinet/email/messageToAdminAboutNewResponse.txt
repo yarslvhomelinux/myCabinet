@@ -1,4 +1,4 @@
-В системе создаy новый отклик на заявку:
+В системе создан новый отклик на заявку:
 Номер: <#if request.requestNumber??>${request.requestNumber}<#else> </#if>
 Тип: <#if request.productType??>${request.productType}<#else> </#if>
 Бренд: <#if request.brand??>${request.brand}<#else> </#if>

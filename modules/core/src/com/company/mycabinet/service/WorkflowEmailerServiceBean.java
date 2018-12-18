@@ -71,7 +71,7 @@ public class WorkflowEmailerServiceBean implements WorkflowEmailerService {
         if (request != null && request.getCreator() != null && !Strings.isNullOrEmpty(request.getCreator().getEmail())) {
             EmailInfo emailInfo = new EmailInfo(
                     request.getCreator().getEmail(), // recipients
-                    "На заявку назначен новый ответ", // subject
+                    "На заявку назначен новый ответ производителя", // subject
                     emailerConfig.getAdminAddress(), // the "from" address will be taken from the "cuba.email.fromAddress" app property
                     "com/company/mycabinet/email/messageToAdminAndCustomerAboutCreateResponse.txt", // body template
                     Collections.singletonMap("request", request) // template parameters
@@ -109,13 +109,55 @@ public class WorkflowEmailerServiceBean implements WorkflowEmailerService {
     }
 
     @Override
-    public void sendMessageAboutCreateResponseFeedback(Request request, Response response) {
+    public void sendMessageAboutSpecifyGotToManufacturer(Request request, Response response) {
         if (response != null && response.getCreator() != null && !Strings.isNullOrEmpty(response.getCreator().getEmail())) {
             EmailInfo emailInfo = new EmailInfo(
                     response.getCreator().getEmail() + ", " + emailerConfig.getAdminAddress(), // recipients
-                    "На отклик создан ответ клиента", // subject
+                    "На ваше уточнение прислан ответ клиента", // subject
+                    emailerConfig.getAdminAddress(), // the "from" address will be taken from the "cuba.email.fromAddress" app property
+                    "com/company/mycabinet/email/messageAboutSpecifyGotToManufacturer.txt", // body template
+                    Collections.singletonMap("request", request) // template parameters
+            );
+            emailService.sendEmailAsync(emailInfo);
+        }
+    }
+
+    @Override
+    public void sendMessageAboutCreatePositiveResponseFeedback(Request request, Response response) {
+        if (response != null && response.getCreator() != null && !Strings.isNullOrEmpty(response.getCreator().getEmail())) {
+            EmailInfo emailInfo = new EmailInfo(
+                    response.getCreator().getEmail() + ", " + emailerConfig.getAdminAddress(), // recipients
+                    "На отклик создан позитивный ответ клиента", // subject
                     emailerConfig.getAdminAddress(), // the "from" address will be taken from the "cuba.email.fromAddress" app property
                     "com/company/mycabinet/email/messageToManufacturerAndAdminAboutCreateFeedback.txt", // body template
+                    Collections.singletonMap("request", request) // template parameters
+            );
+            emailService.sendEmailAsync(emailInfo);
+        }
+    }
+
+    @Override
+    public void sendMessageAboutCreateNegativeResponseFeedback(Request request, Response response) {
+        if (response != null && response.getCreator() != null && !Strings.isNullOrEmpty(response.getCreator().getEmail())) {
+            EmailInfo emailInfo = new EmailInfo(
+                    response.getCreator().getEmail() + ", " + emailerConfig.getAdminAddress(), // recipients
+                    "На отклик создан негативный ответ клиента", // subject
+                    emailerConfig.getAdminAddress(), // the "from" address will be taken from the "cuba.email.fromAddress" app property
+                    "com/company/mycabinet/email/messageToManufacturerAndAdminAboutNegativeResponse.txt", // body template
+                    Collections.singletonMap("request", request) // template parameters
+            );
+            emailService.sendEmailAsync(emailInfo);
+        }
+    }
+
+    @Override
+    public void sendMessageAboutSpecifyRequestToAdmin(Request request, Response response) {
+        if (response != null && response.getCreator() != null && !Strings.isNullOrEmpty(response.getCreator().getEmail())) {
+            EmailInfo emailInfo = new EmailInfo(
+                    emailerConfig.getAdminAddress(), // recipients
+                    "Создан новый запрос на уточнение данных по заявке", // subject
+                    emailerConfig.getAdminAddress(), // the "from" address will be taken from the "cuba.email.fromAddress" app property
+                    "com/company/mycabinet/email/messageAboutSpecifyRequestToAdmin.txt", // body template
                     Collections.singletonMap("request", request) // template parameters
             );
             emailService.sendEmailAsync(emailInfo);

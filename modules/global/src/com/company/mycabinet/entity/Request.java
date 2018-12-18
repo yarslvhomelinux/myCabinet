@@ -82,6 +82,18 @@ public class Request extends StandardEntity {
     @OneToMany(mappedBy = "request")
     protected List<Attachment> attachment;
 
+    @Column(name = "REASON_FOR_CLOSE_REQUEST", length = 500)
+    protected String reasonForCloseRequest;
+
+    public void setReasonForCloseRequest(String reasonForCloseRequest) {
+        this.reasonForCloseRequest = reasonForCloseRequest;
+    }
+
+    public String getReasonForCloseRequest() {
+        return reasonForCloseRequest;
+    }
+
+
     public void setAssignDate(Date assignDate) {
         this.assignDate = assignDate;
     }

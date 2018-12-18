@@ -28,6 +28,7 @@
                     width="100%">
             <actions>
                 <action id="create"/>
+                <action id="excel"/>
                 <action id="edit"/>
                 <action id="remove"/>
             </actions>
@@ -54,6 +55,8 @@
                         caption="msg://view"/>
                 <button id="removeBtn"
                         action="requestsTable.remove"/>
+                <button id="excelBtn"
+                        action="requestsTable.excel"/>
             </buttonsPanel>
         </groupTable>
     </layout>

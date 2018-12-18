@@ -60,6 +60,10 @@
                         caption="msg://createResponse"
                         icon="icons/plus-btn.png"
                         invoke="onCreateResponseClick"/>
+                <button id="createSpecifyBUtton"
+                        caption="msg://createSpecify"
+                        icon="icons/question-white.png"
+                        invoke="onCreateSpecifyBUttonClick"/>
                 <button id="refreshButton"
                         action="requestsTable.refresh"/>
                 <button id="editBtn"

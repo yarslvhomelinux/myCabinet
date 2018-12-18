@@ -1,10 +1,10 @@
-Отклик на заявку обработан заказчиком. Статус "Отклик одобрен заказчиком".
+Клиент ответил на ваше уточнение по заявке:
 Номер: <#if request.requestNumber??>${request.requestNumber}<#else> </#if>
 Тип: <#if request.productType??>${request.productType}<#else> </#if>
 Бренд: <#if request.brand??>${request.brand}<#else> </#if>
 Описание: <#if request.productDescription??>${request.productDescription}<#else> </#if>
 
-Решение по отклику можете увидеть в разделе "Мои отклики на запросы цены".
+Отклик стоит в очереди. Зайдите в раздел "Мои отклики на запросы цены" и обработайте его.
 
 ------------
 Это письмо отправлено автоматически с помощью системы "ОптоКит".

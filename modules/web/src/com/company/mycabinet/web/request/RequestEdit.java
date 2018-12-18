@@ -12,6 +12,7 @@ import com.company.mycabinet.entity.Request;
 import com.haulmont.cuba.gui.components.actions.CreateAction;
 import com.haulmont.cuba.gui.components.actions.EditAction;
 import com.haulmont.cuba.gui.components.actions.RemoveAction;
+import org.apache.commons.lang.StringUtils;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -45,13 +46,15 @@ public class RequestEdit extends AbstractEditor<Request> {
     protected FieldGroup fieldGroupRight;
 
     @Inject
-    protected GroupBoxLayout responsesGroupBox;
+    protected GroupBoxLayout responsesGroupBox,
+            closeRequestReasonGroupBox;
 
     @Inject
     protected Button nextStageButton,
             closeRequest,
             improveButton,
-            windowCommit;
+            windowCommit,
+            closeRequestByAdmin;
 
     @Inject
     protected UserSessionSource userSessionSource;
@@ -82,6 +85,15 @@ public class RequestEdit extends AbstractEditor<Request> {
         });
 
         attachmentCreateAction.setWindowParams(ParamsMap.of("status", getItem().getStatus()));
+
+        if(userUtilsService.isCurrentUserAdmin()) {
+            closeRequestByAdmin.setVisible(true);
+            closeRequestReasonGroupBox.setVisible(true);
+        }
+
+        if (getItem().getStatus() != null && Status.REQUEST_CLOSED.equals(getItem().getStatus())) {
+            closeRequestReasonGroupBox.setVisible(true);
+        }
 
         if (Status.REQUEST_CREATED.equals(getItem().getStatus())) {
             nextStageButton.setVisible(true);
@@ -115,6 +127,7 @@ public class RequestEdit extends AbstractEditor<Request> {
         item.setCreator((ExtUser) userSessionSource.getUserSession().getCurrentOrSubstitutedUser());
     }
 
+    //send to admin for accept
     public void onNextStageButtonClick() {
         getItem().setStatus(Status.REQUEST_ADMIN_PROCESSING);
         commitAndClose();
@@ -122,6 +135,7 @@ public class RequestEdit extends AbstractEditor<Request> {
             workflowEmailerService.sendMessageAboutCreateRequestToAdmin(getItem());
     }
 
+    //send request to manufacturer
     public void onImproveButtonClick() {
         Map<String, Object> paramsMap = new HashMap<>();
         paramsMap.put("request", getItem());
@@ -157,6 +171,15 @@ public class RequestEdit extends AbstractEditor<Request> {
         if (getItem().getStatus() != null) {
             getItem().setStatus(Status.REQUEST_CLOSED);
             commitAndClose();
+        }
+    }
+
+    public void onCloseRequestByAdminClick() {
+        if (getItem().getStatus() != null && StringUtils.isNotEmpty(getItem().getReasonForCloseRequest())) {
+            getItem().setStatus(Status.REQUEST_CLOSED);
+            commitAndClose();
+        } else {
+            showNotification("Сначала заполните причину закрытия заявки");
         }
     }
 }

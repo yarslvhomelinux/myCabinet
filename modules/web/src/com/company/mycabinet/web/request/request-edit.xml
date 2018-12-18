@@ -72,6 +72,17 @@
                                 </column>
                             </fieldGroup>
                         </groupBox>
+                        <groupBox id="closeRequestReasonGroupBox"
+                                  spacing="true"
+                                  visible="false">
+                            <fieldGroup datasource="requestDs"
+                                        width="100%">
+                                <column width="100%">
+                                    <field property="reasonForCloseRequest"
+                                           rows="3"/>
+                                </column>
+                            </fieldGroup>
+                        </groupBox>
                         <groupBox id="requestInfoGroupBox"
                                   caption="msg://initialRequestData"
                                   orientation="horizontal"
@@ -187,11 +198,8 @@
                         </actions>
                         <columns>
                             <column id="login"/>
-                            <column id="name"/>
                             <column id="firstName"/>
                             <column id="lastName"/>
-                            <column id="middleName"/>
-                            <column id="organizationName"/>
                             <column id="activityType"/>
                             <column id="businessCategory"/>
                             <column id="manufacturerLegalAdress"/>
@@ -235,6 +243,12 @@
                     action="windowClose"
                     caption="msg://close"
                     icon="icons/cancel.png"/>
+            <button id="closeRequestByAdmin"
+                    caption="msg://closeRequestByAdmin"
+                    icon="icons/cancel.png"
+                    invoke="onCloseRequestByAdminClick"
+                    stylename="danger"
+                    visible="false"/>
         </buttonsPanel>
     </layout>
 </window>

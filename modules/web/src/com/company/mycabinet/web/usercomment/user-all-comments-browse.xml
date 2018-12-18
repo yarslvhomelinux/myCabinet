@@ -29,6 +29,7 @@
                 <action id="create"/>
                 <action id="edit"/>
                 <action id="remove"/>
+                <action id="excel"/>
             </actions>
             <columns>
                 <column id="comment"/>
@@ -43,6 +44,7 @@
                         action="userCommentsTable.edit"/>
                 <button id="removeBtn"
                         action="userCommentsTable.remove"/>
+                <button action="userCommentsTable.excel"/>
             </buttonsPanel>
         </groupTable>
     </layout>

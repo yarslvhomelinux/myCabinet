@@ -3,6 +3,7 @@ package com.company.mycabinet.web.request;
 import com.company.mycabinet.entity.Request;
 import com.company.mycabinet.entity.Response;
 import com.company.mycabinet.entity.Status;
+import com.haulmont.bali.util.ParamsMap;
 import com.haulmont.cuba.core.global.Metadata;
 import com.haulmont.cuba.core.global.TimeSource;
 import com.haulmont.cuba.core.global.UserSessionSource;
@@ -37,7 +38,7 @@ public class CustomerRequestsBrowse extends AbstractLookup {
 
         requestsTable.setStyleProvider((entity, property) -> {
             if (entity.getAssignDate() != null && "daysCount".equals(property)) {
-                int daysCount = new Period(timeSource.currentTimeMillis(), entity.getAssignDate().getTime(), PeriodType.days()).getDays();
+                int daysCount = new Period(entity.getAssignDate().getTime(), timeSource.currentTimeMillis(), PeriodType.days()).getDays();
                 int maxDaysForResponse = 2;
                 if (daysCount > maxDaysForResponse)
                     return "back-red";
@@ -73,5 +74,23 @@ public class CustomerRequestsBrowse extends AbstractLookup {
         }
 
         return new Table.PlainTextCell(daysCount);
+    }
+
+    public void onCreateSpecifyBUttonClick() {
+        if (requestsTable.getSingleSelected() != null) {
+            boolean responseAlreadyCreated = requestsTable.getSingleSelected().getResponse()
+                    .stream()
+                    .filter(response -> response.getCreator().equals(userSessionSource.getUserSession().getUser()))
+                    .count() >= 1;
+            if (!responseAlreadyCreated) {
+                Response response = metadata.create(Response.class);
+                response.setRequest(requestsTable.getSingleSelected());
+                openEditor(response, WindowManager.OpenType.NEW_TAB, ParamsMap.of("isSpecify", true));
+            } else {
+                showNotification("Вы уже создали отклик или уточнение на эту заявку!");
+            }
+        } else {
+            showNotification(getMessage("notSelectedRequestError"));
+        }
     }
 }

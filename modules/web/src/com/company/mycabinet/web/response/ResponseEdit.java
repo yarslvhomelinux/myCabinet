@@ -4,11 +4,14 @@ import com.company.mycabinet.entity.ExtUser;
 import com.company.mycabinet.entity.Status;
 import com.company.mycabinet.service.UserUtilsService;
 import com.company.mycabinet.service.WorkflowEmailerService;
+import com.google.common.base.Strings;
 import com.haulmont.cuba.core.global.DataManager;
 import com.haulmont.cuba.core.global.UserSessionSource;
 import com.haulmont.cuba.gui.WindowManager;
 import com.haulmont.cuba.gui.components.*;
 import com.company.mycabinet.entity.Response;
+import org.apache.commons.lang.StringUtils;
+import org.apache.poi.util.StringUtil;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -38,6 +41,11 @@ public class ResponseEdit extends AbstractEditor<Response> {
     @Named("feedbackFieldGroup.isPriceSatisfied")
     protected Field priceCommentField;
 
+    @Named("responseMainInfoFieldGroup.price")
+    protected Field priceField;
+    @Named("responseMainInfoFieldGroup.deliveryPrice")
+    protected Field deliveryPriceField;
+
     @Inject
     protected UserSessionSource userSessionSource;
 
@@ -57,13 +65,25 @@ public class ResponseEdit extends AbstractEditor<Response> {
     public void ready() {
         super.ready();
 
-        if (getItem().getRequest() != null && Status.MANUFACTURER_PROCESSING.equals(getItem().getRequest().getStatus())
-                && getItem().getState() != null && (getItem().getState().equals(Status.RESPONSE_ADMIN_PROCESSING) ||
+        if (getContext().getParams().containsKey("isSpecify")) {
+            priceField.setRequired(false);
+            deliveryPriceField.setRequired(false);
+        }
+
+        boolean activeResponse = getItem().getRequest() != null && Status.MANUFACTURER_PROCESSING.equals(getItem().getRequest().getStatus());
+
+        if (activeResponse && getItem().getState() != null && (getItem().getState().equals(Status.RESPONSE_ADMIN_PROCESSING) ||
                 getItem().getState().equals(Status.RESPONSE_SPECIFY_ADM_PROCESSING))
                 && userUtilsService.isCurrentUserAdmin()) {
             priceCommentField.setRequired(false);
             contactField.setRequired(false);
             agreeResponseButton.setVisible(true);
+        }
+
+        if (activeResponse && getItem().getState() != null && Status.RESPONSE_SPECIFY.equals(getItem().getState())
+                && userUtilsService.isCurrentUserCustomer()) {
+            priceCommentField.setRequired(false);
+            customerCommentField.setRequired(true);
         }
 
         if (getItem().getState() != null && Status.CUSTOMER_FEEDBACK_RECEIVED.equals(getItem().getState())
@@ -132,6 +152,7 @@ public class ResponseEdit extends AbstractEditor<Response> {
         commitAndClose();
     }
 
+
     public void onSendToAdminAgree() {
         if (getItem().getRequest() != null) {
             getItem().setState(Status.RESPONSE_ADMIN_PROCESSING);
@@ -143,21 +164,21 @@ public class ResponseEdit extends AbstractEditor<Response> {
         }
     }
 
-    //todo иземнить оповещение о принятой заявке
-    public void onSentFeedbackButtonClick() {
+    public void onSentPositiveFeedbackButtonClick() {
         if (getItem().getRequest() != null) {
             getItem().setState(Status.RESPONSE_AGREE);
             commitAndClose();
-            //workflowEmailerService.sendMessageAboutCreateResponseFeedback(getItem().getRequest(), getItem());
+            workflowEmailerService.sendMessageAboutCreatePositiveResponseFeedback(getItem().getRequest(), getItem());
         }
     }
 
-    //todo иземнить оповещение об отвергнутой заявке
     public void onSendNegativeFeedbackButtonClick() {
-        if (getItem().getRequest() != null) {
+        if (getItem().getRequest() != null && StringUtils.isNotEmpty(getItem().getCustomerComment())) {
             getItem().setState(Status.RESPONSE_DISAGREE);
             commitAndClose();
-            //workflowEmailerService.sendMessageAboutCreateResponseFeedback(getItem().getRequest(), getItem());
+            workflowEmailerService.sendMessageAboutCreateNegativeResponseFeedback(getItem().getRequest(), getItem());
+        } else {
+            showNotification("Пожалуйста заполните причину отказа в комментарии");
         }
     }
 
@@ -176,17 +197,20 @@ public class ResponseEdit extends AbstractEditor<Response> {
         }
     }
 
-    //todo необходимо оповещение для админа
     public void onSpecifyButtonClick() {
-        if (getItem().getState() != null) {
+        if (getItem().getState() != null && !Strings.isNullOrEmpty(getItem().getManufacturerComment())) {
             getItem().setState(Status.RESPONSE_SPECIFY_ADM_PROCESSING);
             commitAndClose();
+            workflowEmailerService.sendMessageAboutSpecifyRequestToAdmin(getItem().getRequest(), getItem());
+        } else {
+            showNotification("Пожалуйста заполните комментарий");
         }
     }
 
     public void onSendSpecifyToManufacturerButtonClick() {
         if (getItem().getState() != null) {
             getItem().setState(Status.RESPONSE_SPECIFY_GOT);
+            workflowEmailerService.sendMessageAboutSpecifyGotToManufacturer(getItem().getRequest(), getItem());
             commitAndClose();
         }
     }

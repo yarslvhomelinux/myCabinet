@@ -29,6 +29,7 @@
                 <action id="create"/>
                 <action id="edit"/>
                 <action id="remove"/>
+                <action id="excel"/>
             </actions>
             <columns>
                 <column id="price"/>
@@ -50,6 +51,8 @@
                         action="responsesTable.edit"/>
                 <button id="removeBtn"
                         action="responsesTable.remove"/>
+                <button id="excelBtn"
+                        action="responsesTable.excel"/>
             </buttonsPanel>
         </groupTable>
     </layout>

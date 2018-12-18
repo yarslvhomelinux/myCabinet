@@ -179,7 +179,7 @@
             <button id="sendPositiveFeedbackButton"
                     caption="msg://sendPositiveFeedback"
                     icon="font-icon:SEND_O"
-                    invoke="onSentFeedbackButtonClick"
+                    invoke="onSentPositiveFeedbackButtonClick"
                     stylename="friendly"
                     visible="false"/>
             <button id="sendNegativeFeedbackButton"

@@ -38,6 +38,7 @@ create table MYCABINET_REQUEST (
     CONTACT_PERSON varchar(500),
     CONTACT_PERSON_PHONE varchar(500),
     STATUS varchar(50),
+    REASON_FOR_CLOSE_REQUEST varchar(500),
     --
     primary key (ID)
 )^
