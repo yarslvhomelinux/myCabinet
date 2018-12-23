@@ -10,7 +10,7 @@
                          class="com.company.mycabinet.entity.ExtUser"
                          view="extUser-view">
             <query>
-                <![CDATA[select e from mycabinet$ExtUser e]]>
+                <![CDATA[select e from mycabinet$ExtUser e where e.userType = 'manufacturer']]>
             </query>
         </groupDatasource>
     </dsContext>

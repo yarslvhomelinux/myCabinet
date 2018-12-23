@@ -45,6 +45,11 @@ public class ResponseEdit extends AbstractEditor<Response> {
     protected Field priceField;
     @Named("responseMainInfoFieldGroup.deliveryPrice")
     protected Field deliveryPriceField;
+    @Named("responseMainInfoFieldGroup.manufacturerComment")
+    protected Field manufacturerCommentField;
+    @Named("responseMainInfoFieldGroup.manufacturerInfo")
+    protected Field manufacturerInfoField;
+
 
     @Inject
     protected UserSessionSource userSessionSource;
@@ -66,8 +71,10 @@ public class ResponseEdit extends AbstractEditor<Response> {
         super.ready();
 
         if (getContext().getParams().containsKey("isSpecify")) {
-            priceField.setRequired(false);
-            deliveryPriceField.setRequired(false);
+            priceField.setEditable(false);
+            deliveryPriceField.setEditable(false);
+            manufacturerCommentField.setRequired(true);
+            manufacturerInfoField.setRequired(false);
         }
 
         boolean activeResponse = getItem().getRequest() != null && Status.MANUFACTURER_PROCESSING.equals(getItem().getRequest().getStatus());
@@ -78,6 +85,8 @@ public class ResponseEdit extends AbstractEditor<Response> {
             priceCommentField.setRequired(false);
             contactField.setRequired(false);
             agreeResponseButton.setVisible(true);
+            priceField.setRequired(false);
+            deliveryPriceField.setRequired(false);
         }
 
         if (activeResponse && getItem().getState() != null && Status.RESPONSE_SPECIFY.equals(getItem().getState())

@@ -117,6 +117,7 @@
                                         <field description="msg://deliveryTImeDescr"
                                                property="deliveryTime"/>
                                         <field property="deliveryRegion"
+                                               required="true"
                                                rows="2"/>
                                         <field property="contactPerson"
                                                required="true"
