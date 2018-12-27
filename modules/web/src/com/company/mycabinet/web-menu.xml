@@ -12,10 +12,11 @@
     </menu>
     <menu id="system"
           insertBefore="administration">
-        <item screen="mycabinet$AllRequests.browse"/>
         <item screen="mycabinet$AgreeRequest.browse"/>
         <item screen="mycabinet$ResponseAgree.browse"/>
         <item screen="mycabinet$ResponseSpecifyAgree.browse"/>
+        <item screen="mycabinet$ResponseForClose.browse"/>
+        <item screen="mycabinet$AllRequests.browse"/>
         <item screen="mycabinet$AllResponses.browse"/>
         <item screen="mycabinet$ProductCategory.browse"/>
         <item screen="mycabinet$UserAllComments.browse"/>

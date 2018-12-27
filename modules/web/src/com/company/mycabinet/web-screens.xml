@@ -53,4 +53,6 @@
             template="com/company/mycabinet/web/extuser/ext-user-browse-sharing.xml"/>
     <screen id="sec$User.edit"
             template="com/company/mycabinet/web/screens/ext-user-edit.xml"/>
+    <screen id="mycabinet$ResponseForClose.browse"
+            template="com/company/mycabinet/web/response/response-for-close-browse.xml"/>
 </screen-config>

@@ -43,9 +43,6 @@
                 <column id="deliveryPrice"/>
                 <column id="request.productType"/>
                 <column id="manufacturerComment"/>
-                <column id="isPriceSatisfied"/>
-                <column id="contact"/>
-                <column id="customerComment"/>
                 <column id="closeComment"/>
             </columns>
             <rows datasource="responsesDs"/>

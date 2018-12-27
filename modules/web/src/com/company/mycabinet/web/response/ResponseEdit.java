@@ -11,7 +11,6 @@ import com.haulmont.cuba.gui.WindowManager;
 import com.haulmont.cuba.gui.components.*;
 import com.company.mycabinet.entity.Response;
 import org.apache.commons.lang.StringUtils;
-import org.apache.poi.util.StringUtil;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -34,6 +33,9 @@ public class ResponseEdit extends AbstractEditor<Response> {
             specifyButton,
             sendSpecifyToManufacturerButton;
 
+    @Inject
+    protected GroupBoxLayout feedbackGroupBox;
+
     @Named("feedbackFieldGroup.contact")
     protected Field contactField;
     @Named("feedbackFieldGroup.customerComment")
@@ -49,7 +51,6 @@ public class ResponseEdit extends AbstractEditor<Response> {
     protected Field manufacturerCommentField;
     @Named("responseMainInfoFieldGroup.manufacturerInfo")
     protected Field manufacturerInfoField;
-
 
     @Inject
     protected UserSessionSource userSessionSource;
@@ -87,6 +88,12 @@ public class ResponseEdit extends AbstractEditor<Response> {
             agreeResponseButton.setVisible(true);
             priceField.setRequired(false);
             deliveryPriceField.setRequired(false);
+        }
+
+        if (activeResponse && getItem().getState() != null && (getItem().getState().equals(Status.RESPONSE_AGREE) ||
+                getItem().getState().equals(Status.RESPONSE_DISAGREE))
+                && userUtilsService.isCurrentUserManufacturer()) {
+            feedbackGroupBox.setVisible(false);
         }
 
         if (activeResponse && getItem().getState() != null && Status.RESPONSE_SPECIFY.equals(getItem().getState())
@@ -208,6 +215,8 @@ public class ResponseEdit extends AbstractEditor<Response> {
 
     public void onSpecifyButtonClick() {
         if (getItem().getState() != null && !Strings.isNullOrEmpty(getItem().getManufacturerComment())) {
+            priceField.setRequired(false);
+            deliveryPriceField.setRequired(false);
             getItem().setState(Status.RESPONSE_SPECIFY_ADM_PROCESSING);
             commitAndClose();
             workflowEmailerService.sendMessageAboutSpecifyRequestToAdmin(getItem().getRequest(), getItem());

@@ -43,7 +43,8 @@ public class RegistrationServiceBean implements RegistrationService {
         user.setLastName((String) paramsMap.get("surName"));
         //user.setBirthday((Date) paramsMap.get("birthday"));
         user.setOrganizationName((String) paramsMap.get("orgName"));
-        user.setActivityType((String) paramsMap.get("activityName"));
+        if (UserType.CUSTOMER.equals(user.getUserType()))
+            user.setActivityType((String) paramsMap.get("activityName"));
         user.setLegalAddress((String) paramsMap.get("legalAddress"));
         user.setActualAddress((String) paramsMap.get("actualAddress"));
         user.setBusinessCategory((BusinessCategory) paramsMap.get("businessCategory"));

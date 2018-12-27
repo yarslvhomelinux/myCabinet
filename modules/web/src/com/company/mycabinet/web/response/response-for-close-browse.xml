@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
-        caption="msg://responseAdminProcessing"
-        class="com.company.mycabinet.web.response.ResponseAgreeBrowse"
+        caption="msg://responsesForClose"
+        class="com.company.mycabinet.web.response.ResponseForCloseBrowse"
         focusComponent="responsesTable"
         lookupComponent="responsesTable"
         messagesPack="com.company.mycabinet.web.response">
@@ -10,7 +10,8 @@
                          class="com.company.mycabinet.entity.Response"
                          view="response-view">
             <query>
-                <![CDATA[select e from mycabinet$Response e where e.state = 'responseAdminProcessing']]>
+                <![CDATA[select e from mycabinet$Response e where e.state = 'responseAgree'
+                    or e.state = 'responseDisagree']]>
             </query>
         </groupDatasource>
     </dsContext>
@@ -29,12 +30,10 @@
                 <action id="create"/>
                 <action id="edit"/>
                 <action id="remove"/>
-                <action id="excel"/>
             </actions>
             <columns>
-                <column id="request.requestNumber"/>
-                <column id="state"/>
                 <column id="price"/>
+                <column id="request.requestNumber"/>
                 <column id="creator"/>
                 <column id="deliveryPrice"/>
                 <column id="manufacturerComment"/>
@@ -43,20 +42,21 @@
                 <column id="customerComment"/>
                 <column id="closeComment"/>
                 <column id="request"/>
+                <column id="state"/>
                 <column id="manufacturerInfo"/>
             </columns>
             <rows datasource="responsesDs"/>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
+                <button id="openRequestButton"
+                        caption="msg://openRequest"
+                        icon="icons/create.png"
+                        invoke="onOpenRequestButtonClick"/>
                 <button id="editBtn"
-                        action="responsesTable.edit"
-                        caption="msg://view"
-                        icon="icons/edit.png"/>
+                        action="responsesTable.edit"/>
                 <button id="removeBtn"
                         action="responsesTable.remove"/>
-                <button id="excelBtn"
-                        action="responsesTable.excel"/>
             </buttonsPanel>
         </groupTable>
     </layout>

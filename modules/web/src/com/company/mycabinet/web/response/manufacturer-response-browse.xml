@@ -10,7 +10,8 @@
                          class="com.company.mycabinet.entity.Response"
                          view="response-view">
             <query>
-                <![CDATA[select e from mycabinet$Response e where e.request.createdBy = :session$userLogin]]>
+                <![CDATA[select e from mycabinet$Response e where e.request.createdBy = :session$userLogin and e.state <> 'responseAdminProcessing' 
+and e.state <> 'responseSpecifyAdminProcessing']]>
             </query>
         </groupDatasource>
     </dsContext>
