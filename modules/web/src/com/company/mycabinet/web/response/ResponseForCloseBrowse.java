@@ -15,6 +15,7 @@ public class ResponseForCloseBrowse extends AbstractLookup {
     public void onOpenRequestButtonClick() {
         if (responsesTable.getSingleSelected() != null && responsesTable.getSingleSelected().getRequest() != null) {
             openEditor(responsesTable.getSingleSelected().getRequest(), WindowManager.OpenType.THIS_TAB);
+
         }
     }
 }
