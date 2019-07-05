@@ -24,7 +24,8 @@
             </query>
         </collectionDatasource>
         <collectionDatasource id="attachmentsDs"
-                              class="com.company.mycabinet.entity.Attachment">
+                              class="com.company.mycabinet.entity.Attachment"
+                              view="attachment-view">
             <query>
                 <![CDATA[select e from mycabinet$Attachment e where e.request.id = :ds$requestDs]]>
             </query>
@@ -171,7 +172,7 @@
                                     <columns>
                                         <column id="attachment"/>
                                     </columns>
-                                    <rows datasource="attachmentDs"/>
+                                    <rows datasource="attachmentsDs"/>
                                     <buttonsPanel>
                                         <button id="createAttachmentButton"
                                                 action="attachmentsTable.create"/>

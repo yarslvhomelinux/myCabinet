@@ -67,6 +67,7 @@ public class RequestEdit extends AbstractEditor<Request> {
     @Override
     protected void initNewItem(Request item) {
         super.initNewItem(item);
+
         itemCreated = true;
         initNecessaryFields(item);
     }
@@ -74,17 +75,14 @@ public class RequestEdit extends AbstractEditor<Request> {
     @Override
     public void ready() {
         super.ready();
-        attachmentCreateAction.setBeforeActionPerformedHandler(new Action.BeforeActionPerformedHandler() {
-            @Override
-            public boolean beforeActionPerformed() {
-                if (PersistenceHelper.isNew(getItem()))
-                    commit();
+        attachmentCreateAction.setBeforeActionPerformedHandler(() -> {
+            if (PersistenceHelper.isNew(getItem()))
+                commit();
 
-                return true;
-            }
+            return true;
         });
 
-        attachmentCreateAction.setWindowParams(ParamsMap.of("status", getItem().getStatus()));
+        attachmentCreateAction.setWindowParams(ParamsMap.of("status", getItem().getStatus(), "request", getItem()));
 
         if(userUtilsService.isCurrentUserAdmin()) {
             closeRequestByAdmin.setVisible(true);
@@ -122,7 +120,7 @@ public class RequestEdit extends AbstractEditor<Request> {
         }
     }
 
-    protected void initNecessaryFields(Request item) {
+    private void initNecessaryFields(Request item) {
         item.setStatus(Status.REQUEST_CREATED);
         item.setCreator((ExtUser) userSessionSource.getUserSession().getCurrentOrSubstitutedUser());
     }

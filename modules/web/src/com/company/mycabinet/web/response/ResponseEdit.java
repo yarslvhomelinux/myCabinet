@@ -5,11 +5,14 @@ import com.company.mycabinet.entity.Status;
 import com.company.mycabinet.service.UserUtilsService;
 import com.company.mycabinet.service.WorkflowEmailerService;
 import com.google.common.base.Strings;
+import com.haulmont.bali.util.ParamsMap;
 import com.haulmont.cuba.core.global.DataManager;
+import com.haulmont.cuba.core.global.PersistenceHelper;
 import com.haulmont.cuba.core.global.UserSessionSource;
 import com.haulmont.cuba.gui.WindowManager;
 import com.haulmont.cuba.gui.components.*;
 import com.company.mycabinet.entity.Response;
+import com.haulmont.cuba.gui.components.actions.CreateAction;
 import org.apache.commons.lang.StringUtils;
 
 import javax.inject.Inject;
@@ -52,6 +55,9 @@ public class ResponseEdit extends AbstractEditor<Response> {
     @Named("responseMainInfoFieldGroup.manufacturerInfo")
     protected Field manufacturerInfoField;
 
+    @Named("attachmentTable.create")
+    private CreateAction attachmentCreateAction;
+
     @Inject
     protected UserSessionSource userSessionSource;
 
@@ -63,6 +69,7 @@ public class ResponseEdit extends AbstractEditor<Response> {
     @Override
     protected void initNewItem(Response item) {
         super.initNewItem(item);
+
         item.setState(Status.RESPONSE_CREATED);
         item.setCreator((ExtUser) userSessionSource.getUserSession().getUser());
     }
@@ -141,6 +148,15 @@ public class ResponseEdit extends AbstractEditor<Response> {
             customerCommentField.setVisible(false);
             contactField.setVisible(false);
         }
+
+        attachmentCreateAction.setBeforeActionPerformedHandler(() -> {
+            if (PersistenceHelper.isNew(getItem()))
+                commit();
+
+            return true;
+        });
+
+        attachmentCreateAction.setWindowParams(ParamsMap.of("response", getItem()));
     }
 
     public void onOpenRequestEditorButtonClick() {
@@ -154,7 +170,6 @@ public class ResponseEdit extends AbstractEditor<Response> {
     public void onOpenRequestBrowserButtonClick() {
         openWindow("mycabinet$CustomerRequests.browse", WindowManager.OpenType.NEW_TAB);
     }
-
 
     public void onAgreeResponseButtonClick() {
         if (Status.RESPONSE_ADMIN_PROCESSING.equals(getItem().getState())) {

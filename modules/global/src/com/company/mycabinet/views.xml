@@ -44,6 +44,16 @@
         </property>
         <property name="creator"
                   view="_local"/>
+        <property name="attach"
+                  view="_minimal">
+            <property name="state"/>
+            <property name="response"
+                      view="_minimal"/>
+            <property name="attachment"
+                      view="_minimal">
+                <property name="size"/>
+            </property>
+        </property>
     </view>
     <view class="com.company.mycabinet.entity.ProductCategory"
           extends="_local"
@@ -52,6 +62,8 @@
           extends="_local"
           name="attachment-view">
         <property name="attachment"
+                  view="_minimal"/>
+        <property name="request"
                   view="_minimal"/>
     </view>
 </views>

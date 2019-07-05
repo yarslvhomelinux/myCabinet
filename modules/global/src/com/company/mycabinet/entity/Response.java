@@ -14,6 +14,10 @@ import com.haulmont.cuba.core.entity.FileDescriptor;
 import java.util.List;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import com.haulmont.chile.core.annotations.Composition;
+import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.global.DeletePolicy;
+import javax.persistence.OneToMany;
 
 @NamePattern("%s %s|isPriceSatisfied,deliveryPrice")
 @Table(name = "MYCABINET_RESPONSE")
@@ -60,6 +64,7 @@ public class Response extends StandardEntity {
         joinColumns = @JoinColumn(name = "RESPONSE_ID"),
         inverseJoinColumns = @JoinColumn(name = "FILE_DESCRIPTOR_ID"))
     @ManyToMany
+    @OnDelete(DeletePolicy.CASCADE)
     protected List<FileDescriptor> attachment;
 
     @Column(name = "STATE")
@@ -68,6 +73,28 @@ public class Response extends StandardEntity {
     @Lob
     @Column(name = "MANUFACTURER_INFO")
     protected String manufacturerInfo;
+
+    @OneToMany(mappedBy = "response")
+    protected List<Attachment> attach;
+
+    public void setAttach(List<Attachment> attach) {
+        this.attach = attach;
+    }
+
+    public List<Attachment> getAttach() {
+        return attach;
+    }
+
+
+    public List<FileDescriptor> getAttachment() {
+        return attachment;
+    }
+
+    public void setAttachment(List<FileDescriptor> attachment) {
+        this.attachment = attachment;
+    }
+
+
 
     public void setManufacturerInfo(String manufacturerInfo) {
         this.manufacturerInfo = manufacturerInfo;
@@ -96,14 +123,6 @@ public class Response extends StandardEntity {
     }
 
 
-
-    public void setAttachment(List<FileDescriptor> attachment) {
-        this.attachment = attachment;
-    }
-
-    public List<FileDescriptor> getAttachment() {
-        return attachment;
-    }
 
 
     public void setRequest(Request request) {

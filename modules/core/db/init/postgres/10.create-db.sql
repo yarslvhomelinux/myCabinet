@@ -108,6 +108,7 @@ create table MYCABINET_ATTACHMENT (
     ATTACHMENT_ID uuid,
     STATE varchar(50),
     REQUEST_ID uuid,
+    RESPONSE_ID uuid,
     --
     primary key (ID)
 )^

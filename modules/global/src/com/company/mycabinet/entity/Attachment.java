@@ -29,6 +29,19 @@ public class Attachment extends StandardEntity {
     @JoinColumn(name = "REQUEST_ID")
     protected Request request;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "RESPONSE_ID")
+    protected Response response;
+
+    public void setResponse(Response response) {
+        this.response = response;
+    }
+
+    public Response getResponse() {
+        return response;
+    }
+
+
     public void setRequest(Request request) {
         this.request = request;
     }

@@ -7,7 +7,6 @@
         messagesPack="com.company.mycabinet.web.attachment">
     <dsContext>
         <datasource id="attachmentDs"
-                    allowCommit="false"
                     class="com.company.mycabinet.entity.Attachment"
                     view="attachment-view"/>
     </dsContext>

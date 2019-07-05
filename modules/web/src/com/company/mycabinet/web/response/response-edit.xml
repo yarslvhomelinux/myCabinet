@@ -19,6 +19,13 @@
                 <![CDATA[select e from mycabinet$Request e]]>
             </query>
         </collectionDatasource>
+        <collectionDatasource id="attachmentsDs"
+                              class="com.company.mycabinet.entity.Attachment"
+                              view="attachment-view">
+            <query>
+                <![CDATA[select e from mycabinet$Attachment e where e.response.id = :ds$responseDs]]>
+            </query>
+        </collectionDatasource>
     </dsContext>
     <dialogMode height="600"
                 width="800"/>
@@ -151,17 +158,16 @@
                                height="100%"
                                width="100%">
                             <actions>
-                                <action id="create"/>
-                                <action id="edit"/>
+                                <action id="create" openType="DIALOG"/>
+                                <action id="edit" openType="DIALOG"/>
                                 <action id="remove"/>
                             </actions>
                             <columns>
-                                <column id="name"/>
-                                <column id="extension"/>
-                                <column id="size"/>
-                                <column id="createDate"/>
+                                <column id="attachment.name"/>
+                                <column id="attachment.extension"/>
+                                <column id="attachment.createDate"/>
                             </columns>
-                            <rows datasource="attachmentDs"/>
+                            <rows datasource="attachmentsDs"/>
                             <buttonsPanel>
                                 <button id="createButton"
                                         action="attachmentTable.create"/>
